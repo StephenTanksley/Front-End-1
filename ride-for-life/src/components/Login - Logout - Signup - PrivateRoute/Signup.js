@@ -1,17 +1,19 @@
+import React from 'react'
 
 
-
-
-// Checkbox - if unchecked, user. If 
-
-const user = {
-    name: "",
-    username: "",
-    password: "",
-    role_id: ""
+const Signup = () => {
+    const user = {
+        name: "",
+        username: "",
+        password: "",
+        role_id: ""
+    }
 }
+// Checkbox - if unchecked, user. If checked, driver.
 
 //This is what will happen when a user signs up. User should choose their role some way.
+
+
 
 // switch('role_id') {
 
@@ -20,7 +22,6 @@ const user = {
         // return (<Admin />)
         // break;
 //___________________________
-
 
 
 //MVP _______________________
