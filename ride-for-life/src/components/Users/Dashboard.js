@@ -1,13 +1,15 @@
 import React from 'react'
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+
+    //we want to have conditional rendering in the Dashboard. If the 
 
     return(
         <div>
             <h1>Something here</h1>
 
             {/* If user is a rider, render rider component. */}
-            
+
 
             {/* If user is a driver, render driver component. */}
 
