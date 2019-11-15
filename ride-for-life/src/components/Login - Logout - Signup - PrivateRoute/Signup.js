@@ -1,15 +1,71 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Formik, withFormik, Form, Field,} from "formik";
+import {Button} from "reactstrap";
+import * as Yup from "yup";
 
 
-const Signup = () => {
-    const user = {
+const Signup = ({handleChange, values}) => {
+
+return(
+<Formik>
+  <Form>
+          
+      <Field 
+        type="text" 
+        name="name" 
+        placeholder="Name:" 
+        onChange={handleChange}
+        />
+
+      <Field 
+        type="text" 
+        name="username" 
+        placeholder="Username:" 
+        onChange={handleChange}  
+        />
+
+      <Field 
+        type='password' 
+        name='password' 
+        placeholder="Password:" 
+        onChange={handleChange} 
+        />
+
+      <Field 
+        type="checkbox" 
+        name="role_id" 
+        onChange={handleChange} 
+        />
+
+      <Button outline color="primary">Submit!</Button>
+  </Form>
+</Formik>);
+}
+
+const SignupForm = withFormik({
+        mapPropsToValues({ name, username, password }) {
+          return {
+            name: name || "",
+            username: username || "",
+            password: password || ""
+          };
+        },
+      
+        handleSubmit(values) {
+          console.log(values);
+          //THIS IS WHERE YOU DO YOUR FORM SUBMISSION CODE... HTTP REQUESTS, ETC.
+        }
+      })(Signup);
+
+// Checkbox - if unchecked, user. If 
+
+const user = {
         name: "",
         username: "",
         password: "",
         role_id: ""
-    }
 }
-// Checkbox - if unchecked, user. If checked, driver.
+export default Signup;
 
 //This is what will happen when a user signs up. User should choose their role some way.
 
