@@ -15,10 +15,17 @@ import Nav from './components/Navigation/Nav'
 
 function App() {
   return (
-    <Nav />
     <div className="App">
-     <h1>Hello. Welcome to Ride for Life.</h1>
-     <Signup />
+      <Nav />
+
+      <h1>Hello. Welcome to Ride for Life.</h1>
+      
+      <div>
+        <Signup />
+        <Login />
+     </div>
+     <PrivateRoute exact path='/dashboard' component={Dashboard} />
+     <PrivateRoute exact path='/logout' component={Logout} />
     </div>
     
   );
