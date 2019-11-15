@@ -9,7 +9,7 @@ const Signup = ({handleChange, values}) => {
 return(
 <Formik>
   <Form>
-          
+
       <Field 
         type="text" 
         name="name" 
