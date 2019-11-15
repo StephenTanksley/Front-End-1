@@ -6,3 +6,5 @@ const Logout = (props) => {
     removeToken()
     return <Redirect to="/login" />
 }
+
+export default Logout;
