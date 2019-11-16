@@ -4,7 +4,7 @@ import {Button} from "reactstrap";
 import * as yup from "yup";
 
 
-const Signup = ({handleSubmit, errors, touched, values, handleChange}) => {
+const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
 
 
         return(
@@ -47,16 +47,37 @@ const Signup = ({handleSubmit, errors, touched, values, handleChange}) => {
                                 value={values.password} 
                                 onChange={handleChange} />
                         </div>
-                
+
+                        <label>Location</label>
                         <div>
-                                {touched.role && errors.role && (
-                                <p>Error: {errors.role}</p>)}
-                                <label>Are you signing up to be a driver?</label>
-                                <br/>
-                                <Field 
-                                type='checkbox' id='role' 
-                                name='role' 
-                                checked={values.role} 
+                                {touched.location && errors.location && (
+                                <p>Error: {errors.location}</p>)} 
+                                <Field name='location' 
+                                type='text' 
+                                placeholder='location'     
+                                value={values.location} 
+                                onChange={handleChange} />
+                        </div>
+
+                        <label>What is your price</label>
+                        <div>
+                                {touched.price && errors.price && (
+                                <p>Error: {errors.price}</p>)} 
+                                <Field name='price' 
+                                type='text' 
+                                placeholder='Price'     
+                                value={values.price} 
+                                onChange={handleChange} />
+                        </div>
+
+                        <label>Personal Bio</label>
+                        <div>
+                                {touched.bio && errors.bio && (
+                                <p>Error: {errors.bio}</p>)} 
+                                <Field name='bio' 
+                                type='text' 
+                                placeholder='Bio'     
+                                value={values.bio} 
                                 onChange={handleChange} />
                         </div>
                 
@@ -66,13 +87,16 @@ const Signup = ({handleSubmit, errors, touched, values, handleChange}) => {
               
         }
         const formikUserForm = withFormik({
-            mapPropsToValues({name, username, password, role, errors, values}){
+            mapPropsToValues({name, username, password, role, values, price, location, bio}){
                     console.log(values)
                     return {
                             name: name || "",
                             username: username || "",
                             password: password ||  "",
-                            role: role || false
+                            role: role || true,
+                            location: location || "",
+                            price: price || "",
+                            bio: bio || ""
                 };
         },
               validationSchema: yup.object().shape({
@@ -82,20 +106,34 @@ const Signup = ({handleSubmit, errors, touched, values, handleChange}) => {
                   .max(18),
         
                   username: yup.string()
+                  .required()
                   .min(4)
-                  .required(),
+                  .max(15),
         
                   password: yup.string()
+                  .required()
                   .min(6)
-                  .required(),
+                  .max(25),
 
-                  role: yup.bool()
+                  role: yup.bool(),
+
+                  location: yup.string()
+                  .required()
+                  .min(2)
+                  .max(250),
+
+                  price: yup.number()
+                  .required()
+                  .min(1)
+                  .max(250),
+
+                  bio: yup.string().max(250)
              }),
             handleSubmit:(values, {}) => {
                     console.log(values)
                 
             }       
-        })(Signup);
+        })(DriverSignup);
 
 
 // Checkbox - if unchecked, user. If 
