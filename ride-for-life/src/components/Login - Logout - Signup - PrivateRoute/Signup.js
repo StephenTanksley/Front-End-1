@@ -1,50 +1,107 @@
 import React, { useState } from "react";
 import { Formik, withFormik, Form, Field,} from "formik";
 import {Button} from "reactstrap";
-import * as Yup from "yup";
+import * as yup from "yup";
 
 
-const Signup = ({handleChange, values}) => {
+const Signup = ({handleSubmit, errors, touched, values, handleChange}) => {
 
-return(
-<Formik>
-  <Form>
-      <Field type="text" name="name" placeholder="Name:" onChange={handleChange}/>
-      <Field type="text" name="username" placeholder="Username:" onChange={handleChange}  />
-      <Field type='password' name='password' placeholder="Password:" onChange={handleChange} />
-      <Field type="checkbox" name="role_id" onChange={handleChange} />
-      <Button outline color="primary">Submit!</Button>
-  </Form>
-</Formik>);
-}
 
-const SignupForm = withFormik({
-        mapPropsToValues({ name, username, password }) {
-          return {
-            name: name || "",
-            username: username || "",
-            password: password || ""
-          };
-        },
-      
-        handleSubmit(values) {
-          console.log(values);
-          //THIS IS WHERE YOU DO YOUR FORM SUBMISSION CODE... HTTP REQUESTS, ETC.
+        return(
+                <Form 
+                  className='form' 
+                  onSubmit={handleSubmit}
+                  >
+                              
+                        <label>Name</label>
+                        <div>
+                                {touched.name && errors.name && (
+                                <p>Error: {errors.name}</p>)} 
+                                <Field name='name' 
+                                type='text' 
+                                placeholder='enter name'     
+                                value={values.name} 
+                                onChange={handleChange} />
+                        </div>
+                
+                        <label>Username</label>
+                        <div>
+                                {touched.username && errors.username && (
+                                <p>Error: {errors.username}</p>)} 
+                                <Field 
+                                name='username' 
+                                type='text' 
+                                placeholder='enter a username' 
+                                value={values.username} 
+                                onChange={handleChange} />
+                        </div>
+                
+                        <label>Password</label>
+                        <div>
+                        {touched.password && errors.password && (
+                                <p>Error: {errors.password}</p>)}
+                                <Field 
+                                name='password' 
+                                type='text' 
+                                placeholder='enter a password' 
+                                value={values.password} 
+                                onChange={handleChange} />
+                        </div>
+                
+                        <div>
+                                {touched.role && errors.role && (
+                                <p>Error: {errors.role}</p>)}
+                                <label>Are you signing up to be a driver?</label>
+                                <br/>
+                                <Field 
+                                type='checkbox' id='role' 
+                                name='role' 
+                                checked={values.role} 
+                                onChange={handleChange} />
+                        </div>
+                
+                        <Button outline color="primary" className='submit' type="submit" >Submit</Button>
+                </Form>                  
+              );
+              
         }
-      })(Signup);
+        const formikUserForm = withFormik({
+            mapPropsToValues({name, username, password, role, errors, values}){
+                    console.log(values)
+                    return {
+                            name: name || "",
+                            username: username || "",
+                            password: password ||  "",
+                            role: role || false
+                };
+        },
+              validationSchema: yup.object().shape({
+                  name: yup.string()
+                  .required()
+                  .min(2)
+                  .max(18),
+        
+                  username: yup.string()
+                  .min(4)
+                  .required(),
+        
+                  password: yup.string()
+                  .min(6)
+                  .required(),
 
-
+                  role: yup.bool()
+             }),
+            handleSubmit:(values, {}) => {
+                    console.log(values)
+                
+            }       
+        })(Signup);
 
 
 // Checkbox - if unchecked, user. If 
 
-const user = {
-        name: "",
-        username: "",
-        password: "",
-        role_id: ""
-}
-export default Signup;
+
+export default formikUserForm;
 
 //This is what will happen when a user signs up. User should choose their role some way.
 
