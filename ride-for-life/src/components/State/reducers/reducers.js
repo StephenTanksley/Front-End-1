@@ -37,14 +37,16 @@ import {
 
 
 const initialState = {
-    user: [],
+    
     //Rider
+    rider: [],
     gettingRider: false,
     addingRider: false,
     updatingRider: false,
     deletingRider: false,
     
     //Driver
+    driver: [],
     gettingRider: false,
     addingRider: false,
     updatingRider: false,
@@ -55,7 +57,6 @@ const initialState = {
 }
 
 export function reducer(state = initialState, action) {
-
     switch(action.type) {
 
     /* ---------- RIDERS ---------- */
