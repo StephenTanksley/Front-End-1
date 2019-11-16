@@ -6,7 +6,6 @@ import * as yup from "yup";
 
 const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
 
-
         return(
                 <Form 
                   className='form' 
@@ -136,30 +135,28 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
         })(DriverSignup);
 
 
-// Checkbox - if unchecked, user. If 
-
-
 export default formikUserForm;
+
+
 
 //This is what will happen when a user signs up. User should choose their role some way.
 
-// switch('role_id') {
+// switch('role') {
 
 //SUPER STRETCH GOAL ________
-//     case('role_id' === 1):
+//     case('role' === "admin"):
         // return (<Admin />)
         // break;
 //___________________________
 
 
-
 //MVP _______________________
-//     case('role_id' === 2):
+//     case('role' === "driver":
         // return (<Driver />)
         // break;
 
 
-//     case('role_id' === 3):
+//     case('role' === "rider"):
         // return (<Rider />)
         // break;
 
