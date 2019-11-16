@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { reducer } from './components/State/reducers/reducers'
 import { Provider } from 'react-redux'
-import { thunk } from 'redux-thunk'
+import thunk from 'redux-thunk'
 import { logger } from 'redux-logger'
 
 //styling
