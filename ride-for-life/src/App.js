@@ -14,12 +14,12 @@ import PrivateRoute from './components/Login - Logout - Signup - PrivateRoute/Pr
 import Nav from './components/Navigation/Nav'
 import Dashboard from './components/Users/Dashboard'
 
-
 function App() {
   return (
     <div className="App">
-     <h1>Hello. Welcome to Ride for Life.</h1>
-     <DriverSignup />
+      <h1>Hello. Welcome to Ride for Life.</h1>
+      <DriverSignup />
+      {/* <Login /> */}
     </div>
     
   );

@@ -4,15 +4,30 @@ import {Button} from "reactstrap";
 import * as yup from "yup";
 
 //action import
-import { addDriver } from '../State/actions/actions'
+import { AddDriver } from '../State/actions/actions'
 import { setToken } from "../../utils/api";
 
+//redux
+import { connect } from 'react-redux'
 
-const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
+
+const DriverSignup = ({handleSubmit, errors, touched, values, handleChange, AddDriver}) => {
+        // console.log(AddDriver)
+        // const { 
+        //         name, 
+        //         username, 
+        //         password, 
+        //         location, 
+        //         price, 
+        //         bio 
+        //         } = values
+
+                // console.log('name', name)
+        // console.log("inherited props", props)
 
         return(
                 <Form 
-                  className='form' 
+                  className='form driver'
                   onSubmit={handleSubmit}
                   >
                               
@@ -21,10 +36,11 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                                 {touched.name && errors.name && (
                                 <p>Error: {errors.name}</p>)} 
                                 <Field name='name' 
-                                type='text' 
-                                placeholder='enter name'     
-                                value={values.name} 
-                                onChange={handleChange} />
+                                        type='text' 
+                                        placeholder='enter name'     
+                                        value={values.name} 
+                                        onChange={handleChange} 
+                                        />
                         </div>
                 
                         <label>Username</label>
@@ -32,11 +48,12 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                                 {touched.username && errors.username && (
                                 <p>Error: {errors.username}</p>)} 
                                 <Field 
-                                name='username' 
-                                type='text' 
-                                placeholder='enter a username' 
-                                value={values.username} 
-                                onChange={handleChange} />
+                                        name='username' 
+                                        type='text' 
+                                        placeholder='enter a username' 
+                                        value={values.username} 
+                                        onChange={handleChange} 
+                                        />
                         </div>
                 
                         <label>Password</label>
@@ -44,33 +61,36 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                         {touched.password && errors.password && (
                                 <p>Error: {errors.password}</p>)}
                                 <Field 
-                                name='password' 
-                                type='text' 
-                                placeholder='enter a password' 
-                                value={values.password} 
-                                onChange={handleChange} />
+                                        name='password' 
+                                        type='text' 
+                                        placeholder='enter a password' 
+                                        value={values.password} 
+                                        onChange={handleChange} 
+                                        />
                         </div>
 
                         <label>Location</label>
                         <div>
                                 {touched.location && errors.location && (
                                 <p>Error: {errors.location}</p>)} 
-                                <Field name='location' 
-                                type='text' 
-                                placeholder='location'     
-                                value={values.location} 
-                                onChange={handleChange} />
+                                <Field 
+                                        name='location' 
+                                        type='text' 
+                                        placeholder='location'     
+                                        value={values.location} 
+                                        onChange={handleChange} />
                         </div>
 
                         <label>What is your price</label>
                         <div>
                                 {touched.price && errors.price && (
                                 <p>Error: {errors.price}</p>)} 
-                                <Field name='price' 
-                                type='text' 
-                                placeholder='Price'     
-                                value={values.price} 
-                                onChange={handleChange} />
+                                <Field 
+                                        name='price' 
+                                        type='text' 
+                                        placeholder='Price'     
+                                        value={values.price} 
+                                        onChange={handleChange} />
                         </div>
 
                         <label>Personal Bio</label>
@@ -85,10 +105,11 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                         </div>
                 
                         <Button outline color="primary" className='submit' type="submit" >Submit</Button>
+        
                 </Form>                  
-              );
-              
+              );  
         }
+
         const formikUserForm = withFormik({
             mapPropsToValues({name, username, password, role, values, price, location, bio}){
                     console.log(values)
@@ -96,12 +117,14 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                             name: name || "",
                             username: username || "",
                             password: password ||  "",
-                            role: role || true,
+                            role: role || "driver",
                             location: location || "",
                             price: price || "",
-                            bio: bio || ""
+                            bio: bio || "",
+                            role_id: 2
                 };
         },
+
               validationSchema: yup.object().shape({
                   name: yup.string()
                   .required()
@@ -118,8 +141,6 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                   .min(6)
                   .max(25),
 
-                  role: yup.bool(),
-
                   location: yup.string()
                   .required()
                   .min(2)
@@ -132,18 +153,23 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
 
                   bio: yup.string().max(250)
              }),
-            handleSubmit:(values, { resetForm }) => {
-                    console.log(values)
+
+            handleSubmit:(values, { setSubmitting, resetForm, props }) => {
+                    console.log('values', values)
+                    props.AddDriver(values)
                     //need to add dispatch here.
-                    addDriver(values)
                     resetForm()
-            }       
+            }
         })(DriverSignup);
 
+        const mapDispatchToProps = {
+                AddDriver
+        }
 
-export default formikUserForm;
-
-
+        export default connect(
+                null,
+                mapDispatchToProps
+            )(formikUserForm)
 
 //This is what will happen when a user signs up. User should choose their role some way.
 

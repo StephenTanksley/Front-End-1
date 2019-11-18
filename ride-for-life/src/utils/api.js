@@ -15,24 +15,24 @@ export const removeToken = () => {
     return localStorage.removeItem('token')
 }
 
-//this is the function we'll use to make initial requests and get tokens assigned.
-export const axiosWithoutAuth = () => {    
-    return(
-        axios.create({
-            baseURL: 'https://rideforlife-backend.herokuapp.com/api',
-        })
-    )
-}
 
 //this is the function we'll use to make protected requests.
-export const axiosWithAuth = () => {    
+export const axiosRequest = () => {    
     return(
-        axios.create({
-            baseURL: 'https://rideforlife-backend.herokuapp.com/api',
+
+        getToken()
+        ? axios
+            .create({
+            baseURL: 'https://rideforlife-backend.herokuapp.com',
             headers: {
                 "Authorization" : getToken(),
                 "Content-Type" : 'application/json'
             }
+        })
+
+        : axios
+            .create({
+            baseURL: 'https://rideforlife-backend.herokuapp.com',
         })
     )
 }

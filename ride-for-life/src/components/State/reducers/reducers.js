@@ -1,5 +1,8 @@
 import {
-    
+
+    //admin 
+
+
     //riders
     GET_RIDER_START,
     GET_RIDER_SUCCESS,
@@ -40,7 +43,7 @@ import {
 const initialState = {
 
     //Admin
-    users: [],
+    // users: [],
     
     //Rider
     rider: [],

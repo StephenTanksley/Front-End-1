@@ -7,9 +7,9 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom'
 
 //state management
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { reducer } from './components/State/reducers/reducers'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import { reducer } from './components/State/reducers/reducers'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 
@@ -22,12 +22,13 @@ import * as serviceWorker from './serviceWorker';
 const store = createStore(reducer, applyMiddleware(thunk, logger))
 
 ReactDOM.render(
-<Router>
-    <Provider store={store}>
+<Provider store={store}>
+    <Router>
         <App />
-    </Provider>
-</Router>
-, document.getElementById('root'));
+    </Router>
+</Provider>, 
+    document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
