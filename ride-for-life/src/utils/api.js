@@ -16,7 +16,9 @@ export const removeToken = () => {
 }
 
 
-//this is the function we'll use to make protected requests.
+//this is the reusable function we'll use to make requests. 
+//If a token exists, it'll use the token. Otherwise it won't.
+
 export const axiosRequest = () => {    
     return(
 
