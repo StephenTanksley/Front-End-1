@@ -15,6 +15,7 @@ export const removeToken = () => {
     return localStorage.removeItem('token')
 }
 
+//this is the function we'll use to make initial requests and get tokens assigned.
 export const axiosWithoutAuth = () => {    
     return(
         axios.create({

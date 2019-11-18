@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { Formik, withFormik, Form, Field,} from "formik";
+import { Formik, withFormik, Form, Field, resetForm } from "formik";
 import {Button} from "reactstrap";
 import * as yup from "yup";
+
+//action import
+import { addDriver } from '../State/actions/actions'
+import { setToken } from "../../utils/api";
 
 
 const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
@@ -128,9 +132,11 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
 
                   bio: yup.string().max(250)
              }),
-            handleSubmit:(values, {}) => {
+            handleSubmit:(values, { resetForm }) => {
                     console.log(values)
-                
+                    //need to add dispatch here.
+                    addDriver(values)
+                    resetForm()
             }       
         })(DriverSignup);
 
