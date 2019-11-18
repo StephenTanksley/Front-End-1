@@ -11,6 +11,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                   className='form' 
                   onSubmit={handleSubmit}
                   >
+                          <h1>Driver Signup</h1>
                               
                         <label>Name</label>
                         <div>
@@ -92,6 +93,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                             name: name || "",
                             username: username || "",
                             password: password ||  "",
+                            //Will our role_id be a boolean still?
                             role: role || true,
                             location: location || "",
                             price: price || "",
