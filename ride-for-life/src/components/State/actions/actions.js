@@ -79,8 +79,9 @@ export const getUser = () => {
         axios()
             .get('/api/auth/login')
             .then(response => {
-                const token = response.data.token
                 dispatch({ type: GET_USER_SUCCESS, payload: response.data })
+                const token = response.data.token
+                setToken(token)
             })
             .catch(error => {
                 dispatch({ type: GET_USER_FAILED, payload: error})
