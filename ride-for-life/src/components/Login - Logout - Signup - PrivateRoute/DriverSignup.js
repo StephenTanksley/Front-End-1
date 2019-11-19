@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Formik, withFormik, Form, Field, resetForm } from "formik";
 import {Button} from "reactstrap";
 import * as yup from "yup";
+import {Link} from 'react-router-dom'
 
 //action import
 import { AddDriver } from '../State/actions/actions'
@@ -18,6 +19,8 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange }) =>
                   className='form driver'
                   onSubmit={handleSubmit}
                   >
+                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link>
+                        <br />
                         <h1>Driver Signup</h1>
                               
                         <label>Name</label>
