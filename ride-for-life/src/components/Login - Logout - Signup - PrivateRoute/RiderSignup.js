@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {withFormik, Form, Field} from "formik";
 import {Button} from "reactstrap";
+import {Link} from 'react-router-dom'
 import * as yup from "yup";
 
 
@@ -11,6 +12,8 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                   className='form rider' 
                   onSubmit={handleSubmit}
                   >
+                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link>
+                        <br />
                         <h1>Rider Signup</h1>
                         
                         <label>Name</label>
