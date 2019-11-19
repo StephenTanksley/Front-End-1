@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import {withFormik, Form, Field} from "formik";
+import {withFormik, Form, Field, resetForm } from "formik";
 import {Button} from "reactstrap";
 import * as yup from "yup";
+
+//action import
+import { getUser } from '../State/actions/actions'
+import { connect } from 'react-redux'
 
 const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
 
@@ -30,7 +34,7 @@ const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
                                 <p>Error: {errors.password}</p>)}
                                 <Field 
                                 name='password' 
-                                type='text' 
+                                type='text'
                                 placeholder='enter a password' 
                                 value={values.password} 
                                 onChange={handleChange} />
@@ -39,8 +43,8 @@ const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
                         <Button outline color="primary" className='submit' type="submit" >Submit</Button>
                 </Form>                  
               );
-              
         }
+
         const formikUserForm = withFormik({
             mapPropsToValues({username, password, values,}){
                     console.log(values)
@@ -62,12 +66,20 @@ const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
                   .max(25),
 
              }),
-            handleSubmit:(values, {}) => {
-                    console.log(values)
-                
-            }       
+             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
+                console.log('values', values)
+                props.getUser(values)
+                resetForm()
+            }     
         })(Login);
 
 
 
-export default formikUserForm;
+const mapDispatchToProps = {
+    getUser
+}
+
+export default connect(
+null,
+mapDispatchToProps
+)(formikUserForm)
