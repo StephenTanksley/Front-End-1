@@ -79,6 +79,7 @@ export const getRider = () => {
         axios()
             .get('/api/riders')
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: GET_RIDER_SUCCESS, payload: response.data })
             })
             .catch(error => {
@@ -93,6 +94,7 @@ export const addRider = (rider) => {
         axios()
             .post('/api/auth/register', rider)
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: ADD_RIDER_SUCCESS, payload: response.data })
             })
             .catch(error => {
@@ -107,6 +109,7 @@ export const updateRider = (rider) => {
         axios()
             .put(`/api/riders/:id`, rider)
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: UPDATE_RIDER_SUCCESS, payload: response.data })
             })
             .catch(error => {
@@ -121,6 +124,7 @@ export const deleteRider = () => {
         axios()
             .delete(`/api/riders/:id`)
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: GET_RIDER_SUCCESS, payload: response.data })
             })
             .catch(error => {
@@ -136,6 +140,7 @@ export const getDriver = () => {
         axios()
             .get('/api/driver')
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: GET_DRIVER_SUCCESS, payload: response.data })
                 setToken()
             })
@@ -151,9 +156,10 @@ export const AddDriver = (driver) => {
         axios() //without authorization since I need to add a driver to get a token.
             .post('/api/auth/register', driver)
             .then(response => { //hey we have a new driver, here's your updated state.
+                const token = response.data.token
                 console.log('Response', response)
                 dispatch({ type: ADD_DRIVER_SUCCESS, payload: response })
-                // setToken()
+                setToken(token)
             })
             .catch(error => {
                 dispatch({ type: ADD_DRIVER_FAILED, payload: error})
@@ -169,6 +175,7 @@ export const updateDriver = (driver) => {
         axios()
             .put(`/api/drivers/:id`, driver)
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: UPDATE_DRIVER_SUCCESS, payload: response.data })
             })
             .catch(error => {
@@ -183,6 +190,7 @@ export const deleteDriver = () => {
         axios()
             .delete(`/api/drivers/:id`)
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: DELETE_DRIVER_SUCCESS, payload: response.data })
             })
             .catch(error => {
