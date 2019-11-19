@@ -25,7 +25,7 @@ function App() {
       <Link to={'/rider-signup'} > <Button color='secondary'>Rider Signup</Button> </Link>
       <Link to={'/login'} > <Button color='secondary'>Login</Button> </Link>
 
-      <Route exact path='/' component={Dashboard} />
+      <PrivateRoute exact path='/' component={Dashboard} />
       <Route exact path='/driver-signup' component={DriverSignup} />
       <Route exact path='/rider-signup' component={RiderSignup} />
       <Route exact path='/login' component={Login} />

@@ -1,4 +1,6 @@
 import React from 'react'
+import Driver from './Driver'
+import Rider from './Rider'
 
 const Dashboard = (props) => {
 
@@ -6,13 +8,9 @@ const Dashboard = (props) => {
 
     return(
         <div>
+            {/* <Rider />
+            <Driver /> */}
             <h1>Dashboard</h1>
-
-            {/* If user is a rider, render rider component. */}
-
-
-            {/* If user is a driver, render driver component. */}
-
         </div>
 
     )
