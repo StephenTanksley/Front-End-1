@@ -8,7 +8,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
 
         return(
                 <Form 
-                  className='form' 
+                  className='form rider' 
                   onSubmit={handleSubmit}
                   >
                         <h1>Rider Signup</h1>
@@ -72,8 +72,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                             name: name || "",
                             username: username || "",
                             password: password ||  "",
-                            //Will our role_id be a boolean still?
-                            role: role || false,
+                            role: role || "rider",
                             location: location || "",
                 };
         },
@@ -100,9 +99,10 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                   .min(2)
                   .max(250),
              }),
-            handleSubmit:(values, {}) => {
+            handleSubmit:(values, { setSubmitting, resetForm, props }) => {
                     console.log(values)
-                
+                    props.addRider(values)
+                    resetForm()
             }       
         })(RiderSignup);
 
