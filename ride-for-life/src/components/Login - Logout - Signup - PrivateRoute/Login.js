@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import {withFormik, Form, Field} from "formik";
 import {Button} from "reactstrap";
 import * as yup from "yup";
+import {Link} from 'react-router-dom'
+
 
 const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
 
@@ -10,6 +12,8 @@ const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
                   className='form' 
                   onSubmit={handleSubmit}
                   >
+                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link>
+                        <br />
                         <h1>Login</h1>
                 
                         <label>Username</label>
@@ -19,7 +23,7 @@ const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
                                 <Field 
                                 name='username' 
                                 type='text' 
-                                placeholder='enter a username' 
+                                placeholder='enter your username' 
                                 value={values.username} 
                                 onChange={handleChange} />
                         </div>
@@ -31,7 +35,7 @@ const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
                                 <Field 
                                 name='password' 
                                 type='text' 
-                                placeholder='enter a password' 
+                                placeholder='enter your password' 
                                 value={values.password} 
                                 onChange={handleChange} />
                         </div>
@@ -68,6 +72,8 @@ const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
             }       
         })(Login);
 
+
+// Checkbox - if unchecked, user. If 
 
 
 export default formikUserForm;

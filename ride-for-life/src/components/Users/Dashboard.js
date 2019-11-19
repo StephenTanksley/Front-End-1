@@ -6,7 +6,7 @@ const Dashboard = (props) => {
 
     return(
         <div>
-            <h1>Something here</h1>
+            <h1>Dashboard</h1>
 
             {/* If user is a rider, render rider component. */}
 
