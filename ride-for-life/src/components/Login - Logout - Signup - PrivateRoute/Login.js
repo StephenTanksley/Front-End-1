@@ -1,69 +1,75 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
+import {withFormik, Form, Field} from "formik";
+import {Button} from "reactstrap";
+import * as yup from "yup";
 
-//axios util import
-import { axiosRequest as axios, setToken } from '../../utils/api'
-import { getDriver } from '../State/actions/actions'
+const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
 
-const Login = (props) => {
-    const [error, setError] = useState()
-    const [data, setData] = useState({
-        username: '',
-        password: '',
-        isLoading: false
-    })
-
-    const handleChange = (e) => {
-        setData({
-            ...data,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        axios()
-            .post('/api/login', data)
-            .then(response => {
-                console.log(response)
-            })
-            .catch(error => {
-                setError(error)
-                console.log(error)
-            })
-    }
-
-    return (
-
-        <div className="login-form">
-            <h2>Please login.</h2>
-            {/* If there's an error, render a div that shows it. */}
-            {error && <div className="error">{`${error}`}</div>}
-            
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="text"
-                    name="username" 
-                    value={data.username}
-                    onChange={handleChange}
-                    placeholder="Username"
-                    />
+        return(
+                <Form 
+                  className='form' 
+                  onSubmit={handleSubmit}
+                  >
+                        <h1>Login</h1>
                 
-                <input 
-                    type="text"
-                    name="password" 
-                    value={data.password}
-                    onChange={handleChange}
-                    placeholder="Password"
-                    />
+                        <label>Username</label>
+                        <div>
+                                {touched.username && errors.username && (
+                                <p>Error: {errors.username}</p>)} 
+                                <Field 
+                                name='username' 
+                                type='text' 
+                                placeholder='enter a username' 
+                                value={values.username} 
+                                onChange={handleChange} />
+                        </div>
                 
-                <button type="submit">Login</button>
+                        <label>Password</label>
+                        <div>
+                        {touched.password && errors.password && (
+                                <p>Error: {errors.password}</p>)}
+                                <Field 
+                                name='password' 
+                                type='text' 
+                                placeholder='enter a password' 
+                                value={values.password} 
+                                onChange={handleChange} />
+                        </div>
 
-            </form>
+                        <Button outline color="primary" className='submit' type="submit" >Submit</Button>
+                </Form>                  
+              );
+              
+        }
+        const formikUserForm = withFormik({
+            mapPropsToValues({username, password, values,}){
+                    console.log(values)
+                    return {
+                            username: username || "",
+                            password: password ||  "",
+                };
+        },
+              validationSchema: yup.object().shape({
+        
+                  username: yup.string()
+                  .required()
+                  .min(4)
+                  .max(15),
+        
+                  password: yup.string()
+                  .required()
+                  .min(6)
+                  .max(25),
+
+             }),
+            handleSubmit:(values, {}) => {
+                    console.log(values)
+                
+            }       
+        })(Login);
 
 
-        </div>
-    )
+// Checkbox - if unchecked, user. If 
 
-}
 
-export default Login;
+export default formikUserForm;

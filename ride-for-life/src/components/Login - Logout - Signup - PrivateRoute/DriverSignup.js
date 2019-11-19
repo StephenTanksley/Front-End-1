@@ -18,7 +18,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange }) =>
                   className='form driver'
                   onSubmit={handleSubmit}
                   >
-                          <h1>Driver Signup</h1>
+                        <h1>Driver Signup</h1>
                               
                         <label>Name</label>
                         <div>
