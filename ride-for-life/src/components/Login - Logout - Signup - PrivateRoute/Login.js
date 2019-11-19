@@ -69,7 +69,5 @@ const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
         })(Login);
 
 
-// Checkbox - if unchecked, user. If 
-
 
 export default formikUserForm;
