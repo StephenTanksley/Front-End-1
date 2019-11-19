@@ -11,6 +11,7 @@ import RiderSignup from './components/Login - Logout - Signup - PrivateRoute/Rid
 import Login from './components/Login - Logout - Signup - PrivateRoute/Login'
 import Logout from './components/Login - Logout - Signup - PrivateRoute/Logout'
 import PrivateRoute from './components/Login - Logout - Signup - PrivateRoute/PrivateRoute'
+import Rider from './components/Users/Rider'
 
 //navigation
 import Nav from './components/Navigation/Nav'
@@ -24,11 +25,14 @@ function App() {
       <Link to={'/driver-signup'} > <Button color='secondary'>Driver Signup</Button> </Link>
       <Link to={'/rider-signup'} > <Button color='secondary'>Rider Signup</Button> </Link>
       <Link to={'/login'} > <Button color='secondary'>Login</Button> </Link>
+      <Link to={'/rider'} > <Button color='secondary'>Rider Dashboard</Button></Link>
 
-      <Route exact path='/' component={Dashboard} />
+      <PrivateRoute exact path='/' component={Dashboard} />
       <Route exact path='/driver-signup' component={DriverSignup} />
       <Route exact path='/rider-signup' component={RiderSignup} />
       <Route exact path='/login' component={Login} />
+      {/* private routes */}
+      <Route exact path='/rider' component={Rider} />
 
     </div>
     
