@@ -9,15 +9,17 @@ import DriverSignup from './components/Login - Logout - Signup - PrivateRoute/Dr
 import Login from './components/Login - Logout - Signup - PrivateRoute/Login'
 import Logout from './components/Login - Logout - Signup - PrivateRoute/Logout'
 import PrivateRoute from './components/Login - Logout - Signup - PrivateRoute/PrivateRoute'
+
+//navigation
 import Nav from './components/Navigation/Nav'
 import Dashboard from './components/Users/Dashboard'
-
 
 function App() {
   return (
     <div className="App">
-     <h1>Hello. Welcome to Ride for Life.</h1>
-     <DriverSignup />
+      <h1>Hello. Welcome to Ride for Life.</h1>
+      <DriverSignup />
+      {/* <Login /> */}
     </div>
     
   );

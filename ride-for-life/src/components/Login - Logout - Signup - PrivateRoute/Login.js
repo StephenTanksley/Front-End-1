@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 
 //axios util import
-import { axiosWithAuth as axios } from '../../utils/api'
-
-//token
-import { setToken } from '../../utils/api'
+import { axiosRequest as axios, setToken } from '../../utils/api'
+import { getDriver } from '../State/actions/actions'
 
 const Login = (props) => {
     const [error, setError] = useState()
@@ -24,10 +22,10 @@ const Login = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         axios()
-            .post('/login', data)
+            .post('/api/login', data)
             .then(response => {
                 console.log(response)
-                setToken(response.data.payload)
+                setToken(response.token)
                 // props.history.push('/dashboard') <---- need to figure out how we'll be rendering users.
             })
             .catch(error => {
