@@ -25,8 +25,6 @@ const Login = (props) => {
             .post('/api/login', data)
             .then(response => {
                 console.log(response)
-                setToken(response.token)
-                // props.history.push('/dashboard') <---- need to figure out how we'll be rendering users.
             })
             .catch(error => {
                 setError(error)

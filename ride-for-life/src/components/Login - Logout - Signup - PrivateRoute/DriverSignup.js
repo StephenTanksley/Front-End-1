@@ -11,19 +11,7 @@ import { setToken } from "../../utils/api";
 import { connect } from 'react-redux'
 
 
-const DriverSignup = ({handleSubmit, errors, touched, values, handleChange, AddDriver}) => {
-        // console.log(AddDriver)
-        // const { 
-        //         name, 
-        //         username, 
-        //         password, 
-        //         location, 
-        //         price, 
-        //         bio 
-        //         } = values
-
-                // console.log('name', name)
-        // console.log("inherited props", props)
+const DriverSignup = ({handleSubmit, errors, touched, values, handleChange }) => {
 
         return(
                 <Form 
@@ -103,7 +91,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange, AddD
                                 value={values.bio} 
                                 onChange={handleChange} />
                         </div>
-                
+
                         <Button outline color="primary" className='submit' type="submit" >Submit</Button>
         
                 </Form>                  
@@ -170,6 +158,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange, AddD
                 null,
                 mapDispatchToProps
             )(formikUserForm)
+
 
 //This is what will happen when a user signs up. User should choose their role some way.
 
