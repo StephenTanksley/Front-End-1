@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import {withFormik, Form, Field} from "formik";
+import {withFormik, Form, Field, resetForm } from "formik";
 import {Button} from "reactstrap";
 import * as yup from "yup";
 import {Link} from 'react-router-dom'
 
+
+//action import
+import { getUser } from '../State/actions/actions'
+import { connect } from 'react-redux'
 
 const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
 
@@ -43,8 +47,8 @@ const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
                         <Button outline color="primary" className='submit' type="submit" >Submit</Button>
                 </Form>                  
               );
-              
         }
+
         const formikUserForm = withFormik({
             mapPropsToValues({username, password, values,}){
                     console.log(values)
@@ -66,14 +70,22 @@ const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
                   .max(25),
 
              }),
-            handleSubmit:(values, {}) => {
-                    console.log(values)
-                
-            }       
+             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
+                console.log('values', values)
+                props.getUser(values)
+                resetForm()
+            }     
         })(Login);
 
 
 // Checkbox - if unchecked, user. If 
 
 
-export default formikUserForm;
+const mapDispatchToProps = {
+    getUser
+}
+
+export default connect(
+null,
+mapDispatchToProps
+)(formikUserForm)

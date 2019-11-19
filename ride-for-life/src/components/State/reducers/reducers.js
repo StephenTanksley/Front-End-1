@@ -1,13 +1,11 @@
 import {
 
-    //admin 
-
+    //user
+    GET_USER_START,
+    GET_USER_SUCCESS,
+    GET_USER_FAILED,
 
     //riders
-    GET_RIDER_START,
-    GET_RIDER_SUCCESS,
-    GET_RIDER_FAILED,
-
     ADD_RIDER_START,
     ADD_RIDER_SUCCESS,
     ADD_RIDER_FAILED,
@@ -43,18 +41,17 @@ import {
 const initialState = {
 
     //Admin
-    // users: [],
+    user: [],
+    gettingUser: false,
     
     //Rider
-    rider: [],
-    gettingRider: false,
+    riders: [],
     addingRider: false,
     updatingRider: false,
     deletingRider: false,
     
     //Driver
-    driver: [],
-    gettingDriver: false,
+    drivers: [],
     addingDriver: false,
     updatingDriver: false,
     deletingDriver: false,
@@ -67,31 +64,34 @@ export function reducer(state = initialState, action) {
     switch(action.type) {
 
 
+    /* ---------- USERS ---------- */
+
+        //getting a user
+        case GET_USER_START: {
+                return {
+                    ...state,
+                    gettingUser: true
+                }
+            }
+    
+        case GET_USER_SUCCESS: {
+                return {
+                    ...state,
+                    user: action.payload,
+                    gettingUser: false,
+                }
+            }
+    
+        case GET_USER_FAILED: {
+                return {
+                    ...state,
+                    gettingUser: false,
+                    error: action.payload
+                }
+            }
+
     /* ---------- RIDERS ---------- */
 
-    //getting a rider 
-    case GET_RIDER_START: {
-            return {
-                ...state,
-                gettingRider: true
-            }
-        }
-
-    case GET_RIDER_SUCCESS: {
-            return {
-                ...state,
-                rider: action.payload,
-                gettingRider: false,
-            }
-        }
-
-    case GET_RIDER_FAILED: {
-            return {
-                ...state,
-                gettingRider: false,
-                error: action.payload
-            }
-        }
 
 
     //adding a new rider
@@ -171,29 +171,29 @@ export function reducer(state = initialState, action) {
 
 /* ---------- DRIVERS ---------- */
 
-    //getting a driver
-    case GET_DRIVER_START: {
-            return {
-                ...state,
-                gettingDriver: true
-            }
-        }
+    // //getting a driver
+    // case GET_DRIVER_START: {
+    //         return {
+    //             ...state,
+    //             gettingDriver: true
+    //         }
+    //     }
 
-    case GET_DRIVER_SUCCESS: {
-            return {
-                ...state,
-                driver: action.payload,
-                gettingDriver: false,
-            }
-        }
+    // case GET_DRIVER_SUCCESS: {
+    //         return {
+    //             ...state,
+    //             driver: action.payload,
+    //             gettingDriver: false,
+    //         }
+    //     }
 
-    case GET_DRIVER_FAILED: {
-            return {
-                ...state,
-                gettingDriver: false,
-                error: action.payload
-            }
-        }
+    // case GET_DRIVER_FAILED: {
+    //         return {
+    //             ...state,
+    //             gettingDriver: false,
+    //             error: action.payload
+    //         }
+    //     }
 
 
     //adding a new driver

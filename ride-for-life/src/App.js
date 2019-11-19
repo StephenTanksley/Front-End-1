@@ -33,6 +33,7 @@ function App() {
       <Route exact path='/login' component={Login} />
       {/* private routes */}
       <Route exact path='/rider' component={Rider} />
+
     </div>
     
   );
