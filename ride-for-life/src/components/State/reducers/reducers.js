@@ -1,4 +1,8 @@
-import { 
+import {
+
+    //admin 
+
+
     //riders
     GET_RIDER_START,
     GET_RIDER_SUCCESS,
@@ -37,6 +41,9 @@ import {
 
 
 const initialState = {
+
+    //Admin
+    // users: [],
     
     //Rider
     rider: [],
@@ -47,17 +54,18 @@ const initialState = {
     
     //Driver
     driver: [],
-    gettingRider: false,
-    addingRider: false,
-    updatingRider: false,
-    deletingRider: false,
+    gettingDriver: false,
+    addingDriver: false,
+    updatingDriver: false,
+    deletingDriver: false,
 
     //errors
-    error: null
+    error: []
 }
 
 export function reducer(state = initialState, action) {
     switch(action.type) {
+
 
     /* ---------- RIDERS ---------- */
 
@@ -72,7 +80,7 @@ export function reducer(state = initialState, action) {
     case GET_RIDER_SUCCESS: {
             return {
                 ...state,
-                user: action.payload,
+                rider: action.payload,
                 gettingRider: false,
             }
         }
@@ -97,7 +105,7 @@ export function reducer(state = initialState, action) {
     case ADD_RIDER_SUCCESS: {
             return {
                 ...state,
-                user: action.payload,
+                rider: action.payload,
                 addingRider: false
             }
         }
@@ -122,7 +130,7 @@ export function reducer(state = initialState, action) {
     case UPDATE_RIDER_SUCCESS: {
             return {
                 ...state,
-                user: action.payload,
+                rider: action.payload,
                 updatingRider: false
             }
         }
@@ -147,7 +155,7 @@ export function reducer(state = initialState, action) {
     case DELETE_RIDER_SUCCESS: {
             return {
                 ...state,
-                user: action.payload,
+                rider: action.payload,
                 deletingRider: false
             }
         }
@@ -159,7 +167,6 @@ export function reducer(state = initialState, action) {
                 error: action.payload
             }
         }
-
 
 
 /* ---------- DRIVERS ---------- */
@@ -175,7 +182,7 @@ export function reducer(state = initialState, action) {
     case GET_DRIVER_SUCCESS: {
             return {
                 ...state,
-                user: action.payload,
+                driver: action.payload,
                 gettingDriver: false,
             }
         }
@@ -200,7 +207,7 @@ export function reducer(state = initialState, action) {
     case ADD_DRIVER_SUCCESS: {
             return {
                 ...state,
-                user: action.payload,
+                driver: action.payload,
                 addingDriver: false
             }
         }
@@ -225,7 +232,7 @@ export function reducer(state = initialState, action) {
     case UPDATE_DRIVER_SUCCESS: {
             return {
                 ...state,
-                user: action.payload,
+                driver: action.payload,
                 updatingDriver: false
             }
         }
@@ -239,7 +246,6 @@ export function reducer(state = initialState, action) {
         }
 
 
-
     //deleting a driver
     case DELETE_DRIVER_START: {
             return {
@@ -251,7 +257,7 @@ export function reducer(state = initialState, action) {
     case DELETE_DRIVER_SUCCESS: {
             return {
                 ...state,
-                user: action.payload,
+                driver: action.payload,
                 deletingDriver: false
             }
         }
@@ -266,6 +272,5 @@ export function reducer(state = initialState, action) {
 
     default: 
         return state;
-
     }
 }

@@ -1,11 +1,7 @@
 //axios
-import axios from 'axios'
-import { axiosWithoutAuth as axios1 } from '../../../utils/api'
-import { axiosWithAuth as axios2 } from '../../../utils/api'
+import { axiosRequest as axios, setToken } from '../../../utils/api'
 
 //actions
-
-
 /* ----- ADMIN ----- */
 
 //get rider
@@ -76,14 +72,14 @@ export const DELETE_DRIVER_FAILED = "DELETE_DRIVER_FAILED"
 
 
 //actions
-
 /* ----- RIDERS ----- */
 export const getRider = () => {
     return dispatch => {
-        dispatch({ type: GET_RIDER_START})
-        axios
-            .get('/riders')
+        dispatch({ type: GET_RIDER_START })
+        axios()
+            .get('/api/riders')
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: GET_RIDER_SUCCESS, payload: response.data })
             })
             .catch(error => {
@@ -94,10 +90,11 @@ export const getRider = () => {
 
 export const addRider = (rider) => {
     return dispatch => {
-        dispatch({ type: ADD_RIDER_START, rider})
-        axios
-            .post('')
+        dispatch({ type: ADD_RIDER_START, rider })
+        axios()
+            .post('/api/auth/register', rider)
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: ADD_RIDER_SUCCESS, payload: response.data })
             })
             .catch(error => {
@@ -108,10 +105,11 @@ export const addRider = (rider) => {
 
 export const updateRider = (rider) => {
     return dispatch => {
-        dispatch({ type: UPDATE_RIDER_START, rider})
-        axios
-            .put('')
+        dispatch({ type: UPDATE_RIDER_START, rider })
+        axios()
+            .put(`/api/riders/:id`, rider)
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: UPDATE_RIDER_SUCCESS, payload: response.data })
             })
             .catch(error => {
@@ -122,10 +120,11 @@ export const updateRider = (rider) => {
 
 export const deleteRider = () => {
     return dispatch => {
-        dispatch({ type: GET_RIDER_START})
-        axios
-            .delete('')
+        dispatch({ type: GET_RIDER_START })
+        axios()
+            .delete(`/api/riders/:id`)
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: GET_RIDER_SUCCESS, payload: response.data })
             })
             .catch(error => {
@@ -137,11 +136,13 @@ export const deleteRider = () => {
 /* ----- DRIVERS ----- */
 export const getDriver = () => {
     return dispatch => {
-        dispatch({ type: GET_DRIVER_START})
-        axios
-            .get('')
+        dispatch({ type: GET_DRIVER_START })
+        axios()
+            .get('/api/driver')
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: GET_DRIVER_SUCCESS, payload: response.data })
+                setToken()
             })
             .catch(error => {
                 dispatch({ type: GET_DRIVER_FAILED, payload: error})
@@ -149,26 +150,32 @@ export const getDriver = () => {
     }
 }
 
-export const addDriver = (driver) => {
+export const AddDriver = (driver) => {
     return dispatch => {
-        dispatch({ type: ADD_DRIVER_START, driver})
-        axios
-            .post('')
-            .then(response => {
-                dispatch({ type: ADD_DRIVER_SUCCESS, payload: response.data })
+        dispatch({ type: ADD_DRIVER_START })
+        axios() //without authorization since I need to add a driver to get a token.
+            .post('/api/auth/register', driver)
+            .then(response => { //hey we have a new driver, here's your updated state.
+                const token = response.data.token
+                console.log('Response', response)
+                dispatch({ type: ADD_DRIVER_SUCCESS, payload: response })
+                setToken(token)
             })
             .catch(error => {
                 dispatch({ type: ADD_DRIVER_FAILED, payload: error})
+                console.log(error.response)
             })
     }
 }
 
+//update a specific driver's profile.
 export const updateDriver = (driver) => {
     return dispatch => {
-        dispatch({ type: UPDATE_DRIVER_START, driver})
-        axios
-            .put('')
+        dispatch({ type: UPDATE_DRIVER_START, driver })
+        axios()
+            .put(`/api/drivers/:id`, driver)
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: UPDATE_DRIVER_SUCCESS, payload: response.data })
             })
             .catch(error => {
@@ -180,9 +187,10 @@ export const updateDriver = (driver) => {
 export const deleteDriver = () => {
     return dispatch => {
         dispatch({ type: DELETE_DRIVER_START})
-        axios
-            .delete('')
+        axios()
+            .delete(`/api/drivers/:id`)
             .then(response => {
+                const token = response.data.token
                 dispatch({ type: DELETE_DRIVER_SUCCESS, payload: response.data })
             })
             .catch(error => {

@@ -12,7 +12,9 @@ const {
 } = props
 
 return (
-        <Route {...rest} render={(renderProps) => {
+        <Route 
+            {...rest} 
+            render={(renderProps) => {
 
             if(getToken()) {
                 return <Component {...renderProps} />
