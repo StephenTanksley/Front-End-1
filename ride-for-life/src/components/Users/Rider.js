@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-const Rider = () => {
-
-    return(
-        <div>
-            <h1>This is a Rider component!</h1>
-        </div>
-    )
-}
-
-=======
 import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import {
@@ -49,5 +36,4 @@ const Rider = (person) => {
     </div>)
 }
 
->>>>>>> 0d2df26af18d2af1ef5ba8e8ff714a1a9114661e
 export default Rider;
