@@ -18,8 +18,8 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange }) =>
                   className='form driver'
                   onSubmit={handleSubmit}
                   >
-                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link>
-                        <br />
+                        <Link to={'/'} > <Button className="home-button" color='secondary'>Home</Button> </Link>
+                        
                         <h1>Driver Signup</h1>
                               
                         <label>Name</label>

@@ -16,8 +16,8 @@ const Login = ({handleSubmit, errors, touched, values, handleChange }) => {
                   className='form' 
                   onSubmit={handleSubmit}
                   >
-                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link>
-                        <br />
+                        <Link to={'/'} > <Button className="home-button" color='secondary'>Home</Button> </Link>
+                        
                         <h1>Login</h1>
                 
                         <label>Username</label>

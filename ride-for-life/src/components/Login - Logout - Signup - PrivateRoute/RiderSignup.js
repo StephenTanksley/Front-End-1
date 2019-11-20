@@ -12,8 +12,8 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                   className='form rider' 
                   onSubmit={handleSubmit}
                   >
-                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link>
-                        <br />
+                        <Link to={'/'} > <Button className="home-button" color='secondary'>Home</Button> </Link>
+                        
                         <h1>Rider Signup</h1>
                         
                         <label>Name</label>
