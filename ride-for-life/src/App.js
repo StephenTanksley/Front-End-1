@@ -5,6 +5,8 @@ import { Route, Redirect, Link } from 'react-router-dom'
 import { axiosWithAuth as axios } from './utils/api'
 import {Button} from 'reactstrap'
 
+import { connect } from 'react-redux'
+
 //component imports
 import DriverSignup from './components/Login - Logout - Signup - PrivateRoute/DriverSignup'
 import RiderSignup from './components/Login - Logout - Signup - PrivateRoute/RiderSignup'
@@ -18,7 +20,10 @@ import Driver from './components/Users/Driver'
 import Nav from './components/Navigation/Nav'
 import Dashboard from './components/Users/Dashboard'
 
-function App() {
+function App(props) {
+
+  console.log(props)
+
   return (
     <div className="App">
       <h1>Hello. Welcome to Ride for Life.</h1>
@@ -40,4 +45,18 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+    user: state.user,
+    loggedIn: state.loggedIn
+  }
+}
+
+const mapDispatchToProps = {
+
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)

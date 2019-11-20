@@ -1,5 +1,5 @@
 //axios
-import { axiosRequest as axios, setToken } from '../../../utils/api'
+import { axiosRequest as axios, setToken, removeToken } from '../../../utils/api'
 import { Link, Redirect } from 'react-router'
 
 //actions
@@ -31,6 +31,8 @@ export const LOADING = "LOADING"
 export const GET_USER_START = "GET_USER_START"
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS"
 export const GET_USER_FAILED = "GET_USER_FAILED"
+
+export const USER_LOGOUT = "USER_LOGOUT"
 
 
 /* ----- RIDERS ----- */
@@ -81,12 +83,18 @@ export const LoginUser = (credentials) => {
                 const token = response.data.token
                 setToken(token)
                 dispatch({ type: GET_USER_SUCCESS, payload: response.data })
-                // <Redirect to="/dashboard" />
             })
             .catch(error => {
                 dispatch({ type: GET_USER_FAILED, payload: error})
                 console.log(error.response)
             })
+    }
+}
+
+export const LogoutUser = () => {
+    return dispatch => {
+        dispatch({ type: USER_LOGOUT })
+        removeToken()
     }
 }
 

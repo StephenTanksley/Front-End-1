@@ -2,6 +2,7 @@ import {
 
     //loading
     LOADING,
+    USER_LOGOUT,
 
     //user
     GET_USER_START,
@@ -68,6 +69,14 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 loading: true,
+                loggedIn: false
+            }
+        }
+
+        case USER_LOGOUT: {
+            return {
+                ...state,
+                user: [],
                 loggedIn: false
             }
         }
