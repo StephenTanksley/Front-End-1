@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom'
 import { getUser } from '../State/actions/actions'
 import { connect } from 'react-redux'
 
-const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
+const Login = ({handleSubmit, errors, touched, values, handleChange }) => {
 
         return(
                 <Form 
@@ -78,7 +78,11 @@ const Login = ({handleSubmit, errors, touched, values, handleChange}) => {
         })(Login);
 
 
-// Checkbox - if unchecked, user. If 
+const mapStateToProps = state => {
+        return {
+        user: state.users,
+    }
+}
 
 
 const mapDispatchToProps = {
@@ -86,6 +90,6 @@ const mapDispatchToProps = {
 }
 
 export default connect(
-null,
-mapDispatchToProps
+        mapStateToProps,
+        mapDispatchToProps
 )(formikUserForm)
