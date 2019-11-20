@@ -23,6 +23,7 @@ function App() {
     <div className="App">
       <h1>Hello. Welcome to Ride for Life.</h1>
 
+      <Link to={'/'} > <Button className="home-button" color='secondary'>Home</Button> </Link>
       <Link to={'/driver-signup'} > <Button color='secondary'>Driver Signup</Button> </Link>
       <Link to={'/rider-signup'} > <Button color='secondary'>Rider Signup</Button> </Link>
       <Link to={'/login'} > <Button color='secondary'>Login</Button> </Link>
