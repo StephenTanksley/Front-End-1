@@ -5,18 +5,18 @@ import { Route, Redirect } from 'react-router-dom'
 import { getToken } from '../../utils/api'
 
 const PrivateRoute = (props) => {
-    
-const {
-    component: Component,
-    ...rest
-} = props
+    const loggedIn = getToken()
+    const {
+        component: Component,
+        ...rest
+    } = props
 
 return (
         <Route 
             {...rest} 
             render={(renderProps) => {
 
-            if(getToken()) {
+            if(loggedIn) {
                 return <Component {...renderProps} />
             } else {
                 return <Redirect to='/login' />

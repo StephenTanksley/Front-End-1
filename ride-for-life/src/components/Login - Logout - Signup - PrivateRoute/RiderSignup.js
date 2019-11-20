@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import * as yup from "yup";
 
 //action import
-import { AddRider } from '../State/actions/actions';
+import { AddRider, LoginUser } from '../State/actions/actions';
 
 //redux import
 import { connect } from 'react-redux';
@@ -18,7 +18,11 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                   className='form rider' 
                   onSubmit={handleSubmit}
                   >
-                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link>
+                        {/* 
+                                //Why are we linking to the dashboard here? Dashboard is a 
+                                protected route.
+                        
+                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link> */}
                         <br />
                         <h1>Rider Signup</h1>
                         
@@ -75,7 +79,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
               
         }
         const formikUserForm = withFormik({
-            mapPropsToValues({name, username, password, role, values, location }){
+            mapPropsToValues({name, username, password, role, values, price, location, bio }){
                     console.log(values)
                     return {
                             name: name || "",
@@ -83,6 +87,8 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                             password: password ||  "",
                             role: role || "rider",
                             location: location || "",
+                            price: null || '',
+                            bio: null || '',
                             role_id: 3
                 };
         },
@@ -112,6 +118,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
                     console.log(values)
                     props.AddRider(values)
+                    props.LoginUser(values)
                     resetForm()
             }       
         })(RiderSignup);

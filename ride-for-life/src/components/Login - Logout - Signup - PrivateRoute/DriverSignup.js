@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { withFormik, Form, Field, resetForm } from "formik";
 import {Button} from "reactstrap";
 import * as yup from "yup";
-import {Link} from 'react-router-dom';
+import {Link, Redirect } from 'react-router-dom';
 
 //action import
 import { AddDriver } from '../State/actions/actions';
@@ -17,7 +17,12 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                   className='form driver'
                   onSubmit={handleSubmit}
                   >
-                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link>
+                        {/* 
+                                //Why are we linking to the dashboard here? Dashboard is a 
+                                protected route.
+                        
+                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link> */}
+
                         <br />
                         <h1>Driver Signup</h1>
                               
@@ -147,6 +152,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
                     console.log('values', values)
                     props.AddDriver(values)
+                    console.log(props)
                     resetForm()
             }
         })(DriverSignup);

@@ -19,7 +19,12 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
                   className='form' 
                   onSubmit={handleSubmit}
                   >
-                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link>
+                        {/* 
+                                //Why are we linking to the dashboard here? Dashboard is a 
+                                protected route.
+
+                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link> */}
+                        
                         <br />
                         <h1>Login</h1>
                 
@@ -77,7 +82,7 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
                 console.log('values', values)
                 console.log(props)
                 props.LoginUser(values)
-                resetForm()
+                return <Redirect to="/" />
             }     
         })(Login);
 

@@ -1,6 +1,5 @@
 //axios
 import { axiosRequest as axios, setToken, removeToken } from '../../../utils/api'
-import { Link, Redirect } from 'react-router'
 
 //actions
 
@@ -21,7 +20,10 @@ import { Link, Redirect } from 'react-router'
 // export const DELETE_ADMIN_SUCCESS = "DELETE_ADMIN_SUCCESS"
 // export const DELETE_ADMIN_FAILED = "DELETE_ADMIN_FAILED"
 
+
 /* ----- LOADING ----- */
+
+//I'd like to have a spinner set up for as long as our API call is going.
 
 export const LOADING = "LOADING"
 
@@ -109,6 +111,7 @@ export const AddRider = (rider) => {
             .then(response => {
                 const token = response.data.token
                 setToken(token)
+                console.log('Response', response)
                 dispatch({ type: ADD_RIDER_SUCCESS, payload: response.data })
             })
             .catch(error => {
