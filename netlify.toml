@@ -1,4 +1,4 @@
 [build]
 base = "ride-for-life/"
-publish = "ride-for-life/"
-command = "yarn build"
+command = "npm run build"
+publish = "public/"
