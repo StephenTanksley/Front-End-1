@@ -7,7 +7,7 @@ import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const PrivateRoute = (props) => {
-    console.log(props)
+    // console.log(props)
     const loggedIn = props.loggedIn
     const {
         component: Component,

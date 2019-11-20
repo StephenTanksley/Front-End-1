@@ -21,12 +21,17 @@ import {
 
 
 const Dashboard = (props) => {
-    console.log(props)
-    const loggedIn = props.loggedIn
-    console.log(loggedIn)
-    //we want to have conditional rendering in the Dashboard. If the 
 
-    if (loggedIn && props.user.role_id === 2) {
+    //checking adding components together. Must be logged in and a driver/rider.
+    const loggedIn = props.loggedIn;
+    const driver = props.user.role_id === 2;
+    const rider = props.user.role_id === 3;
+
+    console.log(props)
+    console.log(props.user.role_id)
+    console.log(loggedIn)
+
+    if (loggedIn && driver) {
         return(
             <div>
                 <h1> Welcome to the Driver dashboard. </h1>
@@ -35,7 +40,7 @@ const Dashboard = (props) => {
         )
     }
     
-    if(loggedIn && props.user.role_id === 3) {
+    if(loggedIn && rider) {
         return(
             <div>
                 <h1> Welcome to the Rider dashboard. </h1>
