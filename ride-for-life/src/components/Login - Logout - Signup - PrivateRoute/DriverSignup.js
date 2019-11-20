@@ -11,7 +11,6 @@ import { setToken } from "../../utils/api";
 //redux
 import { connect } from 'react-redux'
 
-
 const DriverSignup = ({handleSubmit, errors, touched, values, handleChange }) => {
 
         return(
