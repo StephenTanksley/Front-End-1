@@ -24,6 +24,10 @@ import { axiosRequest as axios, setToken } from '../../../utils/api'
 // export const DELETE_ADMIN_SUCCESS = "DELETE_ADMIN_SUCCESS"
 // export const DELETE_ADMIN_FAILED = "DELETE_ADMIN_FAILED"
 
+/* ----- LOADING ----- */
+
+export const LOADING = "LOADING"
+
 /* ----- GET USERS ----- */
 
 //get user
@@ -73,15 +77,15 @@ export const DELETE_DRIVER_FAILED = "DELETE_DRIVER_FAILED"
 //actions
 
 /* ----- USERS ----- */
-export const getUser = () => {
+export const LoginUser = (credentials) => {
     return dispatch => {
         dispatch({ type: GET_USER_START })
         axios()
-            .get('/api/auth/login')
+            .post('/api/auth/login', credentials)
             .then(response => {
-                dispatch({ type: GET_USER_SUCCESS, payload: response.data })
-                const token = response.data.token
+                const token = response.user.token
                 setToken(token)
+                dispatch({ type: GET_USER_SUCCESS, payload: response.data })
             })
             .catch(error => {
                 dispatch({ type: GET_USER_FAILED, payload: error})
@@ -91,16 +95,15 @@ export const getUser = () => {
 }
 
 
-
-
 /* ----- RIDERS ----- */
-export const addRider = (rider) => {
+export const AddRider = (rider) => {
     return dispatch => {
         dispatch({ type: ADD_RIDER_START, rider })
         axios()
             .post('/api/auth/register', rider)
             .then(response => {
                 const token = response.data.token
+                setToken(token)
                 dispatch({ type: ADD_RIDER_SUCCESS, payload: response.data })
             })
             .catch(error => {

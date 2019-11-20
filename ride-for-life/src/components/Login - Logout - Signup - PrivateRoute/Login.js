@@ -6,11 +6,12 @@ import {Link} from 'react-router-dom'
 
 
 //action import
-import { getUser } from '../State/actions/actions'
+import { LoginUser } from '../State/actions/actions'
 import { connect } from 'react-redux'
 
-const Login = ({handleSubmit, errors, touched, values, handleChange }) => {
+const Login = ({handleSubmit, errors, touched, values, handleChange, }) => {
 
+        
         return(
                 <Form 
                   className='form' 
@@ -50,7 +51,7 @@ const Login = ({handleSubmit, errors, touched, values, handleChange }) => {
         }
 
         const formikUserForm = withFormik({
-            mapPropsToValues({username, password, values,}){
+            mapPropsToValues({username, password, values}){
                     console.log(values)
                     return {
                             username: username || "",
@@ -68,11 +69,10 @@ const Login = ({handleSubmit, errors, touched, values, handleChange }) => {
                   .required()
                   .min(6)
                   .max(25),
-
              }),
              handleSubmit:(values, { setSubmitting, resetForm, props }) => {
                 console.log('values', values)
-                props.getUser(values)
+                props.LoginUser(values)
                 resetForm()
             }     
         })(Login);
@@ -80,13 +80,12 @@ const Login = ({handleSubmit, errors, touched, values, handleChange }) => {
 
 const mapStateToProps = state => {
         return {
-        user: state.users,
+        user: state.user,
     }
 }
 
-
 const mapDispatchToProps = {
-    getUser
+    LoginUser
 }
 
 export default connect(
