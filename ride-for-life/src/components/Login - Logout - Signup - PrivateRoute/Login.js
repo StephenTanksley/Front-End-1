@@ -82,7 +82,8 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
                 console.log('values', values)
                 console.log(props)
                 props.LoginUser(values)
-                return <Redirect to="/" />
+                props.history.push('/')
+                // return <Redirect to="/" />
             }     
         })(Login);
 
