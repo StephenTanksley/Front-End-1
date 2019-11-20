@@ -18,7 +18,7 @@ import Nav from './components/Navigation/Nav'
 import Dashboard from './components/Users/Dashboard'
 
 function App(props) {
-
+  const loggedIn = props.loggedIn
   console.log(props)
 
   return (
@@ -41,12 +41,12 @@ function App(props) {
 
       {/* <PrivateRoute exact path='/' component={Dashboard} /> */}
 
-      <PrivateRoute exact path='/' component={Dashboard} />
+      <PrivateRoute exact path='/dashboard' component={Dashboard} />
 
       <Route exact path='/driver-signup' component={DriverSignup} />
       <Route exact path='/rider-signup' component={RiderSignup} />
 
-      <Route exact path='/login' component={Login} />
+      {!loggedIn && <Route exact path='/login' component={Login} /> }
       <Route exact path='/logout' component={Logout} />
 
     </div>

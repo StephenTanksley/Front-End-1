@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 //component imports
 import Driver from './Driver'
@@ -31,6 +31,7 @@ const Dashboard = (props) => {
     console.log(props.user.role_id)
     console.log(loggedIn)
 
+    
     if (loggedIn && driver) {
         return(
             <div>
