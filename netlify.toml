@@ -1,4 +1,4 @@
 [build]
 base = "ride-for-life/"
-publish = "ride-for-life/build/"
+publish = "ride-for-life/build"
 command = "yarn build"
