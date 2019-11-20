@@ -1,5 +1,8 @@
 import {
 
+    //loading
+    LOADING,
+
     //user
     GET_USER_START,
     GET_USER_SUCCESS,
@@ -59,6 +62,13 @@ const initialState = {
 
 export function reducer(state = initialState, action) {
     switch(action.type) {
+
+        case LOADING: {
+            return {
+                ...state,
+                loading: true
+            }
+        }
 
 
     /* ---------- USERS ---------- */

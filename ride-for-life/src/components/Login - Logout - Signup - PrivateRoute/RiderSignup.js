@@ -4,6 +4,10 @@ import {Button} from "reactstrap";
 import {Link} from 'react-router-dom'
 import * as yup from "yup";
 
+import { AddRider } from '../State/actions/actions'
+
+import { connect } from 'react-redux'
+
 
 const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
 
@@ -69,7 +73,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
               
         }
         const formikUserForm = withFormik({
-            mapPropsToValues({name, username, password, role, values, price, location, bio}){
+            mapPropsToValues({name, username, password, role, values, location }){
                     console.log(values)
                     return {
                             name: name || "",
@@ -104,40 +108,16 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
              }),
             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
                     console.log(values)
-                    props.addRider(values)
+                    props.AddRider(values)
                     resetForm()
             }       
         })(RiderSignup);
 
+        const mapDispatchToProps = {
+                AddRider
+        }
 
-// Checkbox - if unchecked, user. If 
-
-
-export default formikUserForm;
-
-//This is what will happen when a user signs up. User should choose their role some way.
-
-// switch('role_id') {
-
-//SUPER STRETCH GOAL ________
-//     case('role_id' === 1):
-        // return (<Admin />)
-        // break;
-//___________________________
-
-
-
-//MVP _______________________
-//     case('role_id' === 2):
-        // return (<Driver />)
-        // break;
-
-
-//     case('role_id' === 3):
-        // return (<Rider />)
-        // break;
-
-//      default:
-//          return <something/>
-
-        // }
+        export default connect(
+                null,
+                mapDispatchToProps
+        )(formikUserForm)
