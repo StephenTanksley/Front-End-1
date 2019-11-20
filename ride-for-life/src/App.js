@@ -26,13 +26,21 @@ function App(props) {
 
   return (
     <div className="App">
+
+      <Nav />
+
       <h1>Hello. Welcome to Ride for Life.</h1>
 
+      {/* 
+        //We don't need to see these components in the final app, just for getting them working.
+        //We will need the routes active, though, so we can leave those as they are.
+
       <Link to={'/driver-signup'} > <Button color='secondary'>Driver Signup</Button> </Link>
-      <Link to={'/rider-signup'} > <Button color='secondary'>Rider Signup</Button> </Link>
-      <Link to={'/login'} > <Button color='secondary'>Login</Button> </Link>
-      <Link to={'/rider'} > <Button color='secondary'>Rider Dashboard</Button></Link>
-      <Link to={'/logout'} > <Button color='secondary'>Logout</Button></Link>
+      <Link to={'/rider-signup'} > <Button color='secondary'>Rider Signup</Button> </Link> 
+      
+      */}
+
+      <Link to={'/rider'} > <Button color='secondary'>User Dashboard</Button></Link>
 
       <PrivateRoute exact path='/' component={Dashboard} />
       <Route exact path='/driver-signup' component={DriverSignup} />

@@ -1,27 +1,38 @@
 import React, {useState} from 'react'
 import { Link, Redirect, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Button } from 'reactstrap'
 
 import { getToken } from '../../utils/api'
 
-const Navigation = () => {
-    const signedIn = getToken()
+const Navigation = (props) => {
+    const loggedIn = props.loggedIn
 
     return(
         <div>
             <nav className="navigation-bar">
                 {/* Checks to see if we have a token. If not, we log in... */}
-                {!signedIn && <Link to='/login'>Login</Link>}
-            
+                {!loggedIn && <Link to={'/login'} > <Button color='secondary'>Login</Button> </Link>}
+
+                           
                 {/* If we do have a token, we redirect to our account. */}
 
-
                 {/* Link to log out. */}
-                {signedIn && <Link to='./logout'>Logout</Link>}
-
+                {loggedIn && <Link to={'/logout'} > <Button color='secondary'>Logout</Button></Link>}
             </nav>
 
         </div>
     )
 }
 
-export default Navigation
+
+const mapStateToProps = state => {
+        return {
+        loggedIn: state.loggedIn
+    }
+}
+
+export default connect(
+mapStateToProps,
+null
+)(Navigation)

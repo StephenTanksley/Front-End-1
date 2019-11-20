@@ -83,6 +83,7 @@ export const LoginUser = (credentials) => {
                 const token = response.data.token
                 setToken(token)
                 dispatch({ type: GET_USER_SUCCESS, payload: response.data })
+                
             })
             .catch(error => {
                 dispatch({ type: GET_USER_FAILED, payload: error})

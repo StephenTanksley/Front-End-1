@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {withFormik, Form, Field, resetForm } from "formik";
 import {Button} from "reactstrap";
 import * as yup from "yup";
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 
 //action import
@@ -77,7 +77,6 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
                 console.log('values', values)
                 console.log(props)
                 props.LoginUser(values)
-                props.history.push('/')
                 resetForm()
             }     
         })(Login);

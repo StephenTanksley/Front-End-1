@@ -8,7 +8,6 @@ const Logout = (props) => {
     return <Redirect to="/login" />
 }
 
-
 const mapDispatchToProps = {
     LogoutUser
 }
