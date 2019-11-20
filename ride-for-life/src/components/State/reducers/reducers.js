@@ -1,5 +1,8 @@
 import {
 
+    //loading
+    LOADING,
+
     //user
     GET_USER_START,
     GET_USER_SUCCESS,
@@ -19,9 +22,6 @@ import {
     DELETE_RIDER_FAILED,
 
     //drivers
-    GET_DRIVER_START,
-    GET_DRIVER_SUCCESS,
-    GET_DRIVER_FAILED,
 
     ADD_DRIVER_START,
     ADD_DRIVER_SUCCESS,
@@ -42,7 +42,7 @@ const initialState = {
 
     //Admin
     user: [],
-    gettingUser: false,
+    loading: false,
     
     //Rider
     riders: [],
@@ -63,6 +63,13 @@ const initialState = {
 export function reducer(state = initialState, action) {
     switch(action.type) {
 
+        case LOADING: {
+            return {
+                ...state,
+                loading: true
+            }
+        }
+
 
     /* ---------- USERS ---------- */
 
@@ -70,7 +77,7 @@ export function reducer(state = initialState, action) {
         case GET_USER_START: {
                 return {
                     ...state,
-                    gettingUser: true
+                    loading: true
                 }
             }
     
@@ -78,14 +85,14 @@ export function reducer(state = initialState, action) {
                 return {
                     ...state,
                     user: action.payload,
-                    gettingUser: false,
+                    loading: false,
                 }
             }
     
         case GET_USER_FAILED: {
                 return {
                     ...state,
-                    gettingUser: false,
+                    loading: false,
                     error: action.payload
                 }
             }
@@ -94,7 +101,7 @@ export function reducer(state = initialState, action) {
 
 
 
-    //adding a new rider
+    //adding a new rider user
     case ADD_RIDER_START: {
             return {
                 ...state,
@@ -105,7 +112,7 @@ export function reducer(state = initialState, action) {
     case ADD_RIDER_SUCCESS: {
             return {
                 ...state,
-                rider: action.payload,
+                user: action.payload,
                 addingRider: false
             }
         }
@@ -119,7 +126,7 @@ export function reducer(state = initialState, action) {
         }
 
 
-    //updating a rider
+    //updating a rider user
     case UPDATE_RIDER_START: {
             return {
                 ...state,
@@ -130,7 +137,7 @@ export function reducer(state = initialState, action) {
     case UPDATE_RIDER_SUCCESS: {
             return {
                 ...state,
-                rider: action.payload,
+                user: action.payload,
                 updatingRider: false
             }
         }
@@ -155,7 +162,7 @@ export function reducer(state = initialState, action) {
     case DELETE_RIDER_SUCCESS: {
             return {
                 ...state,
-                rider: action.payload,
+                user: action.payload,
                 deletingRider: false
             }
         }
@@ -207,7 +214,7 @@ export function reducer(state = initialState, action) {
     case ADD_DRIVER_SUCCESS: {
             return {
                 ...state,
-                driver: action.payload,
+                user: action.payload,
                 addingDriver: false
             }
         }
@@ -232,7 +239,7 @@ export function reducer(state = initialState, action) {
     case UPDATE_DRIVER_SUCCESS: {
             return {
                 ...state,
-                driver: action.payload,
+                user: action.payload,
                 updatingDriver: false
             }
         }
@@ -257,7 +264,7 @@ export function reducer(state = initialState, action) {
     case DELETE_DRIVER_SUCCESS: {
             return {
                 ...state,
-                driver: action.payload,
+                user: action.payload,
                 deletingDriver: false
             }
         }
