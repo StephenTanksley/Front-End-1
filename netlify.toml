@@ -1,4 +1,4 @@
 [build]
 base = "ride-for-life/"
-publish = "ride-for-life/build/"
+publish = "src/build/"
 command = "npm build"
