@@ -9,10 +9,12 @@ import {Link} from 'react-router-dom'
 import { LoginUser } from '../State/actions/actions'
 import { connect } from 'react-redux'
 
-const Login = ({handleSubmit, errors, touched, values, handleChange, }) => {
+const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
 
         
         return(
+
+                <div>
                 <Form 
                   className='form' 
                   onSubmit={handleSubmit}
@@ -46,7 +48,8 @@ const Login = ({handleSubmit, errors, touched, values, handleChange, }) => {
                         </div>
 
                         <Button outline color="primary" className='submit' type="submit" >Submit</Button>
-                </Form>                  
+                </Form>  
+                </div>                
               );
         }
 
@@ -70,9 +73,11 @@ const Login = ({handleSubmit, errors, touched, values, handleChange, }) => {
                   .min(6)
                   .max(25),
              }),
-             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
+             handleSubmit:(values, { setSubmitting, resetForm, props  }) => {
                 console.log('values', values)
+                console.log(props)
                 props.LoginUser(values)
+                props.history.push('/')
                 resetForm()
             }     
         })(Login);
@@ -81,6 +86,7 @@ const Login = ({handleSubmit, errors, touched, values, handleChange, }) => {
 const mapStateToProps = state => {
         return {
         user: state.user,
+        loggedIn: state.loggedIn
     }
 }
 

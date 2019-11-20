@@ -1,15 +1,12 @@
 //axios
 import { axiosRequest as axios, setToken } from '../../../utils/api'
+import { Link, Redirect } from 'react-router'
 
 //actions
+
 /* ----- ADMIN ----- */
 
-//get rider
-// export const GET_ADMIN_START = "GET_ADMIN_START"
-// export const GET_ADMIN_SUCCESS = "GET_ADMIN_SUCCESS"
-// export const GET_ADMIN_FAILED = "GET_ADMIN_FAILED"
-
-// //add new rider
+// //add admin
 // export const ADD_ADMIN_START = "ADD_ADMIN_START"
 // export const ADD_ADMIN_SUCCESS = "ADD_ADMIN_SUCCESS"
 // export const ADD_ADMIN_FAILED = "ADD_ADMIN_FAILED"
@@ -57,8 +54,7 @@ export const DELETE_RIDER_FAILED = "DELETE_RIDER_FAILED"
 
 /* ----- DRIVERS ----- */
 
-
-//add new rider
+//add new driver
 export const ADD_DRIVER_START = "ADD_DRIVER_START"
 export const ADD_DRIVER_SUCCESS = "ADD_DRIVER_SUCCESS"
 export const ADD_DRIVER_FAILED = "ADD_DRIVER_FAILED"
@@ -75,8 +71,7 @@ export const DELETE_DRIVER_FAILED = "DELETE_DRIVER_FAILED"
 
 
 //actions
-
-/* ----- USERS ----- */
+/* ----- ALL USERS ----- */
 export const LoginUser = (credentials) => {
     return dispatch => {
         dispatch({ type: GET_USER_START })
@@ -86,6 +81,7 @@ export const LoginUser = (credentials) => {
                 const token = response.data.token
                 setToken(token)
                 dispatch({ type: GET_USER_SUCCESS, payload: response.data })
+                // <Redirect to="/dashboard" />
             })
             .catch(error => {
                 dispatch({ type: GET_USER_FAILED, payload: error})
@@ -146,21 +142,6 @@ export const DeleteRider = () => {
 }
 
 /* ----- DRIVERS ----- */
-// export const getDriver = () => {
-//     return dispatch => {
-//         dispatch({ type: GET_DRIVER_START })
-//         axios()
-//             .get('/api/driver')
-//             .then(response => {
-//                 const token = response.data.token
-//                 dispatch({ type: GET_DRIVER_SUCCESS, payload: response.data })
-//                 setToken()
-//             })
-//             .catch(error => {
-//                 dispatch({ type: GET_DRIVER_FAILED, payload: error})
-//             })
-//     }
-// }
 
 export const AddDriver = (driver) => {
     return dispatch => {

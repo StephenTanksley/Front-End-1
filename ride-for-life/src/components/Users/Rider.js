@@ -7,7 +7,6 @@ import {
   } from 'reactstrap';
 
 const Rider = (person) => {
-
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen(prevState => !prevState);
