@@ -1,4 +1,4 @@
 [build]
-base = "client/"
-publish = "client/build/"
+base = "ride-for-life/"
+publish = "ride-for-life/build/"
 command = "npm build"
