@@ -73,15 +73,15 @@ export const DELETE_DRIVER_FAILED = "DELETE_DRIVER_FAILED"
 //actions
 
 /* ----- USERS ----- */
-export const getUser = () => {
+export const LoginUser = (credentials) => {
     return dispatch => {
         dispatch({ type: GET_USER_START })
         axios()
-            .get('/api/auth/login')
+            .post('/api/auth/login', credentials)
             .then(response => {
-                dispatch({ type: GET_USER_SUCCESS, payload: response.data })
                 const token = response.data.token
                 setToken(token)
+                dispatch({ type: GET_USER_SUCCESS, payload: response.data })
             })
             .catch(error => {
                 dispatch({ type: GET_USER_FAILED, payload: error})
