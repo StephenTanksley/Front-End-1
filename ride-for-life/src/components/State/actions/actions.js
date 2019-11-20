@@ -83,7 +83,7 @@ export const LoginUser = (credentials) => {
         axios()
             .post('/api/auth/login', credentials)
             .then(response => {
-                const token = response.user.token
+                const token = response.data.token
                 setToken(token)
                 dispatch({ type: GET_USER_SUCCESS, payload: response.data })
             })
@@ -113,7 +113,7 @@ export const AddRider = (rider) => {
     }
 }
 
-export const updateRider = (rider) => {
+export const UpdateRider = (rider) => {
     return dispatch => {
         dispatch({ type: UPDATE_RIDER_START, rider })
         axios()
@@ -129,7 +129,7 @@ export const updateRider = (rider) => {
     }
 }
 
-export const deleteRider = () => {
+export const DeleteRider = () => {
     return dispatch => {
         dispatch({ type: DELETE_RIDER_START })
         axios()
@@ -181,7 +181,7 @@ export const AddDriver = (driver) => {
 }
 
 //update a specific driver's profile.
-export const updateDriver = (driver) => {
+export const UpdateDriver = (driver) => {
     return dispatch => {
         dispatch({ type: UPDATE_DRIVER_START, driver })
         axios()
@@ -197,7 +197,7 @@ export const updateDriver = (driver) => {
     }
 }
 
-export const deleteDriver = () => {
+export const DeleteDriver = () => {
     return dispatch => {
         dispatch({ type: DELETE_DRIVER_START})
         axios()

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import {withFormik, Form, Field} from "formik";
 import {Button} from "reactstrap";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import * as yup from "yup";
 
-import { AddRider } from '../State/actions/actions'
+//action import
+import { AddRider } from '../State/actions/actions';
 
-import { connect } from 'react-redux'
+//redux import
+import { connect } from 'react-redux';
 
 
 const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
@@ -81,6 +83,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                             password: password ||  "",
                             role: role || "rider",
                             location: location || "",
+                            role_id: 3
                 };
         },
               validationSchema: yup.object().shape({
