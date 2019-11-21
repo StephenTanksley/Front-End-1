@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import {withFormik, Form, Field} from "formik";
 import {Button} from "reactstrap";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import * as yup from "yup";
 
-import { AddRider } from '../State/actions/actions'
+//action import
+import { AddRider, LoginUser } from '../State/actions/actions';
 
-import { connect } from 'react-redux'
+//redux import
+import { connect } from 'react-redux';
 
 
 const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
@@ -16,8 +18,12 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                   className='form rider' 
                   onSubmit={handleSubmit}
                   >
-                        <Link to={'/'} > <Button className="home-button" color='secondary'>Home</Button> </Link>
+                        {/* 
+                          //Why are we linking to the dashboard here? Dashboard is a 
+                          protected route.
                         
+                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link> */}
+                        <br />
                         <h1>Rider Signup</h1>
                         
                         <label>Name</label>
@@ -61,7 +67,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                                 <p>Error: {errors.location}</p>)} 
                                 <Field name='location' 
                                 type='text' 
-                                placeholder='location'     
+                                placeholder='enter your location'     
                                 value={values.location} 
                                 onChange={handleChange} />
                         </div>
@@ -73,7 +79,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
               
         }
         const formikUserForm = withFormik({
-            mapPropsToValues({name, username, password, role, values, location }){
+            mapPropsToValues({name, username, password, role, values, price, location, bio }){
                     console.log(values)
                     return {
                             name: name || "",
@@ -81,6 +87,9 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                             password: password ||  "",
                             role: role || "rider",
                             location: location || "",
+                            price: price || null,
+                            bio: bio || null,
+                            role_id: 3
                 };
         },
               validationSchema: yup.object().shape({
@@ -99,8 +108,6 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                   .min(6)
                   .max(25),
 
-                  role: yup.bool(),
-
                   location: yup.string()
                   .required()
                   .min(2)
@@ -108,7 +115,10 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
              }),
             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
                     console.log(values)
+                    console.log(props)
                     props.AddRider(values)
+                    props.LoginUser(values)
+                //     props.history.push('/dashboard')
                     resetForm()
             }       
         })(RiderSignup);

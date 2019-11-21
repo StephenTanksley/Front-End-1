@@ -2,21 +2,24 @@ import React from 'react'
 
 //Route import
 import { Route, Redirect } from 'react-router-dom'
-import { getToken } from '../../utils/api'
+
+//redux import
+import { connect } from 'react-redux'
 
 const PrivateRoute = (props) => {
-    
-const {
-    component: Component,
-    ...rest
-} = props
+    // console.log(props)
+    const loggedIn = props.loggedIn
+    const {
+        component: Component,
+        ...rest
+    } = props
 
 return (
         <Route 
             {...rest} 
             render={(renderProps) => {
 
-            if(getToken()) {
+            if(loggedIn) {
                 return <Component {...renderProps} />
             } else {
                 return <Redirect to='/login' />
@@ -25,4 +28,17 @@ return (
     )
 }
 
-export default PrivateRoute;
+const mapStateToProps = state => {
+    return {
+    loggedIn: state.loggedIn
+  }
+}
+
+const mapDispatchToProps = {
+
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PrivateRoute)

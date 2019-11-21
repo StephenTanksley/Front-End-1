@@ -1,10 +1,18 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
-import { removeToken } from '../../utils/api'
+import { Redirect } from 'react-router'
+import { LogoutUser } from '../State/actions/actions'
+import { connect } from 'react-redux'
 
 const Logout = (props) => {
-    removeToken()
+    props.LogoutUser()
     return <Redirect to="/login" />
 }
 
-export default Logout;
+const mapDispatchToProps = {
+    LogoutUser
+}
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(Logout)

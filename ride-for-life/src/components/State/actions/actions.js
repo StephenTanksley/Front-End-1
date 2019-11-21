@@ -1,15 +1,11 @@
 //axios
-import { axiosRequest as axios, setToken } from '../../../utils/api'
+import { axiosRequest as axios, setToken, removeToken } from '../../../utils/api'
 
 //actions
+
 /* ----- ADMIN ----- */
 
-//get rider
-// export const GET_ADMIN_START = "GET_ADMIN_START"
-// export const GET_ADMIN_SUCCESS = "GET_ADMIN_SUCCESS"
-// export const GET_ADMIN_FAILED = "GET_ADMIN_FAILED"
-
-// //add new rider
+// //add admin
 // export const ADD_ADMIN_START = "ADD_ADMIN_START"
 // export const ADD_ADMIN_SUCCESS = "ADD_ADMIN_SUCCESS"
 // export const ADD_ADMIN_FAILED = "ADD_ADMIN_FAILED"
@@ -24,7 +20,10 @@ import { axiosRequest as axios, setToken } from '../../../utils/api'
 // export const DELETE_ADMIN_SUCCESS = "DELETE_ADMIN_SUCCESS"
 // export const DELETE_ADMIN_FAILED = "DELETE_ADMIN_FAILED"
 
+
 /* ----- LOADING ----- */
+
+//I'd like to have a spinner set up for as long as our API call is going.
 
 export const LOADING = "LOADING"
 
@@ -34,6 +33,8 @@ export const LOADING = "LOADING"
 export const GET_USER_START = "GET_USER_START"
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS"
 export const GET_USER_FAILED = "GET_USER_FAILED"
+
+export const USER_LOGOUT = "USER_LOGOUT"
 
 
 /* ----- RIDERS ----- */
@@ -57,8 +58,7 @@ export const DELETE_RIDER_FAILED = "DELETE_RIDER_FAILED"
 
 /* ----- DRIVERS ----- */
 
-
-//add new rider
+//add new driver
 export const ADD_DRIVER_START = "ADD_DRIVER_START"
 export const ADD_DRIVER_SUCCESS = "ADD_DRIVER_SUCCESS"
 export const ADD_DRIVER_FAILED = "ADD_DRIVER_FAILED"
@@ -75,17 +75,17 @@ export const DELETE_DRIVER_FAILED = "DELETE_DRIVER_FAILED"
 
 
 //actions
-
-/* ----- USERS ----- */
+/* ----- ALL USERS ----- */
 export const LoginUser = (credentials) => {
     return dispatch => {
         dispatch({ type: GET_USER_START })
         axios()
             .post('/api/auth/login', credentials)
             .then(response => {
-                const token = response.user.token
+                const token = response.data.token
                 setToken(token)
                 dispatch({ type: GET_USER_SUCCESS, payload: response.data })
+                // history.push('/dashboard')
             })
             .catch(error => {
                 dispatch({ type: GET_USER_FAILED, payload: error})
@@ -94,6 +94,12 @@ export const LoginUser = (credentials) => {
     }
 }
 
+export const LogoutUser = () => {
+    return dispatch => {
+        dispatch({ type: USER_LOGOUT })
+        removeToken()
+    }
+}
 
 /* ----- RIDERS ----- */
 export const AddRider = (rider) => {
@@ -104,6 +110,7 @@ export const AddRider = (rider) => {
             .then(response => {
                 const token = response.data.token
                 setToken(token)
+                console.log('Response', response)
                 dispatch({ type: ADD_RIDER_SUCCESS, payload: response.data })
             })
             .catch(error => {
@@ -113,7 +120,7 @@ export const AddRider = (rider) => {
     }
 }
 
-export const updateRider = (rider) => {
+export const UpdateRider = (rider) => {
     return dispatch => {
         dispatch({ type: UPDATE_RIDER_START, rider })
         axios()
@@ -129,7 +136,7 @@ export const updateRider = (rider) => {
     }
 }
 
-export const deleteRider = () => {
+export const DeleteRider = () => {
     return dispatch => {
         dispatch({ type: DELETE_RIDER_START })
         axios()
@@ -146,21 +153,6 @@ export const deleteRider = () => {
 }
 
 /* ----- DRIVERS ----- */
-// export const getDriver = () => {
-//     return dispatch => {
-//         dispatch({ type: GET_DRIVER_START })
-//         axios()
-//             .get('/api/driver')
-//             .then(response => {
-//                 const token = response.data.token
-//                 dispatch({ type: GET_DRIVER_SUCCESS, payload: response.data })
-//                 setToken()
-//             })
-//             .catch(error => {
-//                 dispatch({ type: GET_DRIVER_FAILED, payload: error})
-//             })
-//     }
-// }
 
 export const AddDriver = (driver) => {
     return dispatch => {
@@ -181,7 +173,7 @@ export const AddDriver = (driver) => {
 }
 
 //update a specific driver's profile.
-export const updateDriver = (driver) => {
+export const UpdateDriver = (driver) => {
     return dispatch => {
         dispatch({ type: UPDATE_DRIVER_START, driver })
         axios()
@@ -197,7 +189,7 @@ export const updateDriver = (driver) => {
     }
 }
 
-export const deleteDriver = () => {
+export const DeleteDriver = () => {
     return dispatch => {
         dispatch({ type: DELETE_DRIVER_START})
         axios()

@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { Formik, withFormik, Form, Field, resetForm } from "formik";
+import { withFormik, Form, Field, resetForm } from "formik";
 import {Button} from "reactstrap";
 import * as yup from "yup";
-import {Link} from 'react-router-dom'
+import {Link, Redirect } from 'react-router-dom';
 
 //action import
-import { AddDriver } from '../State/actions/actions'
-import { setToken } from "../../utils/api";
+import { AddDriver } from '../State/actions/actions';
 
-//redux
-import { connect } from 'react-redux'
+//redux import 
+import { connect } from 'react-redux';
 
 const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
 
@@ -18,8 +17,13 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                   className='form driver'
                   onSubmit={handleSubmit}
                   >
-                        <Link to={'/'} > <Button className="home-button" color='secondary'>Home</Button> </Link>
+                        {/* 
+                                //Why are we linking to the dashboard here? Dashboard is a 
+                                protected route.
                         
+                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link> */}
+
+                        <br />
                         <h1>Driver Signup</h1>
                               
                         <label>Name</label>
@@ -148,7 +152,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
                     console.log('values', values)
                     props.AddDriver(values)
-                    //need to add dispatch here.
+                    console.log(props)
                     resetForm()
             }
         })(DriverSignup);

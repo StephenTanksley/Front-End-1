@@ -2,6 +2,7 @@ import {
 
     //loading
     LOADING,
+    USER_LOGOUT,
 
     //user
     GET_USER_START,
@@ -43,6 +44,7 @@ const initialState = {
     //Admin
     user: [],
     loading: false,
+    loggedIn: false,
     
     //Rider
     riders: [],
@@ -56,6 +58,9 @@ const initialState = {
     updatingDriver: false,
     deletingDriver: false,
 
+    //driver reviews
+    reviews: [],
+
     //errors
     error: []
 }
@@ -66,7 +71,16 @@ export function reducer(state = initialState, action) {
         case LOADING: {
             return {
                 ...state,
-                loading: true
+                loading: true,
+                loggedIn: false
+            }
+        }
+
+        case USER_LOGOUT: {
+            return {
+                ...state,
+                user: [],
+                loggedIn: false
             }
         }
 
@@ -77,7 +91,8 @@ export function reducer(state = initialState, action) {
         case GET_USER_START: {
                 return {
                     ...state,
-                    loading: true
+                    loading: true,
+                    loggedIn: false
                 }
             }
     
@@ -86,6 +101,7 @@ export function reducer(state = initialState, action) {
                     ...state,
                     user: action.payload,
                     loading: false,
+                    loggedIn: true
                 }
             }
     
@@ -93,6 +109,7 @@ export function reducer(state = initialState, action) {
                 return {
                     ...state,
                     loading: false,
+                    loggedIn: false,
                     error: action.payload
                 }
             }
