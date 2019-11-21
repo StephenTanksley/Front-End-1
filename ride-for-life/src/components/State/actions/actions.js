@@ -34,10 +34,19 @@ export const GET_USER_START = "GET_USER_START"
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS"
 export const GET_USER_FAILED = "GET_USER_FAILED"
 
-
 export const ADD_USER_START = "ADD_USER_START"
 export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS"
 export const ADD_USER_FAILED = "ADD_USER_FAILED"
+
+//get user list (drivers)
+export const GET_DRIVERLIST_START = "GET_DRIVERLIST_START"
+export const GET_DRIVERLIST_SUCCESS = "GET_DRIVERLIST_SUCCESS"
+export const GET_DRIVERLIST_FAILED = "GET_DRIVERLIST_FAILED"
+
+//get user list (riders)
+export const GET_RIDERLIST_START = "GET_RIDERLIST_START"
+export const GET_RIDERLIST_SUCCESS = "GET_RIDERLIST_SUCCESS"
+export const GET_RIDERLIST_FAILED = "GET_RIDERLIST_FAILED"
 
 
 export const USER_LOGOUT = "USER_LOGOUT"
@@ -95,6 +104,36 @@ export const LoginUser = (credentials) => {
             })
             .catch(error => {
                 dispatch({ type: GET_USER_FAILED, payload: error})
+                console.log(error.response)
+            })
+    }
+}
+
+export const GetRiderList = () => {
+    return dispatch => {
+        dispatch({ type: GET_RIDERLIST_START })
+        axios()
+            .get('/api/riders')
+            .then(response => {
+                dispatch({ type: GET_RIDERLIST_SUCCESS, payload: response.data })
+            })
+            .catch(error => {
+                dispatch({ type: GET_RIDERLIST_FAILED, payload: error})
+                console.log(error.response)
+            })
+    }
+}
+
+export const GetDriverList = () => {
+    return dispatch => {
+        dispatch({ type: GET_DRIVERLIST_START })
+        axios()
+            .get('/api/drivers')
+            .then(response => {
+                dispatch({ type: GET_DRIVERLIST_SUCCESS, payload: response.data })
+            })
+            .catch(error => {
+                dispatch({ type: GET_DRIVERLIST_FAILED, payload: error})
                 console.log(error.response)
             })
     }

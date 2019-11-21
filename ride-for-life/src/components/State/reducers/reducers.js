@@ -9,6 +9,15 @@ import {
     GET_USER_SUCCESS,
     GET_USER_FAILED,
 
+    GET_DRIVERLIST_START,
+    GET_DRIVERLIST_SUCCESS,
+    GET_DRIVERLIST_FAILED,
+
+    GET_RIDERLIST_START,
+    GET_RIDERLIST_SUCCESS,
+    GET_RIDERLIST_FAILED,
+    
+
     //riders
     // ADD_RIDER_START,
     // ADD_RIDER_SUCCESS,
@@ -91,7 +100,7 @@ export function reducer(state = initialState, action) {
 
     /* ---------- USERS ---------- */
 
-        //getting a user
+        //getting a single user
         case GET_USER_START: {
                 return {
                     ...state,
@@ -114,6 +123,56 @@ export function reducer(state = initialState, action) {
                     ...state,
                     loading: false,
                     loggedIn: false,
+                    error: action.payload
+                }
+            }
+
+
+        //getting multiple riders
+        case GET_RIDERLIST_START: {
+            return {
+                ...state,
+                loading: true,
+            }
+        }
+
+        case GET_RIDERLIST_SUCCESS: {
+                return {
+                    ...state,
+                    riders: action.payload,
+                    loading: false,
+                }
+            }
+
+        case GET_RIDERLIST_FAILED: {
+                return {
+                    ...state,
+                    loading: false,
+                    error: action.payload
+                }
+            }
+
+
+        //getting multiple drivers
+        case GET_DRIVERLIST_START: {
+            return {
+                ...state,
+                loading: true,
+            }
+        }
+
+        case GET_DRIVERLIST_SUCCESS: {
+                return {
+                    ...state,
+                    drivers: action.payload,
+                    loading: false,
+                }
+            }
+
+        case GET_DRIVERLIST_FAILED: {
+                return {
+                    ...state,
+                    loading: false,
                     error: action.payload
                 }
             }

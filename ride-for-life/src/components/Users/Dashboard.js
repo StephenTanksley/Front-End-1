@@ -4,28 +4,21 @@ import {Route, Redirect} from 'react-router-dom'
 //component imports
 import Driver from './Driver'
 import Rider from './Rider'
+import RidersList from './RidersList'
 import Logout from '../Login - Logout - Signup - PrivateRoute/Logout'
 import PrivateRoute from '../Login - Logout - Signup - PrivateRoute/PrivateRoute'
 
 //redux connection
 import { connect } from 'react-redux'
-
-import { 
-    //rider
-    UpdateRider,
-    DeleteRider,
-
-    //driver
-    UpdateDriver,
-    DeleteDriver 
-} from '../State/actions/actions';
-
+import { getToken } from '../../utils/api'
 
 
 const Dashboard = (props) => {
+    const loggedIn = getToken()
+    console.log('Dashboard props', props)
 
     //checking adding components together. Must be logged in and a driver/rider.
-    const loggedIn = props.loggedIn;
+    // const loggedIn = props.loggedIn;
     console.log('logged in?', loggedIn)
     
     const driverRole = (props.user.role === 'driver');
@@ -34,7 +27,40 @@ const Dashboard = (props) => {
     const riderRole = (props.user.role === 'rider');
     console.log('rider', riderRole)
     
-    console.log('Dashboard props', props)
+    // return (
+        // <div>
+        //     <PrivateRoute
+        //         exact
+        //         path='/dashboard'
+        //         component={loggedIn && riderRole ? Rider : Driver} 
+        //         />
+
+        //         {/* <RidersList /> */}
+
+        //     {/* <PrivateRoute
+        //         exact
+        //         path='/drivers'
+        //         component={DriversList}
+        //         />
+        //     <PrivateRoute
+        //         exact
+        //         path='/drivers/:id'
+        //         component={DriverProfile}
+        //         />
+        //     <PrivateRoute 
+        //         exact 
+        //         path='/riders' 
+        //         component={RidersList} 
+        //         />
+
+        //     <PrivateRoute
+        //         exact
+        //         path='/riders/:id'
+        //         component={RiderProfile}
+        //         /> */}
+        // </div>     
+    // )
+
 
 
     switch(loggedIn, driverRole, riderRole, props) {
@@ -61,7 +87,6 @@ const Dashboard = (props) => {
         default:
             return null;
     }
-
 }
 
 const mapStateToProps = state => {

@@ -9,8 +9,7 @@ import {Link, Redirect} from 'react-router-dom'
 import { LoginUser } from '../State/actions/actions'
 import { connect } from 'react-redux'
 
-const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
-
+const Login = ({ handleSubmit, errors, touched, values, handleChange, }) => {
         
         return(
 
@@ -83,13 +82,12 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
                   .min(5)
                   .max(25),
              }),
-             handleSubmit:(values, { setSubmitting, resetForm, props  }) => {
+             handleSubmit:(values, { setSubmitting, props  }) => {
                 console.log('values', values)
-                console.log(props)
+                console.log(props.history)
                 props.LoginUser(values)
-                resetForm()
-                props.history.push('/dashboard')
-                // return (<Redirect to="/dashboard" />)
+                return (<Redirect to="/dashboard" />)
+                // props.history.push('/dashboard')
             }     
         })(Login);
 
