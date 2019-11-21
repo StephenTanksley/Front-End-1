@@ -46,7 +46,7 @@ function App(props) {
       <Route exact path='/driver-signup' component={DriverSignup} />
       <Route exact path='/rider-signup' component={RiderSignup} />
 
-      {!loggedIn && <Route exact path='/login' component={Login} /> }
+      <Route exact path='/login' component={Login} />
       <Route exact path='/logout' component={Logout} />
 
     </div>

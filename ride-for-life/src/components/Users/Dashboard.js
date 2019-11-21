@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react'
+import {Route} from 'react-router-dom'
 
 //component imports
 import Driver from './Driver'
 import Rider from './Rider'
+import Logout from '../Login - Logout - Signup - PrivateRoute/Logout'
+import PrivateRoute from '../Login - Logout - Signup - PrivateRoute/PrivateRoute'
 
 //redux connection
 import { connect } from 'react-redux'
@@ -27,16 +30,15 @@ const Dashboard = (props) => {
     const driver = props.user.role_id === 2;
     const rider = props.user.role_id === 3;
 
-    console.log(props)
-    console.log(props.user.role_id)
-    console.log(loggedIn)
+    console.log('Dashboard props', props)
 
     
     if (loggedIn && driver) {
         return(
             <div>
+                <Route exact path='/logout' component={Logout} />
                 <h1> Welcome to the Driver dashboard. </h1>
-                <Driver />
+                <PrivateRoute exact path='/driver' component={Driver} />
             </div>
         )
     }
@@ -44,8 +46,10 @@ const Dashboard = (props) => {
     if(loggedIn && rider) {
         return(
             <div>
+                <Route exact path='/logout' component={Logout} />
                 <h1> Welcome to the Rider dashboard. </h1>
-                <Rider />
+                <PrivateRoute exact path='/rider' component={Rider} />
+
             </div>
         )
     }

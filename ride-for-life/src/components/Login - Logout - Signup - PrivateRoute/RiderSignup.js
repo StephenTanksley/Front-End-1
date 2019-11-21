@@ -67,7 +67,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                                 <p>Error: {errors.location}</p>)} 
                                 <Field name='location' 
                                 type='text' 
-                                placeholder='location'     
+                                placeholder='enter your location'     
                                 value={values.location} 
                                 onChange={handleChange} />
                         </div>
@@ -87,8 +87,8 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                             password: password ||  "",
                             role: role || "rider",
                             location: location || "",
-                            price: null || '',
-                            bio: null || '',
+                            price: price || null,
+                            bio: bio || null,
                             role_id: 3
                 };
         },
@@ -108,8 +108,6 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                   .min(6)
                   .max(25),
 
-                  role: yup.bool(),
-
                   location: yup.string()
                   .required()
                   .min(2)
@@ -117,8 +115,10 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
              }),
             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
                     console.log(values)
+                    console.log(props)
                     props.AddRider(values)
                     props.LoginUser(values)
+                //     props.history.push('/dashboard')
                     resetForm()
             }       
         })(RiderSignup);

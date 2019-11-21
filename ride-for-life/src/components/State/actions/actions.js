@@ -85,7 +85,7 @@ export const LoginUser = (credentials) => {
                 const token = response.data.token
                 setToken(token)
                 dispatch({ type: GET_USER_SUCCESS, payload: response.data })
-                
+                // history.push('/dashboard')
             })
             .catch(error => {
                 dispatch({ type: GET_USER_FAILED, payload: error})
@@ -100,7 +100,6 @@ export const LogoutUser = () => {
         removeToken()
     }
 }
-
 
 /* ----- RIDERS ----- */
 export const AddRider = (rider) => {

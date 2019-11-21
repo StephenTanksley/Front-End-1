@@ -83,7 +83,8 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
                 console.log(props)
                 props.LoginUser(values)
                 resetForm()
-                return <Redirect to="/dashboard" />
+                props.history.push('/dashboard')
+                // return <Redirect to= "/dashboard" />
             }     
         })(Login);
 
