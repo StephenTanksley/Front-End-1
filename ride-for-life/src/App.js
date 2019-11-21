@@ -35,8 +35,8 @@ function App(props) {
 
       */}
 
-    <Link to={'/driver-signup'} > <Button color='secondary'>Driver Signup</Button> </Link>
-    <Link to={'/rider-signup'} > <Button color='secondary'>Rider Signup</Button> </Link> 
+    {/* <Link to={'/driver-signup'} > <Button color='secondary'>Driver Signup</Button> </Link>
+    <Link to={'/rider-signup'} > <Button color='secondary'>Rider Signup</Button> </Link>  */}
 
 
       <Route exact path='/dashboard' component={Dashboard} />

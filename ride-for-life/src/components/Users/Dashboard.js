@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {Route} from 'react-router-dom'
+import {Route, Redirect} from 'react-router-dom'
 
 //component imports
 import Driver from './Driver'
@@ -11,7 +11,6 @@ import PrivateRoute from '../Login - Logout - Signup - PrivateRoute/PrivateRoute
 import { connect } from 'react-redux'
 
 import { 
-
     //rider
     UpdateRider,
     DeleteRider,
@@ -27,29 +26,35 @@ const Dashboard = (props) => {
 
     //checking adding components together. Must be logged in and a driver/rider.
     const loggedIn = props.loggedIn;
-    const driver = props.user.role_id === 2;
-    const rider = props.user.role_id === 3;
+    console.log('logged in?', loggedIn)
+    
+    const driverRole = (props.user.role === 'driver');
+    console.log('driver', driverRole)
 
+    const riderRole = (props.user.role === 'rider');
+    console.log('rider', riderRole)
+    
     console.log('Dashboard props', props)
 
-    switch(loggedIn, driver, rider) {
-        case (driver && loggedIn):
+
+    switch(loggedIn, driverRole, riderRole, props) {
+        case (driverRole && loggedIn):
             return (
                 <div>
-                    <Route exact path='/logout' component={Logout} />
+                    <Logout />
                     <h1> Welcome to the Driver dashboard. </h1>
                     {console.log('hello from the driver component')}
-                    <PrivateRoute exact path='/driver' component={Driver} />
+                    <Driver />
                 </div>
             )
 
-        case (rider && loggedIn):
+        case (riderRole && loggedIn):
             return (
                 <div>
-                    <Route exact path='/logout' component={Logout} />
+                    <Logout />
                     <h1> Welcome to the Rider dashboard. </h1>
                     {console.log('hello from the rider component')}
-                    <PrivateRoute exact path='/rider' component={Rider} />
+                    <Rider />
                 </div>
             )
 
