@@ -76,7 +76,6 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                         <Button outline color="primary" className='submit' type="submit" >Submit</Button>
                 </Form>                  
               );
-              
         }
         const formikUserForm = withFormik({
             mapPropsToValues({name, username, password, role, values, price, location, bio }){

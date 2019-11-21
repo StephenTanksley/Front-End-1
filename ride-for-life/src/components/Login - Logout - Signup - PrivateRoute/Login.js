@@ -54,7 +54,11 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
                         </div>
 
                         <Button outline color="primary" className='submit' type="submit" >Submit</Button>
-                </Form>  
+                </Form>
+                <div>Need a ride? {<Link to="/rider-signup">Rider signup</Link>}</div>
+                <div>Do you like to drive? {<Link to="/driver-signup">Driver signup</Link>}</div>
+
+  
                 </div>                
               );
         }
@@ -85,7 +89,7 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
                 props.LoginUser(values)
                 resetForm()
                 props.history.push('/dashboard')
-                // return <Redirect to= "/dashboard" />
+                // return (<Redirect to="/dashboard" />)
             }     
         })(Login);
 
