@@ -58,6 +58,9 @@ const initialState = {
     updatingDriver: false,
     deletingDriver: false,
 
+    //driver reviews
+    reviews: [],
+
     //errors
     error: []
 }

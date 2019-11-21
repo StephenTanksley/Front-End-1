@@ -31,15 +31,12 @@ function App(props) {
       {/* 
         //We don't need to see these components in the final app, just for getting them working.
         //We will need the routes active, though, so we can leave those as they are.
+          
+      */}
 
-      <Link to={'/driver-signup'} > <Button color='secondary'>Driver Signup</Button> </Link>
-      
-    */}
+    <Link to={'/driver-signup'} > <Button color='secondary'>Driver Signup</Button> </Link>
     <Link to={'/rider-signup'} > <Button color='secondary'>Rider Signup</Button> </Link> 
 
-      {/* <Link to={'/rider'} > <Button color='secondary'>User Dashboard</Button></Link> */}
-
-      {/* <PrivateRoute exact path='/' component={Dashboard} /> */}
 
       <PrivateRoute exact path='/dashboard' component={Dashboard} />
 
