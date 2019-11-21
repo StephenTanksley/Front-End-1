@@ -34,15 +34,21 @@ export const GET_USER_START = "GET_USER_START"
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS"
 export const GET_USER_FAILED = "GET_USER_FAILED"
 
+
+export const ADD_USER_START = "ADD_USER_START"
+export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS"
+export const ADD_USER_FAILED = "ADD_USER_FAILED"
+
+
 export const USER_LOGOUT = "USER_LOGOUT"
 
 
 /* ----- RIDERS ----- */
 
 //add new rider
-export const ADD_RIDER_START = "ADD_RIDER_START"
-export const ADD_RIDER_SUCCESS = "ADD_RIDER_SUCCESS"
-export const ADD_RIDER_FAILED = "ADD_RIDER_FAILED"
+// export const ADD_RIDER_START = "ADD_RIDER_START"
+// export const ADD_RIDER_SUCCESS = "ADD_RIDER_SUCCESS"
+// export const ADD_RIDER_FAILED = "ADD_RIDER_FAILED"
 
 //update
 export const UPDATE_RIDER_START = "UPDATE_RIDER_START"
@@ -59,9 +65,9 @@ export const DELETE_RIDER_FAILED = "DELETE_RIDER_FAILED"
 /* ----- DRIVERS ----- */
 
 //add new driver
-export const ADD_DRIVER_START = "ADD_DRIVER_START"
-export const ADD_DRIVER_SUCCESS = "ADD_DRIVER_SUCCESS"
-export const ADD_DRIVER_FAILED = "ADD_DRIVER_FAILED"
+// export const ADD_DRIVER_START = "ADD_DRIVER_START"
+// export const ADD_DRIVER_SUCCESS = "ADD_DRIVER_SUCCESS"
+// export const ADD_DRIVER_FAILED = "ADD_DRIVER_FAILED"
 
 //update
 export const UPDATE_DRIVER_START = "UPDATE_DRIVER_START"
@@ -78,6 +84,7 @@ export const DELETE_DRIVER_FAILED = "DELETE_DRIVER_FAILED"
 /* ----- ALL USERS ----- */
 export const LoginUser = (credentials) => {
     return dispatch => {
+        removeToken()
         dispatch({ type: GET_USER_START })
         axios()
             .post('/api/auth/login', credentials)
@@ -102,23 +109,45 @@ export const LogoutUser = () => {
 }
 
 /* ----- RIDERS ----- */
-export const AddRider = (rider) => {
+// export const AddRider = (rider) => {
+//     return dispatch => {
+//         dispatch({ type: ADD_RIDER_START })
+//         axios()
+//             .post('/api/auth/register', rider)
+//             .then(response => {
+//                 const token = response.data.token
+//                 setToken(token)
+//                 console.log('Response', response)
+//                 dispatch({ type: ADD_RIDER_SUCCESS, payload: response })
+//             })
+//             .catch(error => {
+//                 dispatch({ type: ADD_RIDER_FAILED, payload: error})
+//                 console.log(error.response)
+//             })
+//     }
+// }
+
+export const AddUser = (user) => {
     return dispatch => {
-        dispatch({ type: ADD_RIDER_START, rider })
-        axios()
-            .post('/api/auth/register', rider)
+        dispatch({ type: ADD_USER_START })
+        axios() 
+            .post('/api/auth/register', user)
             .then(response => {
                 const token = response.data.token
-                setToken(token)
                 console.log('Response', response)
-                dispatch({ type: ADD_RIDER_SUCCESS, payload: response.data })
+                dispatch({ type: ADD_USER_SUCCESS, payload: response })
+                setToken(token)
             })
             .catch(error => {
-                dispatch({ type: ADD_RIDER_FAILED, payload: error})
+                dispatch({ type: ADD_USER_FAILED, payload: error})
                 console.log(error.response)
             })
     }
 }
+
+
+
+
 
 export const UpdateRider = (rider) => {
     return dispatch => {
@@ -154,23 +183,23 @@ export const DeleteRider = () => {
 
 /* ----- DRIVERS ----- */
 
-export const AddDriver = (driver) => {
-    return dispatch => {
-        dispatch({ type: ADD_DRIVER_START })
-        axios() //without authorization since I need to add a driver to get a token.
-            .post('/api/auth/register', driver)
-            .then(response => { //hey we have a new driver, here's your updated state.
-                const token = response.data.token
-                console.log('Response', response)
-                dispatch({ type: ADD_DRIVER_SUCCESS, payload: response })
-                setToken(token)
-            })
-            .catch(error => {
-                dispatch({ type: ADD_DRIVER_FAILED, payload: error})
-                console.log(error.response)
-            })
-    }
-}
+// export const AddDriver = (driver) => {
+//     return dispatch => {
+//         dispatch({ type: ADD_DRIVER_START })
+//         axios() //without authorization since I need to add a driver to get a token.
+//             .post('/api/auth/register', driver)
+//             .then(response => { //hey we have a new driver, here's your updated state.
+//                 const token = response.data.token
+//                 console.log('Response', response)
+//                 dispatch({ type: ADD_DRIVER_SUCCESS, payload: response })
+//                 setToken(token)
+//             })
+//             .catch(error => {
+//                 dispatch({ type: ADD_DRIVER_FAILED, payload: error})
+//                 console.log(error.response)
+//             })
+//     }
+// }
 
 //update a specific driver's profile.
 export const UpdateDriver = (driver) => {

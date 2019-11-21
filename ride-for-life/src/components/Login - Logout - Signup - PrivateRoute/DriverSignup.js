@@ -5,7 +5,7 @@ import * as yup from "yup";
 import {Link, Redirect } from 'react-router-dom';
 
 //action import
-import { AddDriver } from '../State/actions/actions';
+import { AddUser } from '../State/actions/actions';
 
 //redux import 
 import { connect } from 'react-redux';
@@ -133,7 +133,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
         
                   password: yup.string()
                   .required()
-                  .min(6)
+                  .min(5)
                   .max(25),
 
                   location: yup.string()
@@ -151,14 +151,14 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
 
             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
                     console.log('values', values)
-                    props.AddDriver(values)
+                    props.AddUser(values)
                     console.log(props)
                     resetForm()
             }
         })(DriverSignup);
 
         const mapDispatchToProps = {
-                AddDriver
+                AddUser
         }
 
         export default connect(

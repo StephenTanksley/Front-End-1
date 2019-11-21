@@ -76,7 +76,7 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
         
                   password: yup.string()
                   .required()
-                  .min(6)
+                  .min(5)
                   .max(25),
              }),
              handleSubmit:(values, { setSubmitting, resetForm, props  }) => {

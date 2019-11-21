@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import * as yup from "yup";
 
 //action import
-import { AddRider, LoginUser } from '../State/actions/actions';
+import { AddUser, LoginUser } from '../State/actions/actions';
 
 //redux import
 import { connect } from 'react-redux';
@@ -105,7 +105,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
         
                   password: yup.string()
                   .required()
-                  .min(6)
+                  .min(5)
                   .max(25),
 
                   location: yup.string()
@@ -116,7 +116,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
                     console.log(values)
                     console.log(props)
-                //     props.AddRider(values)
+                    props.AddUser(values)
                 //     props.LoginUser(values)
                 //     props.history.push('/dashboard')
                     resetForm()
@@ -124,7 +124,7 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
         })(RiderSignup);
 
         const mapDispatchToProps = {
-                AddRider
+                AddUser
         }
 
         export default connect(

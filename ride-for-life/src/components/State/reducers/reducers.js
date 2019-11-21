@@ -10,9 +10,13 @@ import {
     GET_USER_FAILED,
 
     //riders
-    ADD_RIDER_START,
-    ADD_RIDER_SUCCESS,
-    ADD_RIDER_FAILED,
+    // ADD_RIDER_START,
+    // ADD_RIDER_SUCCESS,
+    // ADD_RIDER_FAILED,
+
+    ADD_USER_START,
+    ADD_USER_SUCCESS,
+    ADD_USER_FAILED,
 
     UPDATE_RIDER_START,
     UPDATE_RIDER_SUCCESS,
@@ -45,16 +49,16 @@ const initialState = {
     user: [],
     loading: false,
     loggedIn: false,
+    addingUser: false,
     
     //Rider
     riders: [],
-    addingRider: false,
     updatingRider: false,
     deletingRider: false,
     
     //Driver
     drivers: [],
-    addingDriver: false,
+    // addingDriver: false,
     updatingDriver: false,
     deletingDriver: false,
 
@@ -119,25 +123,25 @@ export function reducer(state = initialState, action) {
 
 
     //adding a new rider user
-    case ADD_RIDER_START: {
+    case ADD_USER_START: {
             return {
                 ...state,
-                addingRider: true
+                addingUser: true
             }
         }
 
-    case ADD_RIDER_SUCCESS: {
+    case ADD_USER_SUCCESS: {
             return {
                 ...state,
                 user: action.payload,
-                addingRider: false
+                addingUser: false
             }
         }
 
-    case ADD_RIDER_FAILED: {
+    case ADD_USER_FAILED: {
             return {
                 ...state,
-                addingRider: false,
+                addingUser: false,
                 error: action.payload
             }
         }
@@ -221,28 +225,28 @@ export function reducer(state = initialState, action) {
 
 
     //adding a new driver
-    case ADD_DRIVER_START: {
-            return {
-                ...state,
-                addingDriver: true
-            }
-        }
+    // case ADD_DRIVER_START: {
+    //         return {
+    //             ...state,
+    //             addingDriver: true
+    //         }
+    //     }
 
-    case ADD_DRIVER_SUCCESS: {
-            return {
-                ...state,
-                user: action.payload,
-                addingDriver: false
-            }
-        }
+    // case ADD_DRIVER_SUCCESS: {
+    //         return {
+    //             ...state,
+    //             user: action.payload,
+    //             addingDriver: false
+    //         }
+    //     }
 
-    case ADD_DRIVER_FAILED: {
-            return {
-                ...state,
-                addingDriver: false,
-                error: action.payload
-            }
-        }
+    // case ADD_DRIVER_FAILED: {
+    //         return {
+    //             ...state,
+    //             addingDriver: false,
+    //             error: action.payload
+    //         }
+    //     }
 
 
     //updating a driver
