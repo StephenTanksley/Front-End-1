@@ -116,8 +116,8 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
             handleSubmit:(values, { setSubmitting, resetForm, props }) => {
                     console.log(values)
                     console.log(props)
-                    props.AddRider(values)
-                    props.LoginUser(values)
+                //     props.AddRider(values)
+                //     props.LoginUser(values)
                 //     props.history.push('/dashboard')
                     resetForm()
             }       
