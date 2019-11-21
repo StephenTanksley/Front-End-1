@@ -48,6 +48,7 @@ const Dashboard = (props) => {
                 <div>
                     <Route exact path='/logout' component={Logout} />
                     <h1> Welcome to the Rider dashboard. </h1>
+                    {console.log('hello from the rider component')}
                     <PrivateRoute exact path='/rider' component={Rider} />
                 </div>
             )
