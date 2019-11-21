@@ -20,6 +20,12 @@
 
 .search-form {
     margin: 1%;
+    width: 20%;
+}
+
+.search-form form {
+    display: flex;
+    justify-content: space-between;
 }
 
 .request-button {
@@ -27,9 +33,10 @@
 }
 
 .submit-button {
-    margin-bottom: 1.5%;
+    margin-bottom: 2%;
+    margin-left: 1%;
 }
 
 .search-input {
-    margin-right: 100%;
+    
 }
