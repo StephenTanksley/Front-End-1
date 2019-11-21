@@ -19,8 +19,8 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                   onSubmit={handleSubmit}
                   >
                         {/* 
-                                //Why are we linking to the dashboard here? Dashboard is a 
-                                protected route.
+                          //Why are we linking to the dashboard here? Dashboard is a 
+                          protected route.
                         
                         <Link to={'/'} > <Button color='secondary'>Home</Button> </Link> */}
                         <br />
