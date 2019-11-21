@@ -26,6 +26,7 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
                         <Link to={'/'} > <Button color='secondary'>Home</Button> </Link> */}
                         
                         <br />
+
                         <h1>Login</h1>
                 
                         <label>Username</label>

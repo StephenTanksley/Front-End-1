@@ -28,6 +28,7 @@ function App(props) {
 
       <h1>Hello. Welcome to Ride for Life.</h1>
 
+
       {/* 
         //We don't need to see these components in the final app, just for getting them working.
         //We will need the routes active, though, so we can leave those as they are.
