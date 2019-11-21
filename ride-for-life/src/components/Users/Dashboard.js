@@ -27,30 +27,34 @@ const Dashboard = (props) => {
 
     //checking adding components together. Must be logged in and a driver/rider.
     const loggedIn = props.loggedIn;
-    const driver = props.user.role === 'driver';
-    const rider = props.user.role === 'rider';
+    const driver = props.user.role_id === 2;
+    const rider = props.user.role_id === 3;
 
     console.log('Dashboard props', props)
 
-    
-    if (loggedIn && driver) {
-        return(
-            <div>
-                <Route exact path='/logout' component={Logout} />
-                <h1> Welcome to the Driver dashboard. </h1>
-                <PrivateRoute exact path='/driver' component={Driver} />
-            </div>
-        )
-    }
-    
-    if(loggedIn && rider) {
-        return(
-            <div>
-                <Route exact path='/logout' component={Logout} />
-                <h1> Welcome to the Rider dashboard. </h1>
-                <PrivateRoute exact path='/rider' component={Rider} />
-            </div>
-        )
+    switch(loggedIn, driver, rider) {
+        case (driver && loggedIn):
+            return (
+                <div>
+                    <Route exact path='/logout' component={Logout} />
+                    <h1> Welcome to the Driver dashboard. </h1>
+                    {console.log('hello from the driver component')}
+                    <PrivateRoute exact path='/driver' component={Driver} />
+                </div>
+            )
+
+        case (rider && loggedIn):
+            return (
+                <div>
+                    <Route exact path='/logout' component={Logout} />
+                    <h1> Welcome to the Rider dashboard. </h1>
+                    {console.log('hello from the rider component')}
+                    <PrivateRoute exact path='/rider' component={Rider} />
+                </div>
+            )
+
+        default:
+            return null;
     }
 
 }
