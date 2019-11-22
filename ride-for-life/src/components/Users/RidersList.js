@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
 import { connect, useDispatch } from 'react-redux'
-import { axiosRequest as axios } from '../../utils/api'
 
 import { GetRiderList } from '../State/actions/actions';
 import RiderCard from './RiderCard'
@@ -25,10 +24,8 @@ const RiderList = (props) => {
     ) 
 }
 
-
 const mapStateToProps = state => {
         return {
-        user: state.user,
         riders: state.riders
     }
 }

@@ -16,7 +16,6 @@ import {
     GET_RIDERLIST_START,
     GET_RIDERLIST_SUCCESS,
     GET_RIDERLIST_FAILED,
-    
 
     //riders
     // ADD_RIDER_START,

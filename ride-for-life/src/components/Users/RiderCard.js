@@ -6,13 +6,14 @@ import { connect } from 'react-redux'
 const RiderCard = (props) => {
     //presentational component only
 
-    console.log(props)
+    const rider = props.rider
+    console.log(props.rider)
 
     return (
         <div className ="rider-card">
-            <h3>{props.rider.name}</h3>
-            <p>Username: {props.rider.username}</p>
-            <p>Location: {props.rider.location}</p>
+            <h3>{rider.name}</h3>
+            <p>Username: {rider.username}</p>
+            <p>Location: {rider.location}</p>
         </div>
     )
 }

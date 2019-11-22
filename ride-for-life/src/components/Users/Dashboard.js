@@ -15,10 +15,10 @@ import { getToken } from '../../utils/api'
 
 const Dashboard = (props) => {
     const loggedIn = getToken()
+    // const loggedIn = props.loggedIn;
     console.log('Dashboard props', props)
 
     //checking adding components together. Must be logged in and a driver/rider.
-    // const loggedIn = props.loggedIn;
     console.log('logged in?', loggedIn)
     
     const driverRole = (props.user.role === 'driver');
