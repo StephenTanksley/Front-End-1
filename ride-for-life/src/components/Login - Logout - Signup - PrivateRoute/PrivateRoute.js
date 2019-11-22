@@ -7,10 +7,10 @@ import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const PrivateRoute = (props) => {
-    // console.log(props)
-    const loggedIn = props.loggedIn
+    console.log(props)
     const {
         component: Component,
+        loggedIn: loggedIn,
         ...rest
     } = props
 
@@ -20,6 +20,7 @@ return (
             render={(renderProps) => {
 
             if(loggedIn) {
+                props.history.push('/dashboard')
                 return <Component {...renderProps} />
             } else {
                 return <Redirect to='/login' />

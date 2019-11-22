@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import axios from 'axios'
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, Dropdown,
     DropdownToggle, DropdownMenu, DropdownItem
   } from 'reactstrap';
 
-import { axiosRequest } from '../../utils/api';
+import { axiosRequest as axios } from '../../utils/api';
 import SearchForm from './SearchForm'
 import "./Users.css"
 
