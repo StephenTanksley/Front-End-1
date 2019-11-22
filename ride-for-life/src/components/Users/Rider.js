@@ -31,7 +31,7 @@ const Rider = (person) => {
 
 
   useEffect(() => {
-    axios
+    axios()
     .get("https://rideforlife-backend.herokuapp.com/api/drivers")
     .then(response => {
       console.log(response)

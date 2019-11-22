@@ -22,71 +22,19 @@ const Dashboard = (props) => {
     console.log('logged in?', loggedIn)
     
     const driverRole = (props.user.role === 'driver');
-    console.log('driver', driverRole)
+    // console.log('driver', driverRole)
 
     const riderRole = (props.user.role === 'rider');
-    console.log('rider', riderRole)
+    // console.log('rider', riderRole)
     
-    // return (
-        // <div>
-        //     <PrivateRoute
-        //         exact
-        //         path='/dashboard'
-        //         component={loggedIn && riderRole ? Rider : Driver} 
-        //         />
+    return (
+        <>
+        {loggedIn && driverRole 
+            ? <Driver /> 
+            : <Rider />}
+        </>
+    ) 
 
-        //         {/* <RidersList /> */}
-
-        //     {/* <PrivateRoute
-        //         exact
-        //         path='/drivers'
-        //         component={DriversList}
-        //         />
-        //     <PrivateRoute
-        //         exact
-        //         path='/drivers/:id'
-        //         component={DriverProfile}
-        //         />
-        //     <PrivateRoute 
-        //         exact 
-        //         path='/riders' 
-        //         component={RidersList} 
-        //         />
-
-        //     <PrivateRoute
-        //         exact
-        //         path='/riders/:id'
-        //         component={RiderProfile}
-        //         /> */}
-        // </div>     
-    // )
-
-
-
-    switch(loggedIn, driverRole, riderRole, props) {
-        case (driverRole && loggedIn):
-            return (
-                <div>
-                    <Logout />
-                    <h1> Welcome to the Driver dashboard. </h1>
-                    {console.log('hello from the driver component')}
-                    <Driver />
-                </div>
-            )
-
-        case (riderRole && loggedIn):
-            return (
-                <div>
-                    <Logout />
-                    <h1> Welcome to the Rider dashboard. </h1>
-                    {console.log('hello from the rider component')}
-                    <Rider />
-                </div>
-            )
-
-        default:
-            return null;
-    }
 }
 
 const mapStateToProps = state => {

@@ -44,7 +44,7 @@ function App(props) {
       <Route exact path='/login' component={Login} />
       <Route exact path='/logout' component={Logout} />
 
-    <RidersList />
+    {/* <RidersList /> */}
 
     </div>
     
