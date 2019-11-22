@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Profile from '../Users/Profile'
+
 import { 
 
     //driver
@@ -11,6 +13,7 @@ import {
 const Driver = () => {
     return(<div>
         <h1>Driver</h1>
+        <Profile />
     </div>)
 }
 
