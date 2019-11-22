@@ -35,9 +35,11 @@ const Rider = (props) => {
 
   useEffect(() => {
     console.log(props)
-    // props.GetDriverList()
-    // setFilterState(drivers)
-    // setData(drivers)
+    props.GetDriverList()
+    setFilterState(props.drivers)
+    setData(props.drivers)
+    console.log(data)
+    console.log(filterState)
   //   axios()
   //   .get("https://rideforlife-backend.herokuapp.com/api/drivers")
   //   .then(response => {
@@ -52,6 +54,8 @@ const Rider = (props) => {
 
 
     return(
+      // <h1>Hello from the Rider component.</h1>
+
     <div className="Rider">
 
     <SearchForm setFilterState={Filter} />
@@ -73,7 +77,8 @@ const Rider = (props) => {
           </DropdownMenu>
         </Dropdown>
     </Card>))}
-    </div>)
+    </div>
+    )
 }
 
 

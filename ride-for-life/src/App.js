@@ -24,7 +24,7 @@ function App(props) {
     <div className="App">
 
       <Nav />
-      <h1>Hello. Welcome to Ride for Life.</h1>
+      {/* <h1>Hello. Welcome to Ride for Life.</h1> */}
 
 
       {/* 

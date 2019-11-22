@@ -82,7 +82,7 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange, }) => {
                   .min(5)
                   .max(25),
              }),
-             handleSubmit: async (values, { setSubmitting, props  }) => {
+             handleSubmit: async (values, { setSubmitting, props }) => {
                 console.log('values', values)
                 console.log(props)
                 await props.LoginUser(values)
