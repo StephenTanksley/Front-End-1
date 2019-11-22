@@ -21,7 +21,6 @@ import {
 } from '../State/actions/actions';
 
 const Rider = (props) => {
-  const { drivers } = props
   const [data, setData] = useState([]);
   const [filterState, setFilterState] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -29,11 +28,12 @@ const Rider = (props) => {
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
   const Filter = (input) => {            //Dont forget to change rider.location.name to rider.location
-    setFilterState(data.filter((rider => rider.name.toLowerCase().includes(input.toLowerCase()))))
+    setFilterState(data.filter((rider => rider.location.toLowerCase().includes(input.toLowerCase()))))
   }
 
   console.log(props)
 
+  const drivers = props.drivers
 
   useEffect(() => {
     console.log(props)
@@ -49,13 +49,13 @@ const Rider = (props) => {
     <div className="Rider">
 
     <SearchForm setFilterState={Filter} />
-    {props.drivers && props.drivers.map(data => (
-    <Card className='rider-cards' key={data.driver_id}>
+    {drivers && drivers.map(item => (
+    <Card className='rider-cards' key={item.driver_id}>
         <CardBody>
-          <CardTitle tag='h2'>{data.name}</CardTitle>
-            <CardSubtitle>Location: {data.location}</CardSubtitle>
-            <CardSubtitle>Price: {data.price}</CardSubtitle>
-            <CardSubtitle>Bio: {data.bio}</CardSubtitle>
+          <CardTitle tag='h2'>{item.name}</CardTitle>
+            <CardSubtitle>Location: {item.location}</CardSubtitle>
+            <CardSubtitle>Price: {item.price}</CardSubtitle>
+            <CardSubtitle>Bio: {item.bio}</CardSubtitle>
           <Button className="request-button" outline color="primary">Request</Button>
         </CardBody>
         <Dropdown className="dropdown" isOpen={dropdownOpen} toggle={toggle}>
