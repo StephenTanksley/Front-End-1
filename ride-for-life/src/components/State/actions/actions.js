@@ -113,14 +113,14 @@ export const GetRiderList = () => {
     return dispatch => {
         dispatch({ type: GET_RIDERLIST_START })
         axios()
-            .get('/api/riders')
-            .then(response => {
-                dispatch({ type: GET_RIDERLIST_SUCCESS, payload: response.data })
-            })
-            .catch(error => {
-                dispatch({ type: GET_RIDERLIST_FAILED, payload: error})
-                console.log(error.response)
-            })
+        .get('/api/riders')
+        .then(response => {
+            dispatch({ type: GET_RIDERLIST_SUCCESS, payload: response.data })
+        })
+        .catch(error => {
+            dispatch({ type: GET_RIDERLIST_FAILED, payload: error})
+            console.log(error.response)
+        })
     }
 }
 
@@ -128,14 +128,14 @@ export const GetDriverList = () => {
     return dispatch => {
         dispatch({ type: GET_DRIVERLIST_START })
         axios()
-            .get('/api/drivers')
-            .then(response => {
-                dispatch({ type: GET_DRIVERLIST_SUCCESS, payload: response.data })
-            })
-            .catch(error => {
-                dispatch({ type: GET_DRIVERLIST_FAILED, payload: error})
-                console.log(error.response)
-            })
+        .get('/api/drivers')
+        .then(response => {
+            dispatch({ type: GET_DRIVERLIST_SUCCESS, payload: response.data })
+        })
+        .catch(error => {
+            dispatch({ type: GET_DRIVERLIST_FAILED, payload: error})
+            console.log(error.response)
+        })
     }
 }
 
@@ -171,15 +171,15 @@ export const UpdateRider = (rider) => {
     return dispatch => {
         dispatch({ type: UPDATE_RIDER_START, rider })
         axios()
-            .put(`/api/riders/:id`, rider)
-            .then(response => {
-                const token = response.data.token
-                dispatch({ type: UPDATE_RIDER_SUCCESS, payload: response.data })
-            })
-            .catch(error => {
-                dispatch({ type: UPDATE_RIDER_FAILED, payload: error})
-                console.log(error.response)
-            })
+        .put(`/api/riders/:id`, rider)
+        .then(response => {
+            const token = response.data.token
+            dispatch({ type: UPDATE_RIDER_SUCCESS, payload: response.data })
+        })
+        .catch(error => {
+            dispatch({ type: UPDATE_RIDER_FAILED, payload: error})
+            console.log(error.response)
+        })
     }
 }
 
@@ -187,15 +187,15 @@ export const DeleteRider = () => {
     return dispatch => {
         dispatch({ type: DELETE_RIDER_START })
         axios()
-            .delete(`/api/riders/:id`)
-            .then(response => {
-                const token = response.data.token
-                dispatch({ type: DELETE_RIDER_SUCCESS, payload: response.data })
-            })
-            .catch(error => {
-                dispatch({ type: DELETE_RIDER_FAILED, payload: error})
-                console.log(error.response)
-            })
+        .delete(`/api/riders/:id`)
+        .then(response => {
+            const token = response.data.token
+            dispatch({ type: DELETE_RIDER_SUCCESS, payload: response.data })
+        })
+        .catch(error => {
+            dispatch({ type: DELETE_RIDER_FAILED, payload: error})
+            console.log(error.response)
+        })
     }
 }
 
@@ -206,15 +206,15 @@ export const UpdateDriver = (driver) => {
     return dispatch => {
         dispatch({ type: UPDATE_DRIVER_START, driver })
         axios()
-            .put(`/api/drivers/:id`, driver)
-            .then(response => {
-                const token = response.data.token
-                dispatch({ type: UPDATE_DRIVER_SUCCESS, payload: response.data })
-            })
-            .catch(error => {
-                dispatch({ type: UPDATE_DRIVER_FAILED, payload: error})
-                console.log(error.response)
-            })
+        .put(`/api/drivers/:id`, driver)
+        .then(response => {
+            const token = response.data.token
+            dispatch({ type: UPDATE_DRIVER_SUCCESS, payload: response.data })
+        })
+        .catch(error => {
+            dispatch({ type: UPDATE_DRIVER_FAILED, payload: error})
+            console.log(error.response)
+        })
     }
 }
 
@@ -222,14 +222,14 @@ export const DeleteDriver = () => {
     return dispatch => {
         dispatch({ type: DELETE_DRIVER_START})
         axios()
-            .delete(`/api/drivers/:id`)
-            .then(response => {
-                const token = response.data.token
-                dispatch({ type: DELETE_DRIVER_SUCCESS, payload: response.data })
-            })
-            .catch(error => {
-                dispatch({ type: DELETE_DRIVER_FAILED, payload: error})
-                console.log(error.response)
-            })
+        .delete(`/api/drivers/:id`)
+        .then(response => {
+            const token = response.data.token
+            dispatch({ type: DELETE_DRIVER_SUCCESS, payload: response.data })
+        })
+        .catch(error => {
+            dispatch({ type: DELETE_DRIVER_FAILED, payload: error})
+            console.log(error.response)
+        })
     }
 }

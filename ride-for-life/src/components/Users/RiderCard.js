@@ -18,7 +18,6 @@ const RiderCard = (props) => {
     )
 }
 
-
 const mapStateToProps = state => {
         return {
         riders: state.riders
