@@ -16,7 +16,7 @@ Ride For Life
 #
 
 ## Pitch
-_Ride For Life_ serves mothers in Uganda to improve maternal and child survival. One of the biggest obstacles women face while pregnant is getting to a health facility to safely deliver. Most people do not own a car or a motorcycle, and a majority live greater than 5 km from a health center (an hour by foot). _Ride For Life_ provides a solution by quickly dispatching motorcycle ambulances to women in need of urgent medical care. By quickly addressing transportation to qualified medical care, _Ride For Life_ hopes to address issues of mortality and pregnancy complications.
+_Ride For Life_ serves mothers in Uganda to improve maternal and child survival. One of the biggest obstacles women face while pregnant is getting to a health facility to safely deliver. Most people do not own a car or a motorcycle, and a majority live greater than 5 km from a health center (an hour by foot). _Ride For Life_ provides a solution by quickly dispatching motorcycle ambulances to women in need of urgent medical care. By quickly providing transportation to qualified medical care, _Ride For Life_ hopes to address issues of mortality and pregnancy complications in Uganda.
 
 #
 
