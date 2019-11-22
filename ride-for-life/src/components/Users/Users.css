@@ -1,14 +1,24 @@
-.Rider {
+.rider-list {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #CBCBCB;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
-.rider-cards {
-    width: 25%;
-    display: flex;
-    flex-wrap: wrap;
+.user-card {
+    width: 20%;
     margin: 1%;
+}
+
+.card-body{
+    border: 3px solid #E46428;
+    border-radius: 5px;
+    background-color: #575972;
+    color: black;
 }
 
 .dropdown {
@@ -35,8 +45,4 @@
 .submit-button {
     margin-bottom: 2%;
     margin-left: 1%;
-}
-
-.search-input {
-    
 }

@@ -1,16 +1,27 @@
-import React, {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { Link, Redirect } from 'react-router-dom'
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, Dropdown,
     DropdownToggle, DropdownMenu, DropdownItem
   } from 'reactstrap';
-import { axiosRequest } from '../../utils/api';
+
+import { connect } from 'react-redux'
+import { GetDriverList } from '../State/actions/actions';
+import { axiosRequest as axios } from '../../utils/api';
 import SearchForm from './SearchForm'
 import "./Users.css"
 
-const Rider = (person) => {
+import { 
+
+  //rider
+  UpdateRider,
+  DeleteRider,
+
+} from '../State/actions/actions';
+
+const Rider = (props) => {
+  const { drivers } = props
   const [data, setData] = useState([]);
   const [filterState, setFilterState] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -23,18 +34,21 @@ const Rider = (person) => {
 
 
   useEffect(() => {
-    axios
-    .get("https://rideforlife-backend.herokuapp.com/api/drivers")
-    .then(response => {
-      console.log(response)
-      setFilterState(response.data.results)
-      setData(response.data.results)
-    })
-    .catch(error => {
-      console.log(error)
-    })
+    console.log(props)
+    // props.GetDriverList()
+    // setFilterState(drivers)
+    // setData(drivers)
+  //   axios()
+  //   .get("https://rideforlife-backend.herokuapp.com/api/drivers")
+  //   .then(response => {
+  //     console.log(response)
+  //     setFilterState(response.data.results)
+  //     setData(response.data.results)
+  //   })
+  //   .catch(error => {
+  //     console.log(error)
+  //   })
   }, []);
-
 
 
     return(
@@ -45,21 +59,35 @@ const Rider = (person) => {
     <Card className='rider-cards'>
         <CardBody>
           <CardTitle tag='h2'>{data.name}</CardTitle>
-          <CardSubtitle>Location: {data.name}</CardSubtitle>
-          <CardSubtitle>Price: {data.name}</CardSubtitle>
-          <CardSubtitle>Bio: {data.name}</CardSubtitle>
+            <CardSubtitle>Location: {data.location}</CardSubtitle>
+            <CardSubtitle>Price: {data.price}</CardSubtitle>
+            <CardSubtitle>Bio: {data.bio}</CardSubtitle>
           <Button className="request-button" outline color="primary">Request</Button>
         </CardBody>
         <Dropdown className="dropdown" isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle caret>
-          Dropdown
-        </DropdownToggle>
-        <DropdownMenu>
-          <h1>Reviews</h1>
-        </DropdownMenu>
+          <DropdownToggle caret>
+            Dropdown
+          </DropdownToggle>
+          <DropdownMenu>
+            <h1>Reviews</h1>
+          </DropdownMenu>
         </Dropdown>
     </Card>))}
     </div>)
 }
 
-export default Rider;
+
+const mapStateToProps = state => {
+    return {
+    drivers: state.drivers
+  }
+}
+
+const mapDispatchToProps = {
+  GetDriverList
+}
+
+export default connect(
+mapStateToProps,
+mapDispatchToProps
+)(Rider)

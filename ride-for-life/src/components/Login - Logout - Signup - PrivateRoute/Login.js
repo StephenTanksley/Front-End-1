@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import {withFormik, Form, Field, resetForm } from "formik";
 import {Button} from "reactstrap";
 import * as yup from "yup";
-import {Link, Redirect} from 'react-router-dom'
+import {Link, withRouter, Redirect} from 'react-router-dom'
 
 
 //action import
 import { LoginUser } from '../State/actions/actions'
 import { connect } from 'react-redux'
 
-const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
-
+const Login = ({ handleSubmit, errors, touched, values, handleChange, }) => {
         
         return(
 
@@ -54,7 +53,11 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
                         </div>
 
                         <Button outline color="primary" className='submit' type="submit" >Submit</Button>
-                </Form>  
+                </Form>
+                <div>Need a ride? {<Link to="/rider-signup">Rider signup</Link>}</div>
+                <div>Do you like to drive? {<Link to="/driver-signup">Driver signup</Link>}</div>
+
+  
                 </div>                
               );
         }
@@ -79,13 +82,12 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange }) => {
                   .min(5)
                   .max(25),
              }),
-             handleSubmit:(values, { setSubmitting, resetForm, props  }) => {
+             handleSubmit: async (values, { setSubmitting, props  }) => {
                 console.log('values', values)
                 console.log(props)
-                props.LoginUser(values)
-                resetForm()
-                props.history.push('/dashboard')
-                // return <Redirect to= "/dashboard" />
+                await props.LoginUser(values)
+                // return (<Redirect to="/dashboard" />)
+                return (props.history.push('/dashboard'))
             }     
         })(Login);
 
@@ -101,7 +103,7 @@ const mapDispatchToProps = {
     LoginUser
 }
 
-export default connect(
+export default withRouter(connect(
         mapStateToProps,
         mapDispatchToProps
-)(formikUserForm)
+)(formikUserForm))

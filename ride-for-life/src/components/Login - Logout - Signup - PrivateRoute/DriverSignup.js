@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
 
         return(
+                <div>
                 <Form 
                   className='form driver'
                   onSubmit={handleSubmit}
@@ -101,7 +102,9 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
 
                         <Button outline color="primary" className='submit' type="submit" >Submit</Button>
         
-                </Form>                  
+                </Form>
+                <div>Already signed up? {<Link to="/login">Login</Link>}</div>
+                </div>                  
               );  
         }
 
@@ -112,7 +115,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                             name: name || "",
                             username: username || "",
                             password: password ||  "",
-                            role: role || "driver",
+                            role: "driver",
                             location: location || "",
                             price: price || "",
                             bio: bio || "",
