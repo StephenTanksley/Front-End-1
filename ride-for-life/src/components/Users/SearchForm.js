@@ -10,7 +10,6 @@ export default function SearchForm(props) {
       props.setFilterState(query)
     };
   
-  
     return (
       <div className="search-form">
         <form>

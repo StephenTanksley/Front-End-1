@@ -1,4 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import Profile from '../Users/Profile'
+
+//redux
+import { connect } from 'react-redux'
+import { GetDriverProfile } from '../State/actions/actions'
 
 import { 
 
@@ -8,10 +14,36 @@ import {
     
 } from '../State/actions/actions';
 
-const Driver = () => {
+const Driver = (props) => {
+
+  console.log('driver component props', props)
+
+  useEffect(() => {
+
+  })
+
+  console.log(props)
     return(<div>
-        <h1>Driver</h1>
+        <h1>Welcome back, {props.name}</h1>
+        <Profile />
     </div>)
 }
 
-export default Driver;
+
+const mapStateToProps = state => {
+    return {
+    user: state.user,
+    loggedIn: state.loggedIn
+  }
+}
+
+const mapDispatchToProps = {
+
+}
+
+
+export default connect(
+  mapStateToProps,
+  // mapDispatchToProps
+  null
+)(Driver)

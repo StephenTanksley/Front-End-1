@@ -17,6 +17,14 @@ import {
     GET_RIDERLIST_SUCCESS,
     GET_RIDERLIST_FAILED,
 
+    GET_DRIVER_START,
+    GET_DRIVER_SUCCESS,
+    GET_DRIVER_FAILED,
+
+    GET_RIDER_START,
+    GET_RIDER_SUCCESS,
+    GET_RIDER_FAILED,
+
     //riders
     // ADD_RIDER_START,
     // ADD_RIDER_SUCCESS,
@@ -55,18 +63,20 @@ const initialState = {
 
     //Admin
     user: [],
+    currentUser: [],
     loading: false,
     loggedIn: false,
     addingUser: false,
     
     //Rider
     riders: [],
+    gettingRider: false,
     updatingRider: false,
     deletingRider: false,
     
     //Driver
     drivers: [],
-    // addingDriver: false,
+    gettingDriver: false,
     updatingDriver: false,
     deletingDriver: false,
 
@@ -171,12 +181,41 @@ export function reducer(state = initialState, action) {
         case GET_DRIVERLIST_FAILED: {
                 return {
                     ...state,
-                    loading: false,
-                    error: action.payload
+                    error: action.payload,
+                    loading: false
                 }
             }
 
     /* ---------- RIDERS ---------- */
+
+    //getting an existing rider user
+    case GET_RIDER_START: {
+        return {
+            ...state,
+            gettingRider: true
+        }
+    }
+
+    case GET_RIDER_SUCCESS: {
+        return {
+            ...state,
+            currentUser: action.payload,
+            gettingRider: false
+        }
+    }
+
+    case GET_RIDER_FAILED: {
+        return {
+            ...state,
+            error: action.payload,
+            gettingRider: false
+        }
+    }
+
+
+
+
+
 
 
 
@@ -305,6 +344,29 @@ export function reducer(state = initialState, action) {
     //             error: action.payload
     //         }
     //     }
+
+    case GET_DRIVER_START: {
+        return {
+            ...state,
+            gettingDriver: true
+        }
+    }
+
+    case GET_DRIVER_SUCCESS: {
+        return {
+            ...state,
+            currentUser: action.payload,
+            gettingDriver: false
+        }
+    }
+
+    case GET_DRIVER_FAILED: {
+        return {
+            ...state,
+            error: action.payload,
+            gettingDriver: false
+        }
+    }
 
 
     //updating a driver
