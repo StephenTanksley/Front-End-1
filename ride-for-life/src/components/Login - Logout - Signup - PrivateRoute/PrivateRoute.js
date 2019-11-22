@@ -3,11 +3,6 @@ import React from 'react'
 //Route import
 import { Route, Redirect } from 'react-router-dom'
 
-//
-
-//redux import
-import { connect } from 'react-redux'
-
 const PrivateRoute = (props) => {
     const {
         component: Component,

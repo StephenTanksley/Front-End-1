@@ -4,7 +4,6 @@ import { connect, useDispatch } from 'react-redux'
 
 import { GetRiderList } from '../State/actions/actions';
 import RiderCard from './RiderCard'
-import "./Users.css"
 
 
 const RiderList = (props) => {
@@ -16,7 +15,7 @@ const RiderList = (props) => {
     }, [])
 
     return (
-        <div class="rider-list">
+        <div>
         {riders && riders.map(item => {
             return (
                 <RiderCard rider={item} key={item.rider_id}/>
