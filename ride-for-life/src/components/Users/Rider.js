@@ -32,24 +32,14 @@ const Rider = (props) => {
     setFilterState(data.filter((rider => rider.name.toLowerCase().includes(input.toLowerCase()))))
   }
 
+  console.log(props)
+
 
   useEffect(() => {
     console.log(props)
     props.GetDriverList()
     setFilterState(props.drivers)
     setData(props.drivers)
-    console.log(data)
-    console.log(filterState)
-  //   axios()
-  //   .get("https://rideforlife-backend.herokuapp.com/api/drivers")
-  //   .then(response => {
-  //     console.log(response)
-  //     setFilterState(response.data.results)
-  //     setData(response.data.results)
-  //   })
-  //   .catch(error => {
-  //     console.log(error)
-  //   })
   }, []);
 
 
@@ -59,8 +49,8 @@ const Rider = (props) => {
     <div className="Rider">
 
     <SearchForm setFilterState={Filter} />
-    {filterState.map(data => (
-    <Card className='rider-cards'>
+    {props.drivers && props.drivers.map(data => (
+    <Card className='rider-cards' key={data.driver_id}>
         <CardBody>
           <CardTitle tag='h2'>{data.name}</CardTitle>
             <CardSubtitle>Location: {data.location}</CardSubtitle>
