@@ -60,7 +60,7 @@ const Rider = (props) => {
 
     <SearchForm setFilterState={Filter} />
     {filterState.map(data => (
-    <Card className='rider-cards'>
+    <Card id="user-cards" className='user-cards'>
         <CardBody>
           <CardTitle tag='h2'>{data.name}</CardTitle>
             <CardSubtitle>Location: {data.location}</CardSubtitle>

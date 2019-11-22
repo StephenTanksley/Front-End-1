@@ -1,4 +1,4 @@
-.rider-list {
+.Rider {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,20 +9,27 @@
     border-radius: 10px;
 }
 
-.user-card {
-    width: 20%;
+.user-cards {
+    width: 30%;
     margin: 1%;
 }
 
-.card-body{
+#user-cards {
     border: 3px solid #E46428;
     border-radius: 5px;
     background-color: #575972;
+}
+
+.card-body{
     color: black;
 }
 
 .dropdown {
+    display: flex;
+    justify-content: space-around;
     margin: 1%;
+    padding: 1%;
+    background-color: #575972;
 }
 
 .home-button {
