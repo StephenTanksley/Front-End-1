@@ -43,11 +43,21 @@ export const GET_DRIVERLIST_START = "GET_DRIVERLIST_START"
 export const GET_DRIVERLIST_SUCCESS = "GET_DRIVERLIST_SUCCESS"
 export const GET_DRIVERLIST_FAILED = "GET_DRIVERLIST_FAILED"
 
+//get single driver object.
+export const GET_DRIVER_START = "GET_DRIVER_START"
+export const GET_DRIVER_SUCCESS = "GET_DRIVER_SUCCESS"
+export const GET_DRIVER_FAILED = "GET_DRIVER_FAILED"
+
+
 //get user list (riders)
 export const GET_RIDERLIST_START = "GET_RIDERLIST_START"
 export const GET_RIDERLIST_SUCCESS = "GET_RIDERLIST_SUCCESS"
 export const GET_RIDERLIST_FAILED = "GET_RIDERLIST_FAILED"
 
+//get single rider object.
+export const GET_RIDER_START = "GET_RIDER_START"
+export const GET_RIDER_SUCCESS = " GET_RIDER_SUCCESS"
+export const GET_RIDER_FAILED = "GET_RIDER_FAILED"
 
 export const USER_LOGOUT = "USER_LOGOUT"
 
@@ -124,6 +134,39 @@ export const GetRiderList = () => {
     }
 }
 
+
+export const GetRider = (id) => {
+    return dispatch => {
+        dispatch({ type: GET_RIDER_START })
+        axios()
+        .get(`/api/riders/${id}`)
+        .then(response => {
+            dispatch({ type: GET_RIDER_SUCCESS, payload: response.data })
+        })
+        .catch(error => {
+            dispatch({ type: GET_RIDER_FAILED, payload: error})
+            console.log(error.response)
+        })
+    }
+}
+
+export const GetDriver = (id) => {
+    return dispatch => {
+        dispatch({ type: GET_DRIVER_START })
+        axios()
+        .get(`/api/drivers/${id}`)
+        .then(response => {
+            dispatch({ type: GET_DRIVER_SUCCESS, payload: response.data })
+        })
+        .catch(error => {
+            dispatch({ type: GET_DRIVER_FAILED, payload: error})
+            console.log(error.response)
+        })
+    }
+}
+
+
+
 export const GetDriverList = () => {
     return dispatch => {
         dispatch({ type: GET_DRIVERLIST_START })
@@ -167,6 +210,9 @@ export const AddUser = (user) => {
 
 
 /* ----- RIDERS ----- */
+
+
+
 export const UpdateRider = (rider) => {
     return dispatch => {
         dispatch({ type: UPDATE_RIDER_START, rider })
