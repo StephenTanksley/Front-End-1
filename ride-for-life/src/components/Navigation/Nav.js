@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Link, Redirect, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Button } from 'reactstrap'
+import "./Nav.css"
 
 import { getToken } from '../../utils/api'
 
