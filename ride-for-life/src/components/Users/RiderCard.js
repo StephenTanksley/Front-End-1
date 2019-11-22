@@ -1,5 +1,11 @@
 import React from 'react'
 
+import {
+    Card, CardBody,
+    CardTitle, CardSubtitle, Button, Dropdown,
+    DropdownToggle, DropdownMenu, DropdownItem
+  } from 'reactstrap';
+
 import { connect } from 'react-redux'
 
 
@@ -10,10 +16,13 @@ const RiderCard = (props) => {
     console.log(props.rider)
 
     return (
-        <div className ="rider-card">
-            <h3>{rider.name}</h3>
-            <p>Username: {rider.username}</p>
-            <p>Location: {rider.location}</p>
+        <div className ="user-card">
+          <Card className='user-cards'>
+            <CardBody className="card-body">
+              <CardTitle tag='h2'>{rider.name}</CardTitle>
+              <CardSubtitle>Location: {rider.location}</CardSubtitle>
+            </CardBody>
+          </Card>
         </div>
     )
 }
