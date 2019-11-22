@@ -10,14 +10,14 @@
 }
 
 .user-cards {
-    width: 30%;
     margin: 1%;
+    width: 30%;
 }
 
 #user-cards {
+    background-color: #575972;
     border: 3px solid #E46428;
     border-radius: 5px;
-    background-color: #575972;
 }
 
 .card-body{
@@ -37,7 +37,7 @@
 
 .search-form {
     margin: 1%;
-    width: 20%;
+    width: 25%;
 }
 
 .search-form form {
