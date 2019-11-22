@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {withFormik, Form, Field, resetForm } from "formik";
 import {Button} from "reactstrap";
 import * as yup from "yup";
-import {Link, Redirect} from 'react-router-dom'
+import {Link, withRouter, Redirect} from 'react-router-dom'
 
 
 //action import
@@ -82,12 +82,12 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange, }) => {
                   .min(5)
                   .max(25),
              }),
-             handleSubmit:(values, { setSubmitting, props  }) => {
+             handleSubmit: async (values, { setSubmitting, props  }) => {
                 console.log('values', values)
-                console.log(props.history)
-                props.LoginUser(values)
-                return (<Redirect to="/dashboard" />)
-                // props.history.push('/dashboard')
+                console.log(props)
+                await props.LoginUser(values)
+                // return (<Redirect to="/dashboard" />)
+                return (props.history.push('/dashboard'))
             }     
         })(Login);
 
@@ -103,7 +103,7 @@ const mapDispatchToProps = {
     LoginUser
 }
 
-export default connect(
+export default withRouter(connect(
         mapStateToProps,
         mapDispatchToProps
-)(formikUserForm)
+)(formikUserForm))
