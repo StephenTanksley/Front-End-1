@@ -21,7 +21,6 @@ import {
 } from '../State/actions/actions';
 
 const Rider = (props) => {
-  const { drivers } = props
   const [data, setData] = useState([]);
   const [filterState, setFilterState] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -29,27 +28,18 @@ const Rider = (props) => {
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
   const Filter = (input) => {            //Dont forget to change rider.location.name to rider.location
-    setFilterState(data.filter((rider => rider.name.toLowerCase().includes(input.toLowerCase()))))
+    setFilterState(data.filter((rider => rider.location.toLowerCase().includes(input.toLowerCase()))))
   }
 
+  console.log(props)
+
+  const drivers = props.drivers
 
   useEffect(() => {
     console.log(props)
     props.GetDriverList()
     setFilterState(props.drivers)
     setData(props.drivers)
-    console.log(data)
-    console.log(filterState)
-  //   axios()
-  //   .get("https://rideforlife-backend.herokuapp.com/api/drivers")
-  //   .then(response => {
-  //     console.log(response)
-  //     setFilterState(response.data.results)
-  //     setData(response.data.results)
-  //   })
-  //   .catch(error => {
-  //     console.log(error)
-  //   })
   }, []);
 
 
@@ -59,13 +49,14 @@ const Rider = (props) => {
     <div className="Rider">
 
     <SearchForm setFilterState={Filter} />
-    {filterState.map(data => (
-    <Card id="user-cards" className='user-cards'>
+    {drivers && drivers.map(item => (
+    <Card className='rider-cards' key={item.driver_id}>
+
         <CardBody>
-          <CardTitle tag='h2'>{data.name}</CardTitle>
-            <CardSubtitle>Location: {data.location}</CardSubtitle>
-            <CardSubtitle>Price: {data.price}</CardSubtitle>
-            <CardSubtitle>Bio: {data.bio}</CardSubtitle>
+          <CardTitle tag='h2'>{item.name}</CardTitle>
+            <CardSubtitle>Location: {item.location}</CardSubtitle>
+            <CardSubtitle>Price: {item.price}</CardSubtitle>
+            <CardSubtitle>Bio: {item.bio}</CardSubtitle>
           <Button className="request-button" outline color="primary">Request</Button>
         </CardBody>
         <Dropdown className="dropdown" isOpen={dropdownOpen} toggle={toggle}>
