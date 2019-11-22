@@ -50,7 +50,7 @@ const Rider = (props) => {
 
     <SearchForm setFilterState={Filter} />
     {drivers && drivers.map(item => (
-    <Card className='rider-cards' key={item.driver_id}>
+    <Card id="user-cards" className='user-cards' key={item.driver_id}>
 
         <CardBody>
           <CardTitle tag='h2'>{item.name}</CardTitle>
