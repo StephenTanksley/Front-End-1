@@ -6,33 +6,24 @@ import {
     DropdownToggle, DropdownMenu, DropdownItem
   } from 'reactstrap';
 
+
+//Redux import
 import { connect } from 'react-redux'
-import { GetDriverList } from '../State/actions/actions';
-import { axiosRequest as axios } from '../../utils/api';
+import { GetDriverList, GetRider, UpdateRider, DeleteRider } from '../State/actions/actions';
+
 import SearchForm from './SearchForm'
 import Profile from "./Profile"
 import "./Users.css"
-
-import { 
-
-  //rider
-  UpdateRider,
-  DeleteRider,
-
-} from '../State/actions/actions';
 
 const Rider = (props) => {
   const [data, setData] = useState([]);
   const [filterState, setFilterState] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
   const toggle = () => setDropdownOpen(prevState => !prevState);
-
   const Filter = (input) => {            //Dont forget to change rider.location.name to rider.location
     setFilterState(data.filter((rider => rider.location.toLowerCase().includes(input.toLowerCase()))))
   }
 
-  console.log(props)
 
   const drivers = props.drivers
 
@@ -42,6 +33,14 @@ const Rider = (props) => {
     setFilterState(props.drivers)
     setData(props.drivers)
   }, []);
+
+  const profileInfo = props.user
+  const userID = profileInfo.rider_id;
+
+  //if this works, it should retrieve a single driver's full user object and store it in CurrentUser.
+  useEffect((userInfo) => {
+    props.GetRider('rider', userID)
+  }, [])
 
 
     return(
@@ -77,12 +76,16 @@ const Rider = (props) => {
 
 const mapStateToProps = state => {
     return {
-    drivers: state.drivers
+    drivers: state.drivers,
+    currentUser: state.currentUser
   }
 }
 
 const mapDispatchToProps = {
-  GetDriverList
+  GetDriverList,
+  GetRider,
+  UpdateRider,
+  DeleteRider
 }
 
 export default connect(

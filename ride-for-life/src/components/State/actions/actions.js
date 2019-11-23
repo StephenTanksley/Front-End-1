@@ -135,13 +135,14 @@ export const GetRiderList = () => {
 }
 
 
-export const GetRider = (id) => {
+export const GetRider = (rider, id) => {
     return dispatch => {
         dispatch({ type: GET_RIDER_START })
         axios()
-        .get(`/api/riders/${id}`)
+        .get(`/api/${rider}s/${id}`)
         .then(response => {
             dispatch({ type: GET_RIDER_SUCCESS, payload: response.data })
+            console.log(response.data)
         })
         .catch(error => {
             dispatch({ type: GET_RIDER_FAILED, payload: error})
@@ -150,13 +151,14 @@ export const GetRider = (id) => {
     }
 }
 
-export const GetDriver = (id) => {
+export const GetDriver = (driver, id) => {
     return dispatch => {
         dispatch({ type: GET_DRIVER_START })
         axios()
-        .get(`/api/drivers/${id}`)
+        .get(`/api/${driver}s/${id}`)
         .then(response => {
             dispatch({ type: GET_DRIVER_SUCCESS, payload: response.data })
+            console.log(response.data)
         })
         .catch(error => {
             dispatch({ type: GET_DRIVER_FAILED, payload: error})
