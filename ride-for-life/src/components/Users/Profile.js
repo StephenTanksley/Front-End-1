@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react'
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button, Dropdown,
+    DropdownToggle, DropdownMenu, DropdownItem
+  } from 'reactstrap';
 
 import { connect } from 'react-redux'
 import { GetDriver, GetRider } from '../State/actions/actions'
+import "./Users.css"
 
 
 //this component should show the user's own profile information.
@@ -18,26 +24,45 @@ const Profile = (props) => {
     // console.log('rider', riderRole)
     
     const profileInfo = props.user
-    console.log('props.user info', profileInfo)
-
+    console.log('props.user info', profileInfo);
     return (
         <>
 
         {profileInfo && loggedIn && (driverRole === props.user.role) 
-        ? <div className="profile-card">
-            <h4>{profileInfo.name}</h4>
-            <p>{profileInfo.location}</p>
-            <p>{profileInfo.price}</p>
-            <p>{profileInfo.bio}</p>
+        ? 
+        <div className="profile">
+            <div className="profile-card">
+                <Card id="profile-card">
+                <CardTitle tag="h3">{profileInfo.username}</CardTitle>
+                <CardSubtitle>Location: {profileInfo.location}</CardSubtitle>
+                <CardSubtitle>Price: {profileInfo.price}</CardSubtitle>
+                <CardSubtitle>Bio: {profileInfo.bio}</CardSubtitle>
+                </Card>
+            </div>
+
+            <div className="profile-buttons">
+                <Button color="warning" className="edit">Edit</Button>
+                <Button color="danger" className="delete">Delete</Button>
+            </div>
           </div>
         
         : null}
 
         {profileInfo && loggedIn && (riderRole === props.user.role) 
-        ? <div className="profile-card">
-            <h4>{profileInfo.name}</h4>
-            <p>{profileInfo.location}</p>
-          </div>
+        ? 
+        <div className="profile">
+            <div className="profile-card">
+                <Card id="profile-card">
+                <CardTitle tag="h3">{profileInfo.username}</CardTitle>
+                <CardSubtitle>Location: {profileInfo.location}</CardSubtitle>
+                </Card>
+            </div>
+            
+            <div className="profile-buttons">
+                <Button color="warning" className="edit">Edit</Button>
+                <Button color="danger" className="delete">Delete</Button>
+            </div>
+        </div>
         
         : null}
 {/*         
