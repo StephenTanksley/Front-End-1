@@ -4,6 +4,7 @@ import "./Users.css"
 
 export default function SearchForm(props) {
     const [query, setQuery] = useState("");
+    console.log(props)
     
     const handleChange = (event) => {
       setQuery(event.target.value)
