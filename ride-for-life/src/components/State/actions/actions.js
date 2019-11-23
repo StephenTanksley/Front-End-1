@@ -231,13 +231,12 @@ export const UpdateRider = (rider) => {
     }
 }
 
-export const DeleteRider = () => {
+export const DeleteRider = (userID) => {
     return dispatch => {
         dispatch({ type: DELETE_RIDER_START })
         axios()
-        .delete(`/api/riders/:id`)
+        .delete(`/api/riders/${userID}`)
         .then(response => {
-            const token = response.data.token
             dispatch({ type: DELETE_RIDER_SUCCESS, payload: response.data })
         })
         .catch(error => {
@@ -272,7 +271,6 @@ export const DeleteDriver = () => {
         axios()
         .delete(`/api/drivers/:id`)
         .then(response => {
-            const token = response.data.token
             dispatch({ type: DELETE_DRIVER_SUCCESS, payload: response.data })
         })
         .catch(error => {

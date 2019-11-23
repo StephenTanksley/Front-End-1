@@ -6,7 +6,7 @@ import {
   } from 'reactstrap';
 
 import { connect } from 'react-redux'
-import { GetDriver, GetRider } from '../State/actions/actions'
+import { GetDriver, GetRider, DeleteRider, DeleteDriver } from '../State/actions/actions'
 import "./Users.css"
 
 
@@ -17,9 +17,18 @@ const Profile = (props) => {
     //determining if a user is logged in. If so, assigning profile info to a const. 
     const loggedIn = (props.loggedIn === true)
     const profileInfo = props.user
+
+    //setting strings to check against.
     const driverRole = "driver";
     const riderRole = "rider"; 
     
+
+
+    // const handleDelete = (e, userID) => {
+    //   e.preventDefault()
+    //   const confirmation = confirm('Are you sure you want to delete your account?')
+    //   confirmation ? props.DeleteRider(userID) : null
+    // }
 
     return (
         <>
@@ -56,7 +65,17 @@ const Profile = (props) => {
             
             <div className="profile-buttons">
                 <Button color="warning" className="edit">Edit</Button>
-                <Button color="danger" className="delete">Delete</Button>
+                
+                {/* <Button color="danger" className="delete" onClick={() => {
+                  if(window.confirm('Are you sure you want to delete your profile?')) {
+                    props.DeleteRider(props.currentUser.id)
+                  } else {
+                    null
+                  }
+                }}> */}
+{/*                   
+                  Delete
+                </Button> */}
             </div>
         </div>
         
@@ -71,13 +90,16 @@ const Profile = (props) => {
 const mapStateToProps = state => {
         return {
         user: state.user,
-        loggedIn: state.loggedIn,
+        currentUser: state.currentUser,
+        loggedIn: state.loggedIn
     }
 }
 
 const mapDispatchToProps = {
    GetDriver,
-   GetRider
+   GetRider,
+   DeleteDriver,
+   DeleteRider
 }
 
 
