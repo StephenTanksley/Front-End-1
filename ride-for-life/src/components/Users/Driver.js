@@ -23,7 +23,8 @@ const Driver = (props) => {
   })
 
   console.log(props)
-    return(<div>
+    return(
+    <div className="Driver">
         <h1>Welcome back, {props.name}</h1>
         <Profile />
     </div>)

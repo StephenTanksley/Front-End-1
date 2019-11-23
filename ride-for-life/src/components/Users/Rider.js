@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import { GetDriverList } from '../State/actions/actions';
 import { axiosRequest as axios } from '../../utils/api';
 import SearchForm from './SearchForm'
+import Profile from "./Profile"
 import "./Users.css"
 
 import { 
@@ -48,10 +49,11 @@ const Rider = (props) => {
 
     <div className="Rider">
 
-    <SearchForm setFilterState={Filter} />
-    {drivers && drivers.map(item => (
-    <Card id="user-cards" className='user-cards' key={item.driver_id}>
+      <Profile />
 
+      <SearchForm setFilterState={Filter} />
+      {drivers && drivers.map(item => (
+      <Card id="user-cards" className='user-cards' key={item.driver_id}>
         <CardBody>
           <CardTitle tag='h2'>{item.name}</CardTitle>
             <CardSubtitle>Location: {item.location}</CardSubtitle>
@@ -67,7 +69,7 @@ const Rider = (props) => {
             <h1>Reviews</h1>
           </DropdownMenu>
         </Dropdown>
-    </Card>))}
+      </Card>))}
     </div>
     )
 }
