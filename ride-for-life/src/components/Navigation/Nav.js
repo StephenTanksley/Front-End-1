@@ -11,6 +11,9 @@ const Navigation = (props) => {
 
     return(
         <div>
+            <div className="nav-header">
+                <h2>Ride For Life</h2>
+            </div>
             <nav className="navigation-bar">
                 {/* Checks to see if we have a token. If not, we log in... */}
                 {!loggedIn && <Link to={'/login'} > <Button color='secondary'>Login</Button> </Link>}

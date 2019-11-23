@@ -1,4 +1,5 @@
 .navigation-bar {
+    font-family: 'Source Sans Pro', sans-serif;
     display: flex;
     background-color: #E46428;
     border: 2px solid #575972;
@@ -9,5 +10,9 @@
     margin-top: 1%;
     margin-bottom: 1%;
     border-radius: 10px;
+}
 
+.nav-header {
+    display: flex;
+    justify-content: center;
 }
