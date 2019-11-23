@@ -18,6 +18,14 @@ const Profile = (props) => {
 
     const loggedIn = (props.loggedIn === true)
     const driverRole = "driver";
+    
+    if (driverRole === props.user.role){
+      const userID = props.user.driver_id;
+      console.log('driver userID', userID)
+    } else {
+      const userID = props.user.rider_id;
+      console.log('rider userID', userID)
+    }
     // console.log('driver', driverRole)
 
     const riderRole = "rider";
@@ -75,7 +83,8 @@ const Profile = (props) => {
 const mapStateToProps = state => {
         return {
         user: state.user,
-        loggedIn: state.loggedIn
+        loggedIn: state.loggedIn,
+        currentUser: state.currentUser
     }
 }
 
