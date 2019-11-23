@@ -70,8 +70,11 @@ const Rider = (props) => {
           <DropdownToggle caret>
             Dropdown
           </DropdownToggle>
-          <DropdownMenu>
+          <DropdownMenu className="dropdown-menu">
+            <DropdownItem id="dropdown-item">
+              //Make reviews component that displays a simple card for each review
             <h1>Reviews</h1>
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </Card>))}
