@@ -6,32 +6,24 @@ import {
     DropdownToggle, DropdownMenu, DropdownItem
   } from 'reactstrap';
 
+
+//Redux import
 import { connect } from 'react-redux'
-import { GetDriverList } from '../State/actions/actions';
-import { axiosRequest as axios } from '../../utils/api';
+import { GetDriverList, GetRider, UpdateRider, DeleteRider } from '../State/actions/actions';
+
 import SearchForm from './SearchForm'
 import Profile from "./Profile"
 import "./Users.css"
-
-import { 
-
-  //rider
-  UpdateRider,
-  DeleteRider,
-
-} from '../State/actions/actions';
 
 const Rider = (props) => {
   const [data, setData] = useState([]);
   const [filterState, setFilterState] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
   const toggle = () => setDropdownOpen(prevState => !prevState);
-
   const Filter = (input) => {            //Dont forget to change rider.location.name to rider.location
     setFilterState(data.filter((rider => rider.location.toLowerCase().includes(input.toLowerCase()))))
   }
-
+  
   const drivers = props.drivers
 
   useEffect(() => {
@@ -48,9 +40,14 @@ const Rider = (props) => {
     });
   }, []);
 
+  const userID = props.user.rider_id;
+  const profileInfo = props.user
+  useEffect(() => {
+    props.GetRider('rider', userID)
+  }, [])
+
 
     return(
-      // <h1>Hello from the Rider component.</h1>
 
     <div className="Rider">
 
@@ -82,12 +79,17 @@ const Rider = (props) => {
 
 const mapStateToProps = state => {
     return {
-    drivers: state.drivers
+    user: state.user,
+    drivers: state.drivers,
+    currentUser: state.currentUser
   }
 }
 
 const mapDispatchToProps = {
-  GetDriverList
+  GetDriverList,
+  GetRider,
+  UpdateRider,
+  DeleteRider
 }
 
 export default connect(

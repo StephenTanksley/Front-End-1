@@ -14,17 +14,13 @@ import "./Users.css"
 
 const Profile = (props) => {
 
-    console.log('profile props', props)
-
+    //determining if a user is logged in. If so, assigning profile info to a const. 
     const loggedIn = (props.loggedIn === true)
-    const driverRole = "driver";
-    // console.log('driver', driverRole)
-
-    const riderRole = "rider";
-    // console.log('rider', riderRole)
-    
     const profileInfo = props.user
-    console.log('props.user info', profileInfo);
+    const driverRole = "driver";
+    const riderRole = "rider"; 
+    
+
     return (
         <>
 
@@ -75,7 +71,7 @@ const Profile = (props) => {
 const mapStateToProps = state => {
         return {
         user: state.user,
-        loggedIn: state.loggedIn
+        loggedIn: state.loggedIn,
     }
 }
 
@@ -89,7 +85,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(Profile)
-
-
-
-//need to make an edit form component and a delete profile button.
