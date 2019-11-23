@@ -33,6 +33,15 @@
     background-color: #575972;
 }
 
+.dropdown-menu {
+    width: 100%;
+    margin: 1%;
+}
+
+.dropdown-item {
+    width: 100%;
+}
+
 .home-button {
 }
 
