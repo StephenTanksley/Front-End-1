@@ -24,27 +24,23 @@ const Rider = (props) => {
     setFilterState(data.filter((rider => rider.location.toLowerCase().includes(input.toLowerCase()))))
   }
 
-
+// console.log('rider side props', props)
   const drivers = props.drivers
 
   useEffect(() => {
-    console.log(props)
     props.GetDriverList()
     setFilterState(props.drivers)
     setData(props.drivers)
   }, []);
 
+  const userID = props.user.rider_id;
   const profileInfo = props.user
-  const userID = profileInfo.rider_id;
-
-  //if this works, it should retrieve a single driver's full user object and store it in CurrentUser.
-  useEffect((userInfo) => {
+  useEffect(() => {
     props.GetRider('rider', userID)
   }, [])
 
 
     return(
-      // <h1>Hello from the Rider component.</h1>
 
     <div className="Rider">
 
@@ -76,6 +72,7 @@ const Rider = (props) => {
 
 const mapStateToProps = state => {
     return {
+    user: state.user,
     drivers: state.drivers,
     currentUser: state.currentUser
   }

@@ -142,7 +142,7 @@ export const GetRider = (rider, id) => {
         .get(`/api/${rider}s/${id}`)
         .then(response => {
             dispatch({ type: GET_RIDER_SUCCESS, payload: response.data })
-            console.log(response.data)
+            console.log('rider object', response.data)
         })
         .catch(error => {
             dispatch({ type: GET_RIDER_FAILED, payload: error})
@@ -158,7 +158,7 @@ export const GetDriver = (driver, id) => {
         .get(`/api/${driver}s/${id}`)
         .then(response => {
             dispatch({ type: GET_DRIVER_SUCCESS, payload: response.data })
-            console.log(response.data)
+            // console.log('driver object', response.data)
         })
         .catch(error => {
             dispatch({ type: GET_DRIVER_FAILED, payload: error})

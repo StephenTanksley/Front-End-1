@@ -13,9 +13,6 @@ const Driver = (props) => {
 
   const userID = props.user.driver_id;
   const profileInfo = props.user
-
-
-  //if this works, it should retrieve a single driver's full user object and store it in CurrentUser.
   useEffect(() => {
     props.GetDriver('driver', userID)
   }, [])
@@ -31,7 +28,8 @@ const Driver = (props) => {
 const mapStateToProps = state => {
     return {
     user: state.user,
-    loggedIn: state.loggedIn
+    loggedIn: state.loggedIn,
+    currentUser: state.currentUser
   }
 }
 

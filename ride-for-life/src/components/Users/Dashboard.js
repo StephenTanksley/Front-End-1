@@ -29,11 +29,10 @@ const Dashboard = (props) => {
     
     return (
         <>
-        {loggedIn && (driverRole === props.user.role) ? <Driver /> : null}
-        {loggedIn && (riderRole === props.user.role) ? <Rider /> : null}
+            {loggedIn && (driverRole === props.user.role) ? <Driver /> : null}
+            {loggedIn && (riderRole === props.user.role) ? <Rider /> : null}
         </>
     ) 
-
 }
 
 const mapStateToProps = state => {
