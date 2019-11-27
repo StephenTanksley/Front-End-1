@@ -6,6 +6,8 @@ import {
     DropdownToggle, DropdownMenu, DropdownItem
   } from 'reactstrap';
 
+import { axiosRequest as axios } from '../../utils/api'
+
 
 //Redux import
 import { connect } from 'react-redux'

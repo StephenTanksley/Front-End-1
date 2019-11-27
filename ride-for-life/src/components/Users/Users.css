@@ -72,8 +72,17 @@
     border-radius: 5px;
 }
 
+.card-subtitle {
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
 #profile-card{
     padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .profile-buttons {
@@ -91,6 +100,7 @@
     margin: 1%;
 
 }
+
 
 /* Driver */
 

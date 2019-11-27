@@ -16,12 +16,13 @@ const Profile = (props) => {
 
     //determining if a user is logged in. If so, assigning profile info to a const. 
     const loggedIn = (props.loggedIn === true)
-    const profileInfo = props.user
+    const profileInfo = props.currentUser
 
     //setting strings to check against.
     const driverRole = "driver";
     const riderRole = "rider"; 
     
+    console.log(props)
 
 
     // const handleDelete = (e, userID) => {
@@ -32,12 +33,12 @@ const Profile = (props) => {
 
     return (
         <>
-
         {profileInfo && loggedIn && (driverRole === props.user.role) 
         ? 
         <div className="profile">
             <div className="profile-card">
                 <Card id="profile-card">
+                  <img src={props.currentUser.url} />
                 <CardTitle tag="h3">{profileInfo.username}</CardTitle>
                 <CardSubtitle>Location: {profileInfo.location}</CardSubtitle>
                 <CardSubtitle>Price: {profileInfo.price}</CardSubtitle>
