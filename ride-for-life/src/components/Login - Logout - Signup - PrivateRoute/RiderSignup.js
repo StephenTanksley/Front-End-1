@@ -14,23 +14,22 @@ import { connect } from 'react-redux';
 const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
 
         return(
+
+            <div className="rider-signup">
+
                 <Form 
-                  className='form rider' 
+                  className='form-rider' 
                   onSubmit={handleSubmit}
                   >
-                        {/* 
-                          //Why are we linking to the dashboard here? Dashboard is a 
-                          protected route.
-                        
-                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link> */}
-                        <br />
+
                         <h1>Rider Signup</h1>
                         
                         <label>Name</label>
                         <div>
                                 {touched.name && errors.name && (
-                                <p>Error: {errors.name}</p>)} 
-                                <Field name='name' 
+                                        <p>Error: {errors.name}</p>)} 
+                                <Field name='name'
+                                className="signup-field"
                                 type='text' 
                                 placeholder='enter name'     
                                 value={values.name} 
@@ -40,9 +39,10 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                         <label>Username</label>
                         <div>
                                 {touched.username && errors.username && (
-                                <p>Error: {errors.username}</p>)} 
+                                        <p>Error: {errors.username}</p>)} 
                                 <Field 
-                                name='username' 
+                                name='username'
+                                className="signup-field"
                                 type='text' 
                                 placeholder='enter a username' 
                                 value={values.username} 
@@ -54,7 +54,8 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                         {touched.password && errors.password && (
                                 <p>Error: {errors.password}</p>)}
                                 <Field 
-                                name='password' 
+                                name='password'
+                                className="signup-field"
                                 type='text' 
                                 placeholder='enter a password' 
                                 value={values.password} 
@@ -64,8 +65,9 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                         <label>Location</label>
                         <div>
                                 {touched.location && errors.location && (
-                                <p>Error: {errors.location}</p>)} 
-                                <Field name='location' 
+                                        <p>Error: {errors.location}</p>)} 
+                                <Field name='location'
+                                className="signup-field"
                                 type='text' 
                                 placeholder='enter your location'     
                                 value={values.location} 
@@ -73,15 +75,16 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                         </div>
 
         
-                        <Button outline color="primary" className='submit' type="submit" >Submit</Button>
+                        <Button color="primary" className='submit' type="submit" >Submit</Button>
                 </Form>                  
+        </div>
               );
         }
         const formikUserForm = withFormik({
-            mapPropsToValues({name, username, password, role, values, price, location, bio }){
-                    console.log(values)
-                    return {
-                            name: name || "",
+                mapPropsToValues({name, username, password, role, values, price, location, bio }){
+                        console.log(values)
+                        return {
+                                name: name || "",
                             username: username || "",
                             password: password ||  "",
                             role: role || "rider",
