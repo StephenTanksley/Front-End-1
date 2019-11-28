@@ -2,20 +2,19 @@ import {
 
     //loading
     LOADING,
+    EDITING_USER_START,
+    EDITING_USER_STOP,
     USER_LOGOUT,
+
 
     //user
     GET_USER_START,
     GET_USER_SUCCESS,
     GET_USER_FAILED,
 
-    GET_DRIVERLIST_START,
-    GET_DRIVERLIST_SUCCESS,
-    GET_DRIVERLIST_FAILED,
-
-    GET_RIDERLIST_START,
-    GET_RIDERLIST_SUCCESS,
-    GET_RIDERLIST_FAILED,
+    ADD_USER_START,
+    ADD_USER_SUCCESS,
+    ADD_USER_FAILED,
 
     GET_DRIVER_START,
     GET_DRIVER_SUCCESS,
@@ -25,14 +24,17 @@ import {
     GET_RIDER_SUCCESS,
     GET_RIDER_FAILED,
 
-    //riders
-    // ADD_RIDER_START,
-    // ADD_RIDER_SUCCESS,
-    // ADD_RIDER_FAILED,
 
-    ADD_USER_START,
-    ADD_USER_SUCCESS,
-    ADD_USER_FAILED,
+    //user arrays
+    GET_DRIVERLIST_START,
+    GET_DRIVERLIST_SUCCESS,
+    GET_DRIVERLIST_FAILED,
+
+    GET_RIDERLIST_START,
+    GET_RIDERLIST_SUCCESS,
+    GET_RIDERLIST_FAILED,
+    
+    //riders
 
     UPDATE_RIDER_START,
     UPDATE_RIDER_SUCCESS,
@@ -43,10 +45,6 @@ import {
     DELETE_RIDER_FAILED,
 
     //drivers
-
-    // ADD_DRIVER_START,
-    // ADD_DRIVER_SUCCESS,
-    // ADD_DRIVER_FAILED,
 
     UPDATE_DRIVER_START,
     UPDATE_DRIVER_SUCCESS,
@@ -65,6 +63,7 @@ const initialState = {
     user: [],
     currentUser: [],
     loading: false,
+    editingUser: false,
     loggedIn: false,
     addingUser: false,
     
@@ -95,6 +94,20 @@ export function reducer(state = initialState, action) {
                 ...state,
                 loading: true,
                 loggedIn: false
+            }
+        }
+
+        case EDITING_USER_START: {
+            return {
+                ...state,
+                editingUser: true
+            }
+        }
+
+        case EDITING_USER_STOP: {
+            return {
+                ...state,
+                editingUser: false
             }
         }
 
@@ -132,6 +145,31 @@ export function reducer(state = initialState, action) {
                     ...state,
                     loading: false,
                     loggedIn: false,
+                    error: action.payload
+                }
+            }
+
+
+    //adding a new rider user
+        case ADD_USER_START: {
+            return {
+                ...state,
+                addingUser: true
+            }
+        }
+
+        case ADD_USER_SUCCESS: {
+                return {
+                    ...state,
+                    user: action.payload,
+                    addingUser: false
+                }
+            }
+
+        case ADD_USER_FAILED: {
+                return {
+                    ...state,
+                    addingUser: false,
                     error: action.payload
                 }
             }
@@ -212,36 +250,6 @@ export function reducer(state = initialState, action) {
         }
     }
 
-
-
-
-
-
-
-
-    //adding a new rider user
-    case ADD_USER_START: {
-            return {
-                ...state,
-                addingUser: true
-            }
-        }
-
-    case ADD_USER_SUCCESS: {
-            return {
-                ...state,
-                user: action.payload,
-                addingUser: false
-            }
-        }
-
-    case ADD_USER_FAILED: {
-            return {
-                ...state,
-                addingUser: false,
-                error: action.payload
-            }
-        }
 
 
     //updating a rider user

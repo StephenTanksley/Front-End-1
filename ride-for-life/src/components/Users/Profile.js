@@ -5,8 +5,19 @@ import {
     DropdownToggle, DropdownMenu, DropdownItem
   } from 'reactstrap';
 
+import EditForm from './EditForm'
+
 import { connect } from 'react-redux'
-import { GetDriver, GetRider, DeleteRider, DeleteDriver } from '../State/actions/actions'
+import { 
+    GetDriver, 
+    GetRider, 
+    UpdateRider, 
+    UpdateDriver, 
+    DeleteRider, 
+    DeleteDriver, 
+    EditingUserStart,
+    EditingUserStop
+  } from '../State/actions/actions'
 import "./Users.css"
 
 
@@ -14,15 +25,37 @@ import "./Users.css"
 
 const Profile = (props) => {
 
-    //determining if a user is logged in. If so, assigning profile info to a const. 
-    const loggedIn = (props.loggedIn === true)
     const profileInfo = props.currentUser
+    const editing = props.editingUser
+    const user = props.user
 
     //setting strings to check against.
     const driverRole = "driver";
     const riderRole = "rider"; 
     
-    console.log(props)
+    console.log('profile props', props)
+
+    const editButton = () => {
+      editing === false
+      ? props.EditingUserStart()
+      : props.EditingUserStop()
+    }
+
+    if(user.role === driverRole) {
+      const handleEdit = (e) => {
+        e.preventDefault()
+        props.UpdateDriver()
+      }
+    } else {
+      const handleEdit = (e) => {
+        e.preventDefault()
+        props.UpdateRider()
+      }
+    }
+
+    const handleSubmit = () => {
+
+    }
 
 
     // const handleDelete = (e, userID) => {
@@ -32,59 +65,61 @@ const Profile = (props) => {
     // }
 
     return (
-        <>
-        {profileInfo && loggedIn && (driverRole === props.user.role) 
-        ? 
-        <div className="profile">
-            <div className="profile-card">
-                <Card id="profile-card">
-                  <img src={props.currentUser.url} />
-                <CardTitle tag="h3">{profileInfo.username}</CardTitle>
-                <CardSubtitle>Location: {profileInfo.location}</CardSubtitle>
-                <CardSubtitle>Price: {profileInfo.price}</CardSubtitle>
-                <CardSubtitle>Bio: {profileInfo.bio}</CardSubtitle>
-                </Card>
-            </div>
+      <>
+      {editing 
+        ? <div>
+            <EditForm />
+            <Button color="warning" className="edit" onClick={editButton}>I Changed My Mind</Button>
+          </div> 
 
-            <div className="profile-buttons">
-                <Button color="warning" className="edit">Edit</Button>
-                <Button color="danger" className="delete">Delete</Button>
+        : <div> 
+          {profileInfo && (driverRole === user.role) 
+          ? 
+          <div className="profile">
+              <div className="profile-card">
+                  <Card id="profile-card">
+                    <img src={props.currentUser.url} />
+                    <CardTitle tag="h3">{profileInfo.username}</CardTitle>
+                    <CardSubtitle>Location: {profileInfo.location}</CardSubtitle>
+                    <CardSubtitle>Price: {profileInfo.price}</CardSubtitle>
+                    <CardSubtitle>Bio: {profileInfo.bio}</CardSubtitle>
+                  </Card>
+              </div>
+
+              <div className="profile-buttons">
+                  <Button color="warning" className="edit" onClick={editButton}>Edit</Button>
+                  <Button color="danger" className="delete">Delete</Button>
+              </div>
             </div>
+          
+          : null}
+
+          {profileInfo && (riderRole === props.user.role) 
+          ? 
+          <div className="profile">
+              <div className="profile-card">
+                  <Card id="profile-card">
+                    <CardTitle tag="h3">{profileInfo.name}</CardTitle>
+                    <CardSubtitle>Location: {profileInfo.location}</CardSubtitle>
+                  </Card>
+              </div>
+              
+              <div className="profile-buttons">
+                  <Button color="warning" className="edit" onClick={editButton}>Edit</Button>
+                  
+                  <Button color="danger" className="delete">Delete</Button>
+              </div>
           </div>
-        
-        : null}
+          
+          : null}
 
-        {profileInfo && loggedIn && (riderRole === props.user.role) 
-        ? 
-        <div className="profile">
-            <div className="profile-card">
-                <Card id="profile-card">
-                <CardTitle tag="h3">{profileInfo.username}</CardTitle>
-                <CardSubtitle>Location: {profileInfo.location}</CardSubtitle>
-                </Card>
-            </div>
-            
-            <div className="profile-buttons">
-                <Button color="warning" className="edit">Edit</Button>
-                
-                {/* <Button color="danger" className="delete" onClick={() => {
-                  if(window.confirm('Are you sure you want to delete your profile?')) {
-                    props.DeleteRider(props.currentUser.id)
-                  } else {
-                    null
-                  }
-                }}> */}
-{/*                   
-                  Delete
-                </Button> */}
-            </div>
-        </div>
-        
-        : null}
-{/*         
-        <p>Hello from the Profile component. The profile component is going to show the user's profile and also have an embedded component for editing and deleting the user's profile.</p>  */}
-        </>
-    )
+
+
+
+        </div>}
+
+    </>
+  )
 }
 
 
@@ -92,15 +127,21 @@ const mapStateToProps = state => {
         return {
         user: state.user,
         currentUser: state.currentUser,
-        loggedIn: state.loggedIn
+        updatingDriver: state.updatingDriver,
+        updatingRider: state.updatingRider,
+        editingUser: state.editingUser
     }
 }
 
 const mapDispatchToProps = {
    GetDriver,
    GetRider,
+   UpdateRider,
+   UpdateDriver,
    DeleteDriver,
-   DeleteRider
+   DeleteRider,
+   EditingUserStart,
+   EditingUserStop
 }
 
 

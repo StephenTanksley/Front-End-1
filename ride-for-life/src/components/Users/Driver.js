@@ -9,7 +9,7 @@ import { GetRiderList, GetDriver, UpdateDriver, DeleteDriver } from '../State/ac
 
 const Driver = (props) => {
 
-  console.log('driver component props', props)
+  // console.log('driver component props', props)
 
   const userID = props.user.driver_id;
   const profileInfo = props.user
@@ -29,15 +29,13 @@ const mapStateToProps = state => {
     return {
     user: state.user,
     loggedIn: state.loggedIn,
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
   }
 }
 
 const mapDispatchToProps = {
   GetRiderList,
   GetDriver,
-  UpdateDriver,
-  DeleteDriver
 }
 
 
