@@ -32,8 +32,6 @@ function App(props) {
       <div className="landing-page">
         <img className="landing-logo" src={logo}/>
 
-        <h2>Welcome to Ride For Life</h2>
-
         <p className="pitch">
           Ride For Life serves mothers in Uganda to improve maternal and child survival. One of the biggest obstacles women face while pregnant is getting to a 
           health facility to safely deliver. Most people do not own a car or a motorcycle, and a majority live greater than 5 km from a health center 
