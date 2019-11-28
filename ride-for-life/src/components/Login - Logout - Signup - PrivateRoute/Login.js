@@ -15,7 +15,7 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange, }) => {
 
                 <div>
                 <Form 
-                  className='form' 
+                  className='form login' 
                   onSubmit={handleSubmit}
                   >
                         {/* 

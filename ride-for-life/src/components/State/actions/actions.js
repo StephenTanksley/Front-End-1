@@ -26,6 +26,8 @@ import { axiosRequest as axios, setToken, removeToken } from '../../../utils/api
 //I'd like to have a spinner set up for as long as our API call is going.
 
 export const LOADING = "LOADING"
+export const EDITING_USER_START = "EDITING_USER_START"
+export const EDITING_USER_STOP = "EDITING_USER_STOP"
 
 /* ----- GET USERS ----- */
 
@@ -64,11 +66,6 @@ export const USER_LOGOUT = "USER_LOGOUT"
 
 /* ----- RIDERS ----- */
 
-//add new rider
-// export const ADD_RIDER_START = "ADD_RIDER_START"
-// export const ADD_RIDER_SUCCESS = "ADD_RIDER_SUCCESS"
-// export const ADD_RIDER_FAILED = "ADD_RIDER_FAILED"
-
 //update
 export const UPDATE_RIDER_START = "UPDATE_RIDER_START"
 export const UPDATE_RIDER_SUCCESS = "UPDATE_RIDER_SUCCESS"
@@ -83,11 +80,6 @@ export const DELETE_RIDER_FAILED = "DELETE_RIDER_FAILED"
 
 /* ----- DRIVERS ----- */
 
-//add new driver
-// export const ADD_DRIVER_START = "ADD_DRIVER_START"
-// export const ADD_DRIVER_SUCCESS = "ADD_DRIVER_SUCCESS"
-// export const ADD_DRIVER_FAILED = "ADD_DRIVER_FAILED"
-
 //update
 export const UPDATE_DRIVER_START = "UPDATE_DRIVER_START"
 export const UPDATE_DRIVER_SUCCESS = "UPDATE_DRIVER_SUCCESS"
@@ -98,8 +90,8 @@ export const DELETE_DRIVER_START = "DELETE_DRIVER_START"
 export const DELETE_DRIVER_SUCCESS = "DELETE_DRIVER_SUCCESS"
 export const DELETE_DRIVER_FAILED = "DELETE_DRIVER_FAILED"
 
-//actions
 
+//actions
 /* ----- ALL USERS ----- */
 export const LoginUser = (credentials) => {
     return dispatch => {
@@ -116,6 +108,19 @@ export const LoginUser = (credentials) => {
                 dispatch({ type: GET_USER_FAILED, payload: error})
                 console.log(error.response)
             })
+    }
+}
+
+
+export const EditingUserStart = () => {
+    return dispatch => {
+        dispatch({ type: EDITING_USER_START })
+    }
+}
+
+export const EditingUserStop = () => {
+    return dispatch => {
+        dispatch({ type: EDITING_USER_STOP })
     }
 }
 
@@ -215,11 +220,11 @@ export const AddUser = (user) => {
 
 
 
-export const UpdateRider = (rider) => {
+export const UpdateRider = (rider, userID) => {
     return dispatch => {
-        dispatch({ type: UPDATE_RIDER_START, rider })
+        dispatch({ type: UPDATE_RIDER_START })
         axios()
-        .put(`/api/riders/:id`, rider)
+        .put(`/api/riders/${userID}`, rider)
         .then(response => {
             const token = response.data.token
             dispatch({ type: UPDATE_RIDER_SUCCESS, payload: response.data })
@@ -231,13 +236,12 @@ export const UpdateRider = (rider) => {
     }
 }
 
-export const DeleteRider = () => {
+export const DeleteRider = (userID) => {
     return dispatch => {
         dispatch({ type: DELETE_RIDER_START })
         axios()
-        .delete(`/api/riders/:id`)
+        .delete(`/api/riders/${userID}`)
         .then(response => {
-            const token = response.data.token
             dispatch({ type: DELETE_RIDER_SUCCESS, payload: response.data })
         })
         .catch(error => {
@@ -250,11 +254,11 @@ export const DeleteRider = () => {
 /* ----- DRIVERS ----- */
 
 //update a specific driver's profile.
-export const UpdateDriver = (driver) => {
+export const UpdateDriver = (driver, userID) => {
     return dispatch => {
         dispatch({ type: UPDATE_DRIVER_START, driver })
         axios()
-        .put(`/api/drivers/:id`, driver)
+        .put(`/api/drivers/${userID}`, driver)
         .then(response => {
             const token = response.data.token
             dispatch({ type: UPDATE_DRIVER_SUCCESS, payload: response.data })
@@ -272,7 +276,6 @@ export const DeleteDriver = () => {
         axios()
         .delete(`/api/drivers/:id`)
         .then(response => {
-            const token = response.data.token
             dispatch({ type: DELETE_DRIVER_SUCCESS, payload: response.data })
         })
         .catch(error => {

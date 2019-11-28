@@ -14,25 +14,17 @@ import { getToken } from '../../utils/api'
 
 
 const Dashboard = (props) => {
-    const loggedIn = getToken()
     console.log(props)
-    // const loggedIn = props.loggedIn;
-    
-    //checking adding components together. Must be logged in and a driver/rider.
-    console.log('logged in?', loggedIn)
-    
+    const loggedIn = getToken()
     const driverRole = "driver";
-    // console.log('driver', driverRole)
-
     const riderRole = "rider";
-    // console.log('rider', riderRole)
     
     return (
         <>
             {loggedIn && (driverRole === props.user.role) ? <Driver /> : null}
             {loggedIn && (riderRole === props.user.role) ? <Rider /> : null}
         </>
-    ) 
+    )
 }
 
 const mapStateToProps = state => {
