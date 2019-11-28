@@ -16,14 +16,15 @@
 }
 
 .landing-logo{
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
-  padding:11%;
-  margin-left: 7%;
+  padding: 11%;
+  margin-left: 18%;
 }
 
 .pitch{
   margin: 2%;
+  margin-top: 0%;
   width: 80%;
   font-size: 1.1rem;
   color: black;

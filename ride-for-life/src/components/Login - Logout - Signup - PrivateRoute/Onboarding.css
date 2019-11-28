@@ -1,0 +1,53 @@
+/* Login */
+
+.login{
+    width: 20%;
+    color: black;
+    background-color: #E46428;
+    padding: 1%;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin-bottom: 1%;
+}
+
+.form-login{
+    
+}
+
+.submit{
+    margin-top: 3%;
+}
+
+.login-field{
+    margin: 2%;
+}
+
+/* Rider */
+
+.rider-signup{
+    width: 20%;
+    color: black;
+    background-color: #E46428;
+    padding: 1%;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin-bottom: 1%;
+}
+
+.signup-field{
+    margin: 1%;
+}
+
+
+
+/* Driver */
+
+.driver-signup{
+    width: 20%;
+    color: black;
+    background-color: #E46428;
+    padding: 1%;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin-bottom: 1%;
+}

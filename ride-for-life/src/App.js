@@ -32,7 +32,13 @@ function App(props) {
       <div className="landing-page">
         <img className="landing-logo" src={logo}/>
 
-        <h2>Welcome to Ride For Life</h2>
+        <PrivateRoute exact path='/dashboard' component={Dashboard} />
+
+        <Route exact path='/driver-signup' component={DriverSignup} />
+        <Route exact path='/rider-signup' component={RiderSignup} />
+
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/logout' component={Logout} />
 
         <p className="pitch">
           Ride For Life serves mothers in Uganda to improve maternal and child survival. One of the biggest obstacles women face while pregnant is getting to a 
@@ -52,14 +58,6 @@ function App(props) {
 
     {/* <Link to={'/driver-signup'} > <Button color='secondary'>Driver Signup</Button> </Link>
     <Link to={'/rider-signup'} > <Button color='secondary'>Rider Signup</Button> </Link>  */}
-
-      <PrivateRoute exact path='/dashboard' component={Dashboard} />
-
-      <Route exact path='/driver-signup' component={DriverSignup} />
-      <Route exact path='/rider-signup' component={RiderSignup} />
-
-      <Route exact path='/login' component={Login} />
-      <Route exact path='/logout' component={Logout} />
 
     {/* <RidersList /> */}
 
