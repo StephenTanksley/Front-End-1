@@ -1,3 +1,5 @@
+/* Rider */
+
 .Rider {
     font-family: 'Source Sans Pro', sans-serif;
     display: flex;
@@ -35,7 +37,6 @@
 
 .dropdown-menu {
     width: 100%;
-    margin: 1%;
 }
 
 .dropdown-item {
@@ -64,6 +65,8 @@
     margin-left: 1%;
 }
 
+
+
 /* Profile */
 
 .profile {
@@ -75,23 +78,14 @@
 }
 
 .profile-card {
-    width: 60%;
-    margin: 1%;
+    margin: 2%;
+    width: 100%;
     border: 3px solid #E46428;
     border-radius: 5px;
 }
 
-.card-subtitle {
-    justify-content: center;
-    align-items: center;
-    width: 60%;
-}
-
 #profile-card{
     padding: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .profile-buttons {
@@ -110,7 +104,6 @@
 
 }
 
-
 /* Driver */
 
 .Driver {
@@ -123,18 +116,4 @@
     background-color: #CBCBCB;
     border: 1px solid black;
     border-radius: 10px;
-}
-
-.edit-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: .5rem;
-    margin: .5rem;
-}
-
-.edit-form input {
-    margin: .4rem;
-    width: 100%;
 }
