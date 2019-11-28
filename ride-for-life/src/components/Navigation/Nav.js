@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Link, Redirect, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Button } from 'reactstrap'
+import logo from "./RFLlogo-horz.svg"
 import "./Nav.css"
 
 import { getToken } from '../../utils/api'
@@ -12,7 +13,7 @@ const Navigation = (props) => {
     return(
         <div>
             <div className="nav-header">
-                <h2>Ride For Life</h2>
+                <img src={logo}></img>
             </div>
             <nav className="navigation-bar">
                 {/* Checks to see if we have a token. If not, we log in... */}

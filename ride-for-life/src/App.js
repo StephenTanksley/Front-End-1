@@ -6,6 +6,9 @@ import { Route } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 
+import logo from "./RFLlogo.svg"
+import "./App.css"
+
 //component imports
 import DriverSignup from './components/Login - Logout - Signup - PrivateRoute/DriverSignup'
 import RiderSignup from './components/Login - Logout - Signup - PrivateRoute/RiderSignup'
@@ -25,6 +28,20 @@ function App(props) {
 
       <Nav />
       {/* <h1>Hello. Welcome to Ride for Life.</h1> */}
+
+      <div className="landing-page">
+        <img className="landing-logo" src={logo}/>
+
+        <h2>Welcome to Ride For Life</h2>
+
+        <p className="pitch">
+          Ride For Life serves mothers in Uganda to improve maternal and child survival. One of the biggest obstacles women face while pregnant is getting to a 
+          health facility to safely deliver. Most people do not own a car or a motorcycle, and a majority live greater than 5 km from a health center 
+          (an hour by foot). Ride For Life provides a solution by quickly dispatching motorcycle ambulances to women in need of urgent medical care. 
+          By quickly providing transportation to qualified medical care, Ride For Life hopes to address issues of mortality and pregnancy complications in Uganda.
+        </p>
+
+      </div>
 
 
       {/* 
