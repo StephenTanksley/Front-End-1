@@ -4,6 +4,8 @@ import {Button} from "reactstrap";
 import * as yup from "yup";
 import {Link, Redirect } from 'react-router-dom';
 
+import "./Onboarding.css"
+
 //action import
 import { AddUser } from '../State/actions/actions';
 
@@ -13,18 +15,12 @@ import { connect } from 'react-redux';
 const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
 
         return(
-                <div>
+                <div className="driver-signup">
                 <Form 
-                  className='form driver'
+                  className='form-driver'
                   onSubmit={handleSubmit}
                   >
-                        {/* 
-                                //Why are we linking to the dashboard here? Dashboard is a 
-                                protected route.
-                        
-                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link> */}
 
-                        <br />
                         <h1>Driver Signup</h1>
                               
                         <label>Name</label>
@@ -32,6 +28,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                                 {touched.name && errors.name && (
                                 <p>Error: {errors.name}</p>)} 
                                 <Field name='name' 
+                                        className="signup-field"
                                         type='text' 
                                         placeholder='enter name'     
                                         value={values.name} 
@@ -45,6 +42,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                                 <p>Error: {errors.username}</p>)} 
                                 <Field 
                                         name='username' 
+                                        className="signup-field"
                                         type='text' 
                                         placeholder='enter a username' 
                                         value={values.username} 
@@ -57,7 +55,8 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                         {touched.password && errors.password && (
                                 <p>Error: {errors.password}</p>)}
                                 <Field 
-                                        name='password' 
+                                        name='password'
+                                        className="signup-field"
                                         type='text' 
                                         placeholder='enter a password' 
                                         value={values.password} 
@@ -71,8 +70,9 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                                 <p>Error: {errors.location}</p>)} 
                                 <Field 
                                         name='location' 
+                                        className="signup-field"
                                         type='text' 
-                                        placeholder='location'     
+                                        placeholder='location'
                                         value={values.location} 
                                         onChange={handleChange} />
                         </div>
@@ -83,6 +83,7 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                                 <p>Error: {errors.price}</p>)} 
                                 <Field 
                                         name='price' 
+                                        className="signup-field"
                                         type='text' 
                                         placeholder='Price'     
                                         value={values.price} 
@@ -94,13 +95,14 @@ const DriverSignup = ({handleSubmit, errors, touched, values, handleChange}) => 
                                 {touched.bio && errors.bio && (
                                 <p>Error: {errors.bio}</p>)} 
                                 <Field name='bio' 
+                                className="signup-field"
                                 type='text' 
                                 placeholder='Bio'     
                                 value={values.bio} 
                                 onChange={handleChange} />
                         </div>
 
-                        <Button outline color="primary" className='submit' type="submit" >Submit</Button>
+                        <Button color="primary" className='submit' type="submit" >Submit</Button>
         
                 </Form>
                 <div>Already signed up? {<Link to="/login">Login</Link>}</div>

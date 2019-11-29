@@ -4,6 +4,8 @@ import {Button} from "reactstrap";
 import * as yup from "yup";
 import {Link, withRouter, Redirect} from 'react-router-dom'
 
+import "./Onboarding.css"
+
 
 //action import
 import { LoginUser } from '../State/actions/actions'
@@ -13,18 +15,11 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange, }) => {
         
         return(
 
-                <div>
+                <div className="login">
                 <Form 
-                  className='form login' 
+                  className='form-login' 
                   onSubmit={handleSubmit}
                   >
-                        {/* 
-                                //Why are we linking to the dashboard here? Dashboard is a 
-                                protected route.
-
-                        <Link to={'/'} > <Button color='secondary'>Home</Button> </Link> */}
-                        
-                        <br />
 
                         <h1>Login</h1>
                 
@@ -34,6 +29,7 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange, }) => {
                                 <p>Error: {errors.username}</p>)} 
                                 <Field 
                                 name='username' 
+                                className="login-field"
                                 type='text' 
                                 placeholder='enter your username' 
                                 value={values.username} 
@@ -46,13 +42,14 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange, }) => {
                                 <p>Error: {errors.password}</p>)}
                                 <Field 
                                 name='password' 
+                                className="login-field"
                                 type='text' 
                                 placeholder='enter your password' 
                                 value={values.password} 
                                 onChange={handleChange} />
                         </div>
 
-                        <Button outline color="primary" className='submit' type="submit" >Submit</Button>
+                        <Button color="primary" className='submit' type="submit" >Submit</Button>
                 </Form>
                 <div>Need a ride? {<Link to="/rider-signup">Rider signup</Link>}</div>
                 <div>Do you like to drive? {<Link to="/driver-signup">Driver signup</Link>}</div>
