@@ -67,7 +67,7 @@ const Profile = (props) => {
     return (
       <>
       {editing 
-        ? <div>
+        ? <div className="edit-form-container">
             <EditForm />
             <Button color="warning" className="edit" onClick={editButton}>I Changed My Mind</Button>
           </div> 

@@ -38,7 +38,6 @@ const EditForm = (props) => {
                 placeholder={props.currentUser.bio}
             />
 
-
         </form>
         </>
     )

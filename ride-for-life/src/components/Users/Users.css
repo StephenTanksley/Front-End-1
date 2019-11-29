@@ -116,6 +116,10 @@
     border-radius: 10px;
 }
 
+
+
+/* Edit Form */
+
 .edit-form {
     display: flex;
     flex-direction: column;
@@ -128,4 +132,10 @@
 .edit-form input {
     margin: .4rem;
     width: 100%;
+}
+
+.edit-form-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
 }
