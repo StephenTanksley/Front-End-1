@@ -15,7 +15,7 @@ export default function SearchForm(props) {
       <div className="search-form">
         <form>
             <Input className="search-input" type="text" value={query} onChange={handleChange} placeholder="Search by location" />
-          <Button className="submit-button" outline color="warning">Submit</Button>
+          <Button className="submit-button" color="warning">Submit</Button>
         </form>
       </div>
     );
