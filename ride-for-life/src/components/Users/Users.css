@@ -117,3 +117,25 @@
     border: 1px solid black;
     border-radius: 10px;
 }
+
+/* Edit Form */
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    margin: .5rem;
+}
+
+.edit-form input {
+    margin: .4rem;
+    width: 100%;
+}
+
+.edit-form-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
