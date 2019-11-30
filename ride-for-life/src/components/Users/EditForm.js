@@ -59,11 +59,12 @@ const EditForm = (props) => {
     const handleSubmit = () => {
         if(user.role === driverRole) {
           props.UpdateDriver(driverEdits, id)
-          console.log(driverEdits)
+          console.log('driver edits and id', driverEdits, id)
         //   setDriverEdits(initialDriverValue)
         } else {
           props.UpdateRider(riderEdits, id)
           console.log(riderEdits)
+          console.log('rider edits and id', riderEdits, id)
         //   setRiderEdits(initialRiderValue)
         }
         props.EditingUserStop()

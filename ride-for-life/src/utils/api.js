@@ -21,7 +21,9 @@ export const removeToken = () => {
 
 export const axiosRequest = () => {    
     return(
+        
         getToken()
+
         ? axios
             .create({
             baseURL: 'https://rideforlife-backend.herokuapp.com',

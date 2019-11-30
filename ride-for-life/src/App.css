@@ -33,3 +33,7 @@
   border-radius: 10px;
   border: 2px solid #E42127;
 }
+
+.hidden { 
+  display: none;
+}
