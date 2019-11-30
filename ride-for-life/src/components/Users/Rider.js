@@ -63,6 +63,7 @@ const Rider = (props) => {
             <CardSubtitle>Price: {item.price}</CardSubtitle>
             <CardSubtitle>Bio: {item.bio}</CardSubtitle>
           <Button className="request-button" outline color="primary">Request</Button>
+          <Button className="review-button" outline color="success">Add Review</Button>
         </CardBody>
 
         <Reviews />
