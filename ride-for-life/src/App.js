@@ -22,8 +22,8 @@ import Dashboard from './components/Users/Dashboard'
 
 function App(props) {
 
+  const loggedIn = props.loggedIn
 
-  console.log(props)
   return (
     <div className="App">
 
@@ -41,7 +41,7 @@ function App(props) {
         <Route exact path='/login' component={Login} />
         <Route exact path='/logout' component={Logout} />
 
-        <p className="pitch">
+        <p className={loggedIn ? "hidden" : "pitch"}>
           Ride For Life serves mothers in Uganda to improve maternal and child survival. One of the biggest obstacles women face while pregnant is getting to a 
           health facility to safely deliver. Most people do not own a car or a motorcycle, and a majority live greater than 5 km from a health center 
           (an hour by foot). Ride For Life provides a solution by quickly dispatching motorcycle ambulances to women in need of urgent medical care. 
