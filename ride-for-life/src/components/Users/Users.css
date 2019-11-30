@@ -35,11 +35,18 @@
 }
 
 .dropdown-menu {
-    width: 100%;
+    width: 40%;
 }
 
-.dropdown-item {
+#dropdown-menu{
+    border: 2px solid #E46428;
+    margin: 0 auto;
+}
+
+#dropdown-item {
+    white-space: normal;
     width: 100%;
+    color: black;
 }
 
 .home-button {
@@ -57,6 +64,12 @@
 
 .request-button {
     margin-top: 3%;
+    margin: 1%;
+}
+
+.review-button {
+    margin-top: 3%;
+    margin: 1%;
 }
 
 .submit-button {
@@ -79,7 +92,7 @@
 .profile-card {
     margin: 2%;
     width: 100%;
-    border: 3px solid #E46428;
+    border: 3px solid #E42127;
     border-radius: 5px;
 }
 
@@ -114,6 +127,10 @@
     margin: 1% auto;
     background-color: #CBCBCB;
     border-radius: 10px;
+}
+
+.driver-signup{
+    background-color: #E42127;
 }
 
 /* Edit Form */
