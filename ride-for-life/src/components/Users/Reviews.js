@@ -20,8 +20,12 @@ import {
 
             <DropdownMenu positionFixed={true} id="dropdown-menu" className="dropdown-menu">
                 <DropdownItem disabled={true} id="dropdown-item">
-                <h1>Reviews</h1>
+                Reviews Reviews Reviews Reviews Reviews Reviews
+                Reviews Reviews Reviews Reviews Reviews Reviews 
+                Reviews Reviews Reviews Reviews Reviews Reviews
                 </DropdownItem>
+                
+                <DropdownItem divider/>
 
                 <DropdownItem disabled={true} id="dropdown-item">
                 <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
