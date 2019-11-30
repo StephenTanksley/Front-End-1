@@ -123,8 +123,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: .5rem;
-    margin: .5rem;
+    padding: 1.5rem;
+    margin: 1.5rem;
+    width: 100%;
 }
 
 .edit-form input {

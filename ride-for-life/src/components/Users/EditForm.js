@@ -7,38 +7,137 @@ import {
 } from '../State/actions/actions';
 
 
+
+//need to fix the uncontrolled component to be a controlled component.
+
 const EditForm = (props) => {
 
-    const [driverEdits, setDriverEdits] = useState(props.currentUser)
+    const user = props.user
+    const id = props.currentUser.id
+    
+    const driverRole = "driver";
+    const riderRole = "rider";
 
-    console.log('current user', props.currentUser)
+    const [driverEdits, setDriverEdits] = useState({
+        name: user.name || '',
+        price: user.price || '',
+        location: user.location || '',
+        bio: user.bio || ''
+    } || initialDriverValue)
+
+    const initialDriverValue = {
+        name: '',
+        price: '',
+        location: '',
+        bio: ''
+    }
+
+    const [riderEdits, setRiderEdits] = useState({
+        name: user.name || '',
+        location: user.location || ''
+    } || initialRiderValue)
+
+
+    const initialRiderValue = {
+        name: '',
+        location: ''
+    }
+
+
+    const handleChange = e => {
+        if(user.role === driverRole) {
+        setDriverEdits({
+            [e.target.name]: e.target.value
+            })
+        } else {
+        setRiderEdits ({
+            [e.target.name]: e.target.value    
+            })
+        }
+    }
+    
+    const handleSubmit = () => {
+        if(user.role === driverRole) {
+          props.UpdateDriver(driverEdits, id)
+          console.log(driverEdits)
+        //   setDriverEdits(initialDriverValue)
+        } else {
+          props.UpdateRider(riderEdits, id)
+          console.log(riderEdits)
+        //   setRiderEdits(initialRiderValue)
+        }
+        props.EditingUserStop()
+      }
+
+    // console.log('current user', props.currentUser)
+
     return(
         <>
-        This is an edit form from inside the EditForm component.
+       
+     { user.role === driverRole ?  
 
-        <form className="edit-form">
+        <div>
+            <form className="edit-form" onSubmit={handleSubmit}>
 
-            <input 
-                type='text'
-                placeholder={props.currentUser.name}
-            />
+                <input 
+                    type='text'
+                    name="name"
+                    placeholder={props.currentUser.name}
+                    value={user.name}
+                    onChange={handleChange}
+                />
 
-            <input 
-                type='text'
-                placeholder={props.currentUser.price}
-            />
+                <input 
+                    type='text'
+                    name="price"
+                    placeholder={props.currentUser.price}
+                    value={user.price}
+                    onChange={handleChange}
+                />
 
-            <input 
-                type='text'
-                placeholder={props.currentUser.location}
-            />
+                <input 
+                    type='text'
+                    name="location"
+                    placeholder={props.currentUser.location}
+                    value={user.location}
+                    onChange={handleChange}
+                />
 
-            <input 
-                type='text'
-                placeholder={props.currentUser.bio}
-            />
+                <input 
+                    type='text'
+                    name="bio"
+                    placeholder={props.currentUser.bio}
+                    value={user.bio}
+                    onChange={handleChange}
+                />
+                <button type="submit" className="submit-button">Submit</button>
+            </form>
+        </div>
 
-        </form>
+        :
+        
+        <div>
+            <form className="edit-form" onSubmit={handleSubmit}>
+                <input 
+                    type='text'
+                    name="name"
+                    placeholder={props.currentUser.name}
+                    value={user.name}
+                    onChange={handleChange}
+                />
+
+                <input 
+                    type='text'
+                    name="location"
+                    placeholder={props.currentUser.location}
+                    value={user.name}
+                    onChange={handleChange}
+                />
+
+                <button type="submit" className="submit-button">Submit</button>
+            </form>
+
+        </div>}
         </>
     )
 }

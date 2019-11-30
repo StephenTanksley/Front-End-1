@@ -12,7 +12,6 @@ import "./App.css"
 //component imports
 import DriverSignup from './components/Login - Logout - Signup - PrivateRoute/DriverSignup'
 import RiderSignup from './components/Login - Logout - Signup - PrivateRoute/RiderSignup'
-import RidersList from './components/Users/RidersList'
 import Login from './components/Login - Logout - Signup - PrivateRoute/Login'
 import Logout from './components/Login - Logout - Signup - PrivateRoute/Logout'
 import PrivateRoute from './components/Login - Logout - Signup - PrivateRoute/PrivateRoute'
@@ -23,6 +22,8 @@ import Dashboard from './components/Users/Dashboard'
 
 function App(props) {
 
+
+  console.log(props)
   return (
     <div className="App">
 

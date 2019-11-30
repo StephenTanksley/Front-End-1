@@ -41,22 +41,6 @@ const Profile = (props) => {
       : props.EditingUserStop()
     }
 
-    if(user.role === driverRole) {
-      const handleEdit = (e) => {
-        e.preventDefault()
-        props.UpdateDriver()
-      }
-    } else {
-      const handleEdit = (e) => {
-        e.preventDefault()
-        props.UpdateRider()
-      }
-    }
-
-    const handleSubmit = () => {
-
-    }
-
 
     // const handleDelete = (e, userID) => {
     //   e.preventDefault()
