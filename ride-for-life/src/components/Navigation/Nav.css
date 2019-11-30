@@ -1,7 +1,6 @@
 .navigation-bar {
     font-family: 'Source Sans Pro', sans-serif;
     display: flex;
-    background-color: #E46428;
     border: 2px solid #575972;
     justify-content: space-around;
     width: 80%;
@@ -16,4 +15,12 @@
     display: flex;
     justify-content: center;
     margin: 1%;
+}
+
+.driver {
+    background-color: #E42127;
+}
+
+.rider {
+    background-color: #E46428;
 }
