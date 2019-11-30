@@ -35,11 +35,17 @@
 }
 
 .dropdown-menu {
-    width: 100%;
+    width: 40%;
 }
 
-.dropdown-item {
+#dropdown-menu{
+    border: 2px solid #E46428;
+    margin: 0 auto;
+}
+
+#dropdown-item {
     width: 100%;
+    color: black;
 }
 
 .home-button {

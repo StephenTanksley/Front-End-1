@@ -15,13 +15,12 @@ import { GetDriverList, GetRider, UpdateRider, DeleteRider } from '../State/acti
 
 import SearchForm from './SearchForm'
 import Profile from "./Profile"
+import Reviews from "./Reviews"
 import "./Users.css"
 
 const Rider = (props) => {
   const [data, setData] = useState([]);
   const [filterState, setFilterState] = useState([]);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen(prevState => !prevState);
   const Filter = (input) => {            //Dont forget to change rider.location.name to rider.location
     setFilterState(data.filter((rider => rider.location.toLowerCase().includes(input.toLowerCase()))))
   }
@@ -65,17 +64,9 @@ const Rider = (props) => {
             <CardSubtitle>Bio: {item.bio}</CardSubtitle>
           <Button className="request-button" outline color="primary">Request</Button>
         </CardBody>
-        <Dropdown className="dropdown" isOpen={dropdownOpen} toggle={toggle}>
-          <DropdownToggle caret>
-            Dropdown
-          </DropdownToggle>
-          <DropdownMenu className="dropdown-menu">
-            <DropdownItem id="dropdown-item">
-              //Make reviews component that displays a simple card for each review
-            <h1>Reviews</h1>
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+
+        <Reviews />
+
       </Card>))}
     </div>
     )
