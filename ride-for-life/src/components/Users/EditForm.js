@@ -13,6 +13,8 @@ import {
 const EditForm = (props) => {
 
     const user = props.user
+    const id = props.currentUser.id
+    
     const driverRole = "driver";
     const riderRole = "rider";
 
@@ -56,11 +58,11 @@ const EditForm = (props) => {
     
     const handleSubmit = () => {
         if(user.role === driverRole) {
-          props.UpdateDriver(driverEdits, user.id)
+          props.UpdateDriver(driverEdits, id)
           console.log(driverEdits)
         //   setDriverEdits(initialDriverValue)
         } else {
-          props.UpdateRider(riderEdits, user.id)
+          props.UpdateRider(riderEdits, id)
           console.log(riderEdits)
         //   setRiderEdits(initialRiderValue)
         }
