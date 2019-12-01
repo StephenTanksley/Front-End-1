@@ -12,14 +12,14 @@ const Driver = (props) => {
   // console.log('driver component props', props)
 
   const userID = props.user.driver_id;
-  const profileInfo = props.user
+  const profileInfo = props.currentUser
   useEffect(() => {
     props.GetDriver('driver', userID)
   }, [])
 
     return(
     <div className="Driver">
-        <h1>Welcome back, {profileInfo.username}</h1>
+        <h1>Welcome back, {profileInfo.name}</h1>
         <Profile />
     </div>)
 }

@@ -261,11 +261,11 @@ export const UpdateDriver = (driver, userID) => {
     }
 }
 
-export const DeleteDriver = () => {
+export const DeleteDriver = (userID) => {
     return dispatch => {
         dispatch({ type: DELETE_DRIVER_START})
         axios()
-        .delete(`/api/drivers/:id`)
+        .delete(`/api/drivers/${userID}`)
         .then(response => {
             dispatch({ type: DELETE_DRIVER_SUCCESS, payload: response.data })
             console.log(response.data)

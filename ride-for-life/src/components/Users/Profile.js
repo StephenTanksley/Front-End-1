@@ -28,6 +28,7 @@ const Profile = (props) => {
     const profileInfo = props.currentUser
     const editing = props.editingUser
     const user = props.user
+    const userID = props.currentUser.id
 
     //setting strings to check against.
     const driverRole = "driver";
@@ -39,6 +40,12 @@ const Profile = (props) => {
       editing === false
       ? props.EditingUserStart()
       : props.EditingUserStop()
+    }
+
+    const deleteButton = () => {
+      props.user.role === driverRole
+      ? props.DeleteDriver(userID)
+      : props.DeleteRider(userID)
     }
 
 
@@ -63,7 +70,7 @@ const Profile = (props) => {
               <div className="profile-card">
                   <Card id="profile-card">
                     <img src={props.currentUser.url} />
-                    <CardTitle tag="h3">{profileInfo.username}</CardTitle>
+                    <CardTitle tag="h3">{profileInfo.name}</CardTitle>
                     <CardSubtitle>Location: {profileInfo.location}</CardSubtitle>
                     <CardSubtitle>Price: {profileInfo.price}</CardSubtitle>
                     <CardSubtitle>Bio: {profileInfo.bio}</CardSubtitle>
@@ -71,8 +78,22 @@ const Profile = (props) => {
               </div>
 
               <div className="profile-buttons">
-                  <Button color="warning" className="edit" onClick={editButton}>Edit</Button>
-                  <Button color="danger" className="delete">Delete</Button>
+
+                  <Button 
+                    color="warning" 
+                    className="edit" 
+                    onClick={editButton}
+                    >Edit
+                  </Button>
+
+                  <Button 
+                    color="danger" 
+                    className="delete"
+                    onClick={() => window.confirm("Are you sure you want to delete your account?")
+                  ? props.DeleteDriver(userID)
+                  : null }
+                    >Delete
+                  </Button>
               </div>
             </div>
           
@@ -89,9 +110,21 @@ const Profile = (props) => {
               </div>
               
               <div className="profile-buttons">
-                  <Button color="warning" className="edit" onClick={editButton}>Edit</Button>
+                  <Button 
+                    color="warning" 
+                    className="edit" 
+                    onClick={editButton}
+                    >Edit
+                  </Button>
                   
-                  <Button color="danger" className="delete">Delete</Button>
+                  <Button 
+                    color="danger" 
+                    className="delete"
+                    onClick={() => window.confirm("Are you sure you want to delete your account?")
+                  ? props.DeleteRider(userID)
+                  : null }
+                    >Delete
+                  </Button>
               </div>
           </div>
           
