@@ -6,29 +6,17 @@ import {
 
 //actions
 
-/* ----- ADMIN ----- */
 
-// //add admin
-// export const ADD_ADMIN_START = "ADD_ADMIN_START"
-// export const ADD_ADMIN_SUCCESS = "ADD_ADMIN_SUCCESS"
-// export const ADD_ADMIN_FAILED = "ADD_ADMIN_FAILED"
-
-// //update
-// export const UPDATE_ADMIN_START = "UPDATE_ADMIN_START"
-// export const UPDATE_ADMIN_SUCCESS = "UPDATE_ADMIN_SUCCESS"
-// export const UPDATE_ADMIN_FAILED = "UPDATE_ADMIN_FAILED"
-
-// // delete
-// export const DELETE_ADMIN_START = "DELETE_ADMIN_START"
-// export const DELETE_ADMIN_SUCCESS = "DELETE_ADMIN_SUCCESS"
-// export const DELETE_ADMIN_FAILED = "DELETE_ADMIN_FAILED"
-
-
-/* ----- LOADING ----- */
+/* ----- LOADING/LOGOUT ----- */
 
 //I'd like to have a spinner set up for as long as our API call is going.
 
 export const LOADING = "LOADING"
+export const USER_LOGOUT = "USER_LOGOUT"
+
+
+/* ----- EDITING ----- */
+
 export const EDITING_USER_START = "EDITING_USER_START"
 export const EDITING_USER_STOP = "EDITING_USER_STOP"
 
@@ -64,7 +52,6 @@ export const GET_RIDER_START = "GET_RIDER_START"
 export const GET_RIDER_SUCCESS = " GET_RIDER_SUCCESS"
 export const GET_RIDER_FAILED = "GET_RIDER_FAILED"
 
-export const USER_LOGOUT = "USER_LOGOUT"
 
 
 /* ----- RIDERS ----- */
