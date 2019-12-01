@@ -26,27 +26,28 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                         
                         <label>Name</label>
                         <div>
-                                {touched.name && errors.name && (
-                                        <p>Error: {errors.name}</p>)} 
-                                <Field name='name'
-                                className="signup-field"
-                                type='text' 
-                                placeholder='enter name'     
-                                value={values.name} 
-                                onChange={handleChange} />
+                        {touched.name && errors.name && (
+                                <p>Error: {errors.name}</p>)} 
+                                <Field 
+                                        name='name'
+                                        className="signup-field"
+                                        type='text' 
+                                        placeholder='enter name'     
+                                        value={values.name} 
+                                        onChange={handleChange} />
                         </div>
                 
                         <label>Username</label>
                         <div>
-                                {touched.username && errors.username && (
-                                        <p>Error: {errors.username}</p>)} 
+                        {touched.username && errors.username && (
+                                <p>Error: {errors.username}</p>)} 
                                 <Field 
-                                name='username'
-                                className="signup-field"
-                                type='text' 
-                                placeholder='enter a username' 
-                                value={values.username} 
-                                onChange={handleChange} />
+                                        name='username'
+                                        className="signup-field"
+                                        type='text' 
+                                        placeholder='enter a username' 
+                                        value={values.username} 
+                                        onChange={handleChange} />
                         </div>
                 
                         <label>Password</label>
@@ -54,24 +55,25 @@ const RiderSignup = ({handleSubmit, errors, touched, values, handleChange}) => {
                         {touched.password && errors.password && (
                                 <p>Error: {errors.password}</p>)}
                                 <Field 
-                                name='password'
-                                className="signup-field"
-                                type='text' 
-                                placeholder='enter a password' 
-                                value={values.password} 
-                                onChange={handleChange} />
+                                        name='password'
+                                        className="signup-field"
+                                        type='text' 
+                                        placeholder='enter a password' 
+                                        value={values.password} 
+                                        onChange={handleChange} />
                         </div>
 
                         <label>Location</label>
                         <div>
-                                {touched.location && errors.location && (
-                                        <p>Error: {errors.location}</p>)} 
-                                <Field name='location'
-                                className="signup-field"
-                                type='text' 
-                                placeholder='enter your location'     
-                                value={values.location} 
-                                onChange={handleChange} />
+                        {touched.location && errors.location && (
+                                <p>Error: {errors.location}</p>)} 
+                                <Field 
+                                        name='location'
+                                        className="signup-field"
+                                        type='text' 
+                                        placeholder='enter your location'     
+                                        value={values.location} 
+                                        onChange={handleChange} />
                         </div>
 
         

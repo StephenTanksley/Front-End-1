@@ -42,11 +42,11 @@ const Profile = (props) => {
       : props.EditingUserStop()
     }
 
-    const deleteButton = () => {
-      props.user.role === driverRole
-      ? props.DeleteDriver(userID)
-      : props.DeleteRider(userID)
-    }
+    // const deleteButton = () => {
+    //   props.user.role === driverRole
+    //   ? props.DeleteDriver(userID)
+    //   : props.DeleteRider(userID)
+    // }
 
 
     // const handleDelete = (e, userID) => {

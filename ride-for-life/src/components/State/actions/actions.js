@@ -232,6 +232,7 @@ export const DeleteRider = (userID) => {
         .delete(`/api/riders/${userID}`)
         .then(response => {
             dispatch({ type: DELETE_RIDER_SUCCESS, payload: response.data })
+            removeToken()
             console.log(response.data)
 
         })
@@ -268,6 +269,7 @@ export const DeleteDriver = (userID) => {
         .delete(`/api/drivers/${userID}`)
         .then(response => {
             dispatch({ type: DELETE_DRIVER_SUCCESS, payload: response.data })
+            removeToken()
             console.log(response.data)
         })
         .catch(error => {

@@ -20,16 +20,17 @@ export const removeToken = () => {
 //If a token exists, it'll use the token. Otherwise it won't.
 
 export const axiosRequest = () => {    
+    const token = localStorage.getItem('token')
     return(
         
         getToken()
-
+        
         ? axios
             .create({
             baseURL: 'https://rideforlife-backend.herokuapp.com',
             headers: {
-                "Authorization" : getToken(),
-                "Content-Type" : 'application/json'
+                "Content-Type" : 'application/json',
+                "Authorization" : token,
             }
         })
 
