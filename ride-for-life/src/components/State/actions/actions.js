@@ -232,6 +232,7 @@ export const DeleteRider = (userID) => {
         .delete(`/api/riders/${userID}`)
         .then(response => {
             dispatch({ type: DELETE_RIDER_SUCCESS, payload: response.data })
+            removeToken()
             console.log(response.data)
 
         })
@@ -261,13 +262,14 @@ export const UpdateDriver = (driver, userID) => {
     }
 }
 
-export const DeleteDriver = () => {
+export const DeleteDriver = (userID) => {
     return dispatch => {
         dispatch({ type: DELETE_DRIVER_START})
         axios()
-        .delete(`/api/drivers/:id`)
+        .delete(`/api/drivers/${userID}`)
         .then(response => {
             dispatch({ type: DELETE_DRIVER_SUCCESS, payload: response.data })
+            removeToken()
             console.log(response.data)
         })
         .catch(error => {
