@@ -28,7 +28,7 @@ const Dashboard = (props) => {
 }
 
 const mapStateToProps = state => {
-        return {
+    return {
         user: state.user,
         loggedIn: state.loggedIn
     }
