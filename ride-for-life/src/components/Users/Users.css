@@ -33,6 +33,7 @@
 
 .dropdown {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin: 1%;
     padding: 1%;
@@ -67,15 +68,6 @@
     justify-content: space-between;
 }
 
-
-.review-button {
-    display: flex;
-    justify-content: center;
-    margin-top: 3%;
-    margin: 1%;
-
-}
-
 .submit-button {
     margin-bottom: 2%;
     margin-left: 1%;
@@ -84,8 +76,7 @@
 .reviews-container{
     display: flex;
     justify-content: center;
-    margin: 0 auto;
-    border: 1px solid black;
+    margin: 1% auto;
     width: 70%;
     height: auto;
 }
@@ -190,3 +181,12 @@
     margin: 0 auto;
 }
 
+/* Add Review */
+
+.add-review {
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    padding: 3%;
+    margin: 3%;
+}
