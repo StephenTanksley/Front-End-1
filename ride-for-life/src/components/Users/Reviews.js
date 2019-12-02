@@ -6,12 +6,19 @@ import {
     DropdownToggle, DropdownMenu, DropdownItem
   } from 'reactstrap';
 
+  import { connect } from 'react-redux'
+  import {
+    UpdateDriverReviews,
+    DeleteDriverReviews
+  } from '../State/actions/actions'
+
   import "./Users.css"
 
-  const Reviews = () => {
+  const Reviews = (props) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [rSelected, setRSelected] = useState(null);
     const toggle = () => setDropdownOpen(prevState => !prevState);
+
 
     return(
         <Dropdown className="dropdown" isOpen={dropdownOpen} toggle={toggle}>
@@ -49,4 +56,19 @@ import {
     )
   }
 
-  export default Reviews;
+  const mapStateToProps = state => {
+    return {
+      reviews: state.reviews,
+    }
+  }
+
+  const mapDispatchToProps = {
+    UpdateDriverReviews,
+    DeleteDriverReviews
+  }
+
+
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Reviews)

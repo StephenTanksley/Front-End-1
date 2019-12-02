@@ -19,6 +19,7 @@ const Navigation = (props) => {
             <div className="nav-header">
                 <img src={logo}></img>
             </div>
+            
             <nav className = { props.user.role === driverRole ? "navigation-bar driver" : "navigation-bar rider"}>
                 {/* Checks to see if we have a token. If not, we log in... */}
                 {!loggedIn && <Link to={'/login'} > <Button color='secondary'>Login</Button> </Link>}

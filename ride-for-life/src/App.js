@@ -31,7 +31,7 @@ function App(props) {
       {/* <h1>Hello. Welcome to Ride for Life.</h1> */}
 
       <div className="landing-page">
-        <img className="landing-logo" src={logo}/>
+        <img className={loggedIn ? "hidden" : `landing-logo`} src={logo}/>
 
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
 

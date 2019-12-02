@@ -11,7 +11,6 @@ const RiderList = (props) => {
 
     useEffect(() => {
         props.GetRiderList()
-        console.log(props)
     }, [])
 
     return (

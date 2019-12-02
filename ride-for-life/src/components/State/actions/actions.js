@@ -95,6 +95,9 @@ export const UPDATE_DRIVER_REVIEWS_START = "UPDATE_DRIVER_REVIEWS_START"
 export const UPDATE_DRIVER_REVIEWS_SUCCESS = "UPDATE_DRIVER_REVIEWS_SUCCESS"
 export const UPDATE_DRIVER_REVIEWS_FAILED = "UPDATE_DRIVER_REVIEWS_FAILED"
 
+export const DELETE_DRIVER_REVIEWS_START = "DELETE_DRIVER_REVIEWS_START"
+export const DELETE_DRIVER_REVIEWS_SUCCESS = "DELETE_DRIVER_REVIEWS_SUCCESS"
+export const DELETE_DRIVER_REVIEWS_FAILED = "DELETE_DRIVER_REVIEWS_FAILED"
 
 
 //actions
@@ -294,3 +297,69 @@ export const DeleteDriver = (userID) => {
         })
     }
 }
+
+export const GetDriverReviews = () => {
+    return dispatch => {
+        dispatch({ type: GET_DRIVER_REVIEWS_START})
+        axios()
+        .get('/api/reviews')
+        .then(response => {
+            dispatch({ type: GET_DRIVER_REVIEWS_SUCCESS, payload: response.data})
+            console.log(response.data)
+        })
+        .catch(error => {
+            dispatch({ type: GET_DRIVER_REVIEWS_FAILED, payload: error.response})
+            console.log(error.response)
+        })
+    }
+}
+
+
+export const AddDriverReviews = (review) => {
+    return dispatch => {
+        dispatch({ type: ADD_DRIVER_REVIEWS_START})
+        axios()
+        .post('/api/reviews', review)
+        .then(response => {
+            dispatch({ type: ADD_DRIVER_REVIEWS_SUCCESS, payload: response.data})
+            console.log(response.data)
+        })
+        .catch(error => {
+            dispatch({ type: ADD_DRIVER_REVIEWS_FAILED, payload: error.response})
+            console.log(error.response)
+        })
+    }
+}
+
+export const UpdateDriverReviews = (reviewID, review) => {
+    return dispatch => {
+        dispatch({ type: UPDATE_DRIVER_REVIEWS_START})
+        axios()
+        .put(`/api/reviews/${reviewID}`, review)
+        .then(response => {
+            dispatch({ type: UPDATE_DRIVER_REVIEWS_SUCCESS, payload: response.data})
+            console.log(response.data)
+        })
+        .catch(error => {
+            dispatch({ type: UPDATE_DRIVER_REVIEWS_FAILED, payload: error.response})
+            console.log(error.response)
+        })
+    }
+}
+
+export const DeleteDriverReviews = (reviewID) => {
+    return dispatch => {
+        dispatch({ type: DELETE_DRIVER_REVIEWS_START})
+        axios()
+        .delete(`/api/reviews/${reviewID}`)
+        .then(response => {
+            dispatch({ type: DELETE_DRIVER_REVIEWS_SUCCESS, payload: response.data})
+            console.log(response.data)
+        })
+        .catch(error => {
+            dispatch({ type: DELETE_DRIVER_REVIEWS_FAILED, payload: error.response})
+            console.log(error.response)
+        })
+    }
+}
+
