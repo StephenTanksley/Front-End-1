@@ -18,7 +18,8 @@ const ReviewsForm = (props) => {
     const [review, setReview] = useState({
         rating: 0 || null,
         review: "",
-        date: ""
+        date: "",
+        // reviewID: need to figure out how to set this.
         // riderID: need to supply this via props.
         // driverID: need to supply this via an event target.
     })
@@ -32,7 +33,7 @@ const ReviewsForm = (props) => {
 
     const handleSubmit = () => {
         props.AddDriverReviews(review)
-        props.EditingUserStop
+        props.EditingUserStop()
     }
     
 
@@ -43,49 +44,56 @@ const ReviewsForm = (props) => {
             {props.editing 
             ? 
             <div>
-                <label>Rate your ride!</label>
-                <form>
+                <label>Editing review!</label>
+                <form onSubmit = {handleSubmit}>
                     <input 
                         type="number"
                         name="rating"
                         placeholder="Rate your driver"
-                        value="rating"
+                        value={props.reviews.rating}
+                        onChange={handleChange}
                         />
                     <input 
                         type="date"
                         name="date"
                         placeholder="mm/dd/yyyy"
-                        value="date"
+                        value={props.reviews.date}
+                        onChange={handleChange}
+
                         />
                     <input 
                         type="text"
                         name="body"
                         placeholder="Review your driver"
-                        value="body"
+                        value={props.reviews.body}
+                        onChange={handleChange}
                         />
                 </form>
             </div>
             : 
             <div>
                 <label>Rate your ride!</label>
-                <form>
+                <form onSubmit = {handleSubmit}>
                     <input 
                         type="number"
                         name="rating"
                         placeholder="Rate your driver"
                         value="rating"
+                        onChange={handleChange}
                         />
                     <input 
                         type="date"
                         name="date"
                         placeholder="mm/dd/yyyy"
                         value="date"
+                        onChange={handleChange}
                         />
                     <input 
                         type="text"
                         name="body"
                         placeholder="Review your driver"
                         value="body"
+                        onChange={handleChange}
                         />
                 </form>
             </div>
