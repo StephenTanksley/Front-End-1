@@ -5,18 +5,20 @@ import {
     UpdateRider,
     EditingUserStop 
 } from '../State/actions/actions';
-
-
-
-//need to fix the uncontrolled component to be a controlled component.
+import { axiosRequest as axios} from '../../utils/api';
 
 const EditForm = (props) => {
 
     const user = props.user
-    const id = props.currentUser.id
-    
     const driverRole = "driver";
     const riderRole = "rider";
+    
+    // there's a discrepancy between the driver's role assignment and the rider's side. 
+    // I'm fixing that by programmatically assigning the id variable.
+
+    const id = (props.user.role === riderRole) 
+    ? props.user.rider_id
+    : props.currentUser.id
 
     const [driverEdits, setDriverEdits] = useState({
         name: user.name || '',
@@ -49,30 +51,30 @@ const EditForm = (props) => {
         setDriverEdits({
             [e.target.name]: e.target.value
             })
+
         } else {
+
         setRiderEdits ({
             [e.target.name]: e.target.value    
             })
         }
     }
     
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         if(user.role === driverRole) {
           props.UpdateDriver(driverEdits, id)
-          console.log('driver edits and id', driverEdits, id)
-        //   setDriverEdits(initialDriverValue)
+          console.log('driver edits - ', driverEdits, 'id - ', id)
         } else {
           props.UpdateRider(riderEdits, id)
-          console.log(riderEdits)
-          console.log('rider edits and id', riderEdits, id)
-        //   setRiderEdits(initialRiderValue)
+          console.log('rider edits - ', riderEdits, 'id - ', id)
         }
         props.EditingUserStop()
       }
 
-    // console.log('current user', props.currentUser)
 
     return(
+
         <>
        
      { user.role === driverRole ?  
@@ -83,7 +85,7 @@ const EditForm = (props) => {
                 <input 
                     type='text'
                     name="name"
-                    placeholder={props.currentUser.name}
+                    placeholder={props.currentUser.name || 'name'}
                     value={user.name}
                     onChange={handleChange}
                 />
@@ -91,7 +93,7 @@ const EditForm = (props) => {
                 <input 
                     type='text'
                     name="price"
-                    placeholder={props.currentUser.price}
+                    placeholder={props.currentUser.price || 'price'}
                     value={user.price}
                     onChange={handleChange}
                 />
@@ -99,7 +101,7 @@ const EditForm = (props) => {
                 <input 
                     type='text'
                     name="location"
-                    placeholder={props.currentUser.location}
+                    placeholder={props.currentUser.location || 'location'}
                     value={user.location}
                     onChange={handleChange}
                 />
@@ -107,7 +109,7 @@ const EditForm = (props) => {
                 <input 
                     type='text'
                     name="bio"
-                    placeholder={props.currentUser.bio}
+                    placeholder={props.currentUser.bio || 'bio'}
                     value={user.bio}
                     onChange={handleChange}
                 />
@@ -122,7 +124,7 @@ const EditForm = (props) => {
                 <input 
                     type='text'
                     name="name"
-                    placeholder={props.currentUser.name}
+                    placeholder={props.currentUser.name || 'name'}
                     value={user.name}
                     onChange={handleChange}
                 />
@@ -130,8 +132,8 @@ const EditForm = (props) => {
                 <input 
                     type='text'
                     name="location"
-                    placeholder={props.currentUser.location}
-                    value={user.name}
+                    placeholder={props.currentUser.location || 'location'}
+                    value={user.location}
                     onChange={handleChange}
                 />
 
@@ -139,6 +141,7 @@ const EditForm = (props) => {
             </form>
 
         </div>}
+
         </>
     )
 }

@@ -1,6 +1,6 @@
 //axios
 import { 
-    axiosRequest as axios, 
+    axiosRequest as axios,
     setToken, 
     removeToken } from '../../../utils/api'
 
@@ -248,7 +248,7 @@ export const DeleteRider = (userID) => {
 //update a specific driver's profile.
 export const UpdateDriver = (driver, userID) => {
     return dispatch => {
-        dispatch({ type: UPDATE_DRIVER_START, driver })
+        dispatch({ type: UPDATE_DRIVER_START })
         axios()
         .put(`/api/drivers/${userID}`, driver)
         .then(response => {
