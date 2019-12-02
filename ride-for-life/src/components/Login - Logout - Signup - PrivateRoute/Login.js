@@ -26,7 +26,7 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange, }) => {
                         <label>Username</label>
                         <div>
                                 {touched.username && errors.username && (
-                                <p>Error: {errors.username}</p>)} 
+                                <div>Error: {errors.username}</div>)} 
                                 <Field 
                                 name='username' 
                                 className="login-field"
@@ -39,7 +39,7 @@ const Login = ({ handleSubmit, errors, touched, values, handleChange, }) => {
                         <label>Password</label>
                         <div>
                         {touched.password && errors.password && (
-                                <p>Error: {errors.password}</p>)}
+                                <div>Error: {errors.password}</div>)}
                                 <Field 
                                 name='password' 
                                 className="login-field"

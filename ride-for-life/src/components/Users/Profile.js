@@ -70,10 +70,12 @@ const Profile = (props) => {
               <div className="profile-card">
                   <Card id="profile-card">
                     <img src={props.currentUser.url} />
+                    <div className = "text-container">
                     <CardTitle tag="h3">{profileInfo.name}</CardTitle>
                     <CardSubtitle>Location: {profileInfo.location}</CardSubtitle>
                     <CardSubtitle>Price: {profileInfo.price}</CardSubtitle>
                     <CardSubtitle>Bio: {profileInfo.bio}</CardSubtitle>
+                    </div>
                   </Card>
               </div>
 

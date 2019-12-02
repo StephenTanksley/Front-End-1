@@ -1,6 +1,6 @@
 //axios
 import { 
-    axiosRequest as axios, 
+    axiosRequest as axios,
     setToken, 
     removeToken } from '../../../utils/api'
 
@@ -79,6 +79,22 @@ export const UPDATE_DRIVER_FAILED = "UPDATE_DRIVER_FAILED"
 export const DELETE_DRIVER_START = "DELETE_DRIVER_START"
 export const DELETE_DRIVER_SUCCESS = "DELETE_DRIVER_SUCCESS"
 export const DELETE_DRIVER_FAILED = "DELETE_DRIVER_FAILED"
+
+
+/* ------ REVIEWS ----- */
+
+export const GET_DRIVER_REVIEWS_START = "GET_DRIVER_REVIEWS_START"
+export const GET_DRIVER_REVIEWS_SUCCESS = "GET_DRIVER_REVIEWS_SUCCESS"
+export const GET_DRIVER_REVIEWS_FAILED = "GET_DRIVER_REVIEWS_FAILED"
+
+export const ADD_DRIVER_REVIEWS_START = "ADD_DRIVER_REVIEWS_START"
+export const ADD_DRIVER_REVIEWS_SUCCESS = "ADD_DRIVER_REVIEWS_SUCCESS"
+export const ADD_DRIVER_REVIEWS_FAILED = "ADD_DRIVER_REVIEWS_FAILED"
+
+export const UPDATE_DRIVER_REVIEWS_START = "UPDATE_DRIVER_REVIEWS_START"
+export const UPDATE_DRIVER_REVIEWS_SUCCESS = "UPDATE_DRIVER_REVIEWS_SUCCESS"
+export const UPDATE_DRIVER_REVIEWS_FAILED = "UPDATE_DRIVER_REVIEWS_FAILED"
+
 
 
 //actions
@@ -248,7 +264,7 @@ export const DeleteRider = (userID) => {
 //update a specific driver's profile.
 export const UpdateDriver = (driver, userID) => {
     return dispatch => {
-        dispatch({ type: UPDATE_DRIVER_START, driver })
+        dispatch({ type: UPDATE_DRIVER_START })
         axios()
         .put(`/api/drivers/${userID}`, driver)
         .then(response => {

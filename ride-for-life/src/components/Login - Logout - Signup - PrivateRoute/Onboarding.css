@@ -1,7 +1,11 @@
 /* Login */
 
 .login{
-    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
     color: black;
     background-color: #E46428;
     padding: 1%;
@@ -11,7 +15,10 @@
 }
 
 .form-login{
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .submit{

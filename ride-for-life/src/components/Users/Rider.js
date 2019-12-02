@@ -16,6 +16,8 @@ import { GetDriverList, GetRider, UpdateRider, DeleteRider } from '../State/acti
 import SearchForm from './SearchForm'
 import Profile from "./Profile"
 import Reviews from "./Reviews"
+
+//styling
 import "./Users.css"
 
 const Rider = (props) => {
@@ -26,6 +28,8 @@ const Rider = (props) => {
   }
   
   const drivers = props.drivers
+  const editing = props.editing
+  console.log(editing)
 
   useEffect(() => {
     axios()
@@ -54,7 +58,9 @@ const Rider = (props) => {
 
       <Profile />
 
-      <SearchForm setFilterState={Filter} />
+      <SearchForm className = {editing ? 'hidden' : '' } setFilterState={Filter} />
+      <div className = {editing ? 'hidden' : 'driver-array' }>
+        <br />
       {filterState && filterState.map(item => (
       <Card id="user-cards" className='user-cards' key={item.driver_id}>
         <CardBody>
@@ -63,12 +69,15 @@ const Rider = (props) => {
             <CardSubtitle>Price: {item.price}</CardSubtitle>
             <CardSubtitle>Bio: {item.bio}</CardSubtitle>
           <Button className="request-button" outline color="primary">Request</Button>
-          <Button className="review-button" outline color="success">Add Review</Button>
         </CardBody>
-
-        <Reviews />
+        
+        <div className="reviews-container">
+          <Button className="review-button" outline color="success">Add Review</Button>
+          <Reviews />
+        </div>
 
       </Card>))}
+      </div>
     </div>
     )
 }
@@ -78,7 +87,8 @@ const mapStateToProps = state => {
     return {
     user: state.user,
     drivers: state.drivers,
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    editing: state.editing
   }
 }
 
