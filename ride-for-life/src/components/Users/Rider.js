@@ -16,6 +16,8 @@ import { GetDriverList, GetRider, UpdateRider, DeleteRider } from '../State/acti
 import SearchForm from './SearchForm'
 import Profile from "./Profile"
 import Reviews from "./Reviews"
+
+//styling
 import "./Users.css"
 
 const Rider = (props) => {
@@ -67,10 +69,12 @@ const Rider = (props) => {
             <CardSubtitle>Price: {item.price}</CardSubtitle>
             <CardSubtitle>Bio: {item.bio}</CardSubtitle>
           <Button className="request-button" outline color="primary">Request</Button>
-          <Button className="review-button" outline color="success">Add Review</Button>
         </CardBody>
         
-        <Reviews />
+        <div className="reviews-container">
+          <Button className="review-button" outline color="success">Add Review</Button>
+          <Reviews />
+        </div>
 
       </Card>))}
       </div>

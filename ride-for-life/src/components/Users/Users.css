@@ -14,6 +14,11 @@
 .user-cards {
     margin: 1%;
     width: 30%;
+
+}
+
+.user-cards:last-child {
+    margin: 0 auto;
 }
 
 #user-cards {
@@ -62,19 +67,27 @@
     justify-content: space-between;
 }
 
-.request-button {
-    margin-top: 3%;
-    margin: 1%;
-}
 
 .review-button {
+    display: flex;
+    justify-content: center;
     margin-top: 3%;
     margin: 1%;
+
 }
 
 .submit-button {
     margin-bottom: 2%;
     margin-left: 1%;
+}
+
+.reviews-container{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border: 1px solid black;
+    width: 70%;
+    height: auto;
 }
 
 
@@ -94,6 +107,13 @@
     width: 100%;
     border: 3px solid #E42127;
     border-radius: 5px;
+}
+
+.profile-card img {
+    display: flex;
+    margin: 0 auto;
+    height: auto;
+    width: 60%;
 }
 
 #profile-card{
@@ -141,6 +161,12 @@
     align-items: center;
 }
 
+.text-container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 50%;
+}
 /* Edit Form */
 
 .edit-form {
