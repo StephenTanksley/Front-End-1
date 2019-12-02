@@ -33,6 +33,7 @@
 
 .dropdown {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin: 1%;
     padding: 1%;
@@ -180,3 +181,12 @@
     margin: 0 auto;
 }
 
+/* Add Review */
+
+.add-review {
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    padding: 3%;
+    margin: 3%;
+}
