@@ -14,7 +14,7 @@ const EditForm = (props) => {
     const riderRole = "rider";
     
     // there's a discrepancy between the driver's role assignment and the rider's side on the back end. 
-    // I'm fixing that by programmatically assigning the id variable.
+    // I'm fixing that by programmatically assigning the id variable regardless of role.
 
     const id = (props.user.role === riderRole) 
     ? props.user.rider_id
