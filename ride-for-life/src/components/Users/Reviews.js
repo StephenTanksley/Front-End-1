@@ -43,8 +43,9 @@ import {
                 <DropdownItem divider/>
 
                 <ButtonGroup>
-                  <Button size="sm" color="warning" onClick={() => setRSelected(1)} active={rSelected === 1}>Edit</Button>
-                  <Button size="sm" color="danger" onClick={() => setRSelected(2)} active={rSelected === 2}>Delete</Button>
+                  <Button size="sm" color="success" onClick={() => setRSelected(1)} active={rSelected === 1} className="review-button">Add Review</Button>
+                  <Button size="sm" color="warning" onClick={() => setRSelected(2)} active={rSelected === 2}>Edit</Button>
+                  <Button size="sm" color="danger" onClick={() => setRSelected(3)} active={rSelected === 3}>Delete</Button>
                 </ButtonGroup>
 
                 {/* I imagine we could have some conditional logic that renders a new dropdown item

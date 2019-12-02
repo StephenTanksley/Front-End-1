@@ -67,15 +67,6 @@
     justify-content: space-between;
 }
 
-
-.review-button {
-    display: flex;
-    justify-content: center;
-    margin-top: 3%;
-    margin: 1%;
-
-}
-
 .submit-button {
     margin-bottom: 2%;
     margin-left: 1%;
@@ -84,8 +75,7 @@
 .reviews-container{
     display: flex;
     justify-content: center;
-    margin: 0 auto;
-    border: 1px solid black;
+    margin: 1% auto;
     width: 70%;
     height: auto;
 }

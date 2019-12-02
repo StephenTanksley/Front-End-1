@@ -83,7 +83,6 @@ const Rider = (props) => {
         </CardBody>
         
         <div className="reviews-container">
-          <Button className="review-button" outline color="success">Add Review</Button>
           <Reviews />
         </div>
 
