@@ -11,7 +11,13 @@ import { axiosRequest as axios } from '../../utils/api'
 
 //Redux import
 import { connect } from 'react-redux'
-import { GetDriverList, GetRider, UpdateRider, DeleteRider } from '../State/actions/actions';
+import { 
+  GetDriverList, 
+  GetRider, 
+  UpdateRider, 
+  DeleteRider,
+  GetDriverReviews,
+ } from '../State/actions/actions';
 
 import SearchForm from './SearchForm'
 import Profile from "./Profile"
@@ -32,6 +38,10 @@ const Rider = (props) => {
   console.log(editing)
 
   useEffect(() => {
+    props.GetDriverReviews()
+  }, [])
+
+  useEffect(() => {
     axios()
     .get(`https://rideforlife-backend.herokuapp.com/api/drivers`)
     .then(response => {
@@ -50,6 +60,7 @@ const Rider = (props) => {
   useEffect(() => {
     props.GetRider('rider', userID)
   }, [])
+
 
 
     return(
@@ -85,6 +96,7 @@ const Rider = (props) => {
 
 const mapStateToProps = state => {
     return {
+    reviews: state.reviews,
     user: state.user,
     drivers: state.drivers,
     currentUser: state.currentUser,
@@ -96,7 +108,8 @@ const mapDispatchToProps = {
   GetDriverList,
   GetRider,
   UpdateRider,
-  DeleteRider
+  DeleteRider,
+  GetDriverReviews
 }
 
 export default connect(

@@ -54,6 +54,25 @@ import {
     DELETE_DRIVER_SUCCESS,
     DELETE_DRIVER_FAILED,
 
+    //reviews
+
+    GET_DRIVER_REVIEWS_START,
+    GET_DRIVER_REVIEWS_SUCCESS,
+    GET_DRIVER_REVIEWS_FAILED,
+
+    ADD_DRIVER_REVIEWS_START,
+    ADD_DRIVER_REVIEWS_SUCCESS,
+    ADD_DRIVER_REVIEWS_FAILED,
+
+    UPDATE_DRIVER_REVIEWS_START,
+    UPDATE_DRIVER_REVIEWS_SUCCESS,
+    UPDATE_DRIVER_REVIEWS_FAILED,
+
+    DELETE_DRIVER_REVIEWS_START,
+    DELETE_DRIVER_REVIEWS_SUCCESS,
+    DELETE_DRIVER_REVIEWS_FAILED
+
+
 } from '../actions/actions';
 
 
@@ -81,6 +100,10 @@ const initialState = {
 
     //driver reviews
     reviews: [],
+    addingReviews: false,
+    gettingReviews: false,
+    updatingReviews: false,
+    deletingReviews: false,
 
     //errors
     error: []
@@ -304,54 +327,6 @@ export function reducer(state = initialState, action) {
 
 /* ---------- DRIVERS ---------- */
 
-    // //getting a driver
-    // case GET_DRIVER_START: {
-    //         return {
-    //             ...state,
-    //             gettingDriver: true
-    //         }
-    //     }
-
-    // case GET_DRIVER_SUCCESS: {
-    //         return {
-    //             ...state,
-    //             driver: action.payload,
-    //             gettingDriver: false,
-    //         }
-    //     }
-
-    // case GET_DRIVER_FAILED: {
-    //         return {
-    //             ...state,
-    //             gettingDriver: false,
-    //             error: action.payload
-    //         }
-    //     }
-
-
-    //adding a new driver
-    // case ADD_DRIVER_START: {
-    //         return {
-    //             ...state,
-    //             addingDriver: true
-    //         }
-    //     }
-
-    // case ADD_DRIVER_SUCCESS: {
-    //         return {
-    //             ...state,
-    //             user: action.payload,
-    //             addingDriver: false
-    //         }
-    //     }
-
-    // case ADD_DRIVER_FAILED: {
-    //         return {
-    //             ...state,
-    //             addingDriver: false,
-    //             error: action.payload
-    //         }
-    //     }
 
     case GET_DRIVER_START: {
         return {
@@ -425,6 +400,106 @@ export function reducer(state = initialState, action) {
                 error: action.payload
             }
         }
+
+// reviews
+
+    //getting reviews
+    case GET_DRIVER_REVIEWS_START : {
+        return {
+            ...state,
+            gettingReviews: true,
+        }
+    }
+
+    case GET_DRIVER_REVIEWS_SUCCESS : {
+        return {
+            ...state,
+            gettingReviews: false,
+            reviews: action.payload
+        }
+    }
+
+    case GET_DRIVER_REVIEWS_FAILED : {
+        return {
+            ...state,
+            gettingReviews: false,
+            error: action.payload
+        }
+    }
+
+
+    //adding review
+    case ADD_DRIVER_REVIEWS_START : {
+        return {
+            ...state,
+            addingReviews: true,
+        }
+    }
+
+    case ADD_DRIVER_REVIEWS_SUCCESS : {
+        return {
+            ...state,
+            addingReviews: false,
+            reviews: action.payload
+        }
+    }
+
+    case ADD_DRIVER_REVIEWS_FAILED : {
+        return {
+            ...state,
+            addingReviews: false,
+            error: action.payload
+        }
+    }
+
+    
+    //updating review
+    case UPDATE_DRIVER_REVIEWS_START : {
+        return {
+            ...state,
+            updatingReviews: true,
+        }
+    }
+
+    case UPDATE_DRIVER_REVIEWS_SUCCESS : {
+        return {
+            ...state,
+            updatingReviews: false,
+            reviews: action.payload
+        }
+    }
+
+    case UPDATE_DRIVER_REVIEWS_FAILED : {
+        return {
+            ...state,
+            updatingReviews: false,
+            error: action.payload
+        }
+    }
+
+    //deleting review
+    case DELETE_DRIVER_REVIEWS_START : {
+        return {
+            ...state,
+            deletingReviews: true,
+        }
+    }
+
+    case DELETE_DRIVER_REVIEWS_SUCCESS : {
+        return {
+            ...state,
+            deletingReviews: false,
+            reviews: action.payload
+        }
+    }
+
+    case DELETE_DRIVER_REVIEWS_FAILED : {
+        return {
+            ...state,
+            deletingReviews: false,
+            error: action.payload
+        }
+    }
 
     default: 
         return state;
