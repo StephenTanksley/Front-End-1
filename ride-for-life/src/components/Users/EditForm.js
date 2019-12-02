@@ -5,11 +5,11 @@ import {
     UpdateRider,
     EditingUserStop 
 } from '../State/actions/actions';
-import { axiosRequest as axios} from '../../utils/api';
 
 const EditForm = (props) => {
 
     const user = props.user
+    console.log('props from editForm', props)
     const driverRole = "driver";
     const riderRole = "rider";
     
@@ -24,29 +24,33 @@ const EditForm = (props) => {
         name: user.name || '',
         price: user.price || '',
         location: user.location || '',
-        bio: user.bio || ''
+        bio: user.bio || '',
+        password: user.password || ''
     } || initialDriverValue)
 
     const initialDriverValue = {
         name: '',
         price: '',
         location: '',
-        bio: ''
+        bio: '',
+        password: ''
     }
 
     const [riderEdits, setRiderEdits] = useState({
         name: user.name || '',
-        location: user.location || ''
+        location: user.location || '',
+        password: user.password || ''
     } || initialRiderValue)
 
 
     const initialRiderValue = {
         name: '',
-        location: ''
+        location: '',
+        password: ''
     }
 
 
-    const handleChange = e => {
+    const handleChange = (e) => {
         if(user.role === driverRole) {
         setDriverEdits({
             [e.target.name]: e.target.value
@@ -71,7 +75,6 @@ const EditForm = (props) => {
         }
         props.EditingUserStop()
       }
-
 
     return(
 
@@ -113,6 +116,16 @@ const EditForm = (props) => {
                     value={user.bio}
                     onChange={handleChange}
                 />
+
+                <input 
+                    type='password' 
+                    name='password'
+                    placeholder='password'
+                    value={props.user.password}
+                    onChange={handleChange} 
+                    required
+                />
+
                 <button type="submit" className="submit-button">Submit</button>
             </form>
         </div>
@@ -135,6 +148,15 @@ const EditForm = (props) => {
                     placeholder={props.currentUser.location || 'location'}
                     value={user.location}
                     onChange={handleChange}
+                />
+
+                <input 
+                    type='text'
+                    name="password"
+                    placeholder="Current Password"
+                    value='password'
+                    onChange={handleChange}
+                    required
                 />
 
                 <button type="submit" className="submit-button">Submit</button>
