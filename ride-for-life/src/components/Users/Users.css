@@ -133,6 +133,14 @@
     background-color: #E42127;
 }
 
+.driver-array {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Edit Form */
 
 .edit-form {
@@ -155,3 +163,4 @@
     justify-content: center;
     margin: 0 auto;
 }
+
