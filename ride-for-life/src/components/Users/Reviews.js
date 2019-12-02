@@ -7,6 +7,8 @@ import {
   } from 'reactstrap';
 
   import { connect } from 'react-redux'
+
+  import AddReview from "./AddReview"
   import {
     UpdateDriverReviews,
     DeleteDriverReviews
@@ -17,6 +19,7 @@ import {
   const Reviews = (props) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [rSelected, setRSelected] = useState(null);
+    const [reviews, setReviews] = useState([]);
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
 
@@ -26,26 +29,29 @@ import {
                 Reviews
             </DropdownToggle>
 
-            <DropdownMenu positionFixed={true} id="dropdown-menu" className="dropdown-menu">
-                <DropdownItem disabled={true} id="dropdown-item">
-                Reviews Reviews Reviews Reviews Reviews Reviews
-                Reviews Reviews Reviews Reviews Reviews Reviews 
-                Reviews Reviews Reviews Reviews Reviews Reviews
-                </DropdownItem>
-
-                <DropdownItem divider/>
-
-                <DropdownItem disabled={true} id="dropdown-item">
-                  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                    Lorem ipsum Lorem ipsum Lorem ipsum 
-                
-                </DropdownItem>
-                <DropdownItem divider/>
-
                 <ButtonGroup>
-                  <Button size="sm" color="warning" onClick={() => setRSelected(1)} active={rSelected === 1}>Edit</Button>
-                  <Button size="sm" color="danger" onClick={() => setRSelected(2)} active={rSelected === 2}>Delete</Button>
+                  <Button size="sm" color="success" onClick={() => setRSelected(1)} active={rSelected === 1} className="review-button">Add Review</Button>
+                  <Button size="sm" color="warning" onClick={() => setRSelected(2)} active={rSelected === 2} className="review-button">Edit</Button>
+                  <Button size="sm" color="danger" onClick={() => setRSelected(3)} active={rSelected === 3} className="review-button">Delete</Button>
                 </ButtonGroup>
+
+                <>
+                {rSelected && (rSelected === 1) ? <AddReview props={setReviews} /> : null}
+                </>
+
+            <DropdownMenu positionFixed={true} id="dropdown-menu" className="dropdown-menu">
+
+
+                <DropdownItem disabled={true} id="dropdown-item">
+                  Review 
+                </DropdownItem>
+
+                <DropdownItem divider/>
+
+                <DropdownItem>
+                  Review
+                </DropdownItem>
+
 
                 {/* I imagine we could have some conditional logic that renders a new dropdown item
                 each time a rider submits a review (we should probably limit 1 review per driver for each rider)  */}
