@@ -62,10 +62,5 @@ _Ride For Life_ serves mothers in Uganda to improve maternal and child survival.
 
 #
 
-## Project Name
-Ride For Life
-
-#
-
 ## Project Timeline
 2 weeks (30 hrs work time total)
